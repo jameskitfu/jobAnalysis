@@ -1,0 +1,19 @@
+# Web 框架
+Flask==3.0.0
+Werkzeug==3.0.1
+
+# 数据处理
+pandas==2.1.0
+openpyxl==3.1.2
+
+# 配置文件
+PyYAML==6.0.1
+
+# 编码检测
+chardet==5.2.0
+
+# NLP 中文分词（智能匹配）
+jieba==0.42.1
+
+# 图表生成（趋势分析）
+XlsxWriter==3.1.9

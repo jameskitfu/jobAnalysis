@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>技能词频统计工具</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 40px;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .header p {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+
+        .upload-area {
+            border: 3px dashed #667eea;
+            border-radius: 8px;
+            padding: 60px 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: #f8f9ff;
+        }
+
+        .upload-area:hover {
+            border-color: #764ba2;
+            background: #f0f2ff;
+        }
+
+        .upload-area.dragover {
+            border-color: #764ba2;
+            background: #e8ebff;
+            transform: scale(1.02);
+        }
+
+        .upload-icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .upload-text {
+            font-size: 1.2em;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .upload-hint {
+            color: #666;
+            font-size: 0.9em;
+        }
+
+        .file-input {
+            display: none;
+        }
+
+        .btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 6px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .status {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 6px;
+            text-align: center;
+        }
+
+        .status.info {
+            background: #e3f2fd;
+            color: #1976d2;
+        }
+
+        .status.success {
+            background: #e8f5e9;
+            color: #388e3c;
+        }
+
+        .status.error {
+            background: #ffebee;
+            color: #c62828;
+        }
+
+        .status.warning {
+            background: #fff3e0;
+            color: #f57c00;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: #f0f0f0;
+            border-radius: 4px;
+            overflow: hidden;
+            margin-top: 15px;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            transition: width 0.3s ease;
+            width: 0%;
+        }
+
+        /* 圆角矩形进度条 */
+        .progress-rect {
+            width: 100%;
+            max-width: 300px;
+            margin: 20px auto;
+        }
+
+        .progress-rect-bar {
+            width: 100%;
+            height: 24px;
+            background: #f0f0f0;
+            border-radius: 12px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .progress-rect-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            border-radius: 12px;
+            transition: width 0.3s ease;
+            width: 0%;
+            box-shadow: 0 2px 8px rgba(102, 126, 234, 0.4);
+        }
+
+        .progress-rect-text {
+            text-align: center;
+            margin-top: 10px;
+            font-size: 1.8em;
+            font-weight: bold;
+            color: #667eea;
+        }
+
+        .loading-spinner {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            border: 4px solid #f0f0f0;
+            border-top-color: #667eea;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .result-section {
+            display: none;
+        }
+
+        .result-section.show {
+            display: block;
+        }
+
+        .result-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+
+        .result-title {
+            font-size: 1.5em;
+            color: #333;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .stat-card {
+            background: #f8f9ff;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 2em;
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            color: #666;
+            font-size: 0.9em;
+        }
+
+        .top-skills {
+            margin-top: 20px;
+        }
+
+        .top-skills h3 {
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        .skill-list {
+            list-style: none;
+        }
+
+        .skill-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 15px;
+            background: #f8f9ff;
+            margin-bottom: 8px;
+            border-radius: 6px;
+            transition: all 0.2s ease;
+        }
+
+        .skill-item:hover {
+            background: #f0f2ff;
+            transform: translateX(5px);
+        }
+
+        .skill-rank {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 50%;
+            margin-right: 15px;
+            font-weight: bold;
+        }
+
+        .skill-name {
+            flex: 1;
+            color: #333;
+        }
+
+        .skill-count {
+            color: #667eea;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+
+        .download-section {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 2px solid #f0f0f0;
+        }
+
+        .loading-spinner {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            border: 4px solid #f0f0f0;
+            border-top-color: #667eea;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .fade-enter-active, .fade-leave-active {
+            transition: opacity 0.3s ease;
+        }
+
+        .fade-enter-from, .fade-leave-to {
+            opacity: 0;
+        }
+
+        /* 响应式 */
+        @media (max-width: 600px) {
+            .header h1 {
+                font-size: 1.8em;
+            }
+
+            .card {
+                padding: 20px;
+            }
+
+            .upload-area {
+                padding: 40px 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    {% raw %}
+    <div id="app">
+        <div class="container">
+            <!-- 头部 -->
+            <div class="header">
+                <h1>📊 技能词频统计工具</h1>
+                <p>上传职位 CSV 文件，智能分析技能关键词频率 + 趋势分析</p>
+            </div>
+
+            <!-- 选项设置 -->
+            <div class="card" style="margin-top: 20px;">
+                <h3 style="margin-bottom: 15px; color: #333;">⚙️ 分析选项</h3>
+                <div style="display: flex; gap: 20px; flex-wrap: wrap;">
+                    <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+                        <input type="checkbox" v-model="useSmartMatch" checked>
+                        <span>✨ 智能 NLP 匹配（推荐）</span>
+                    </label>
+                    <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+                        <input type="checkbox" v-model="enableTrendAnalysis" checked>
+                        <span>📈 趋势分析（需日期列）</span>
+                    </label>
+                </div>
+                <p style="margin-top: 10px; color: #666; font-size: 0.9em;">
+                    💡 提示：趋势分析需要 CSV 包含日期列（如：发布日期、pub_date 等）
+                </p>
+            </div>
+
+            <!-- 上传卡片 -->
+            <div class="card">
+                <div 
+                    class="upload-area" 
+                    :class="{ dragover: isDragover }"
+                    @dragover.prevent="isDragover = true"
+                    @dragleave.prevent="isDragover = false"
+                    @drop.prevent="handleDrop"
+                    @click="triggerFileInput"
+                >
+                    <div class="upload-icon">📁</div>
+                    <div class="upload-text">
+                        {{ uploadText }}
+                    </div>
+                    <div class="upload-hint">
+                        支持拖拽或点击选择 CSV 文件（最大 50MB）
+                    </div>
+                    <input 
+                        type="file" 
+                        class="file-input" 
+                        ref="fileInput"
+                        accept=".csv"
+                        @change="handleFileSelect"
+                    >
+                </div>
+
+                <!-- 状态提示 -->
+                <transition name="fade">
+                    <div v-if="statusMessage" class="status" :class="statusType">
+                        {{ statusMessage }}
+                        <div v-if="isUploading" class="progress-bar">
+                            <div class="progress-fill" :style="{ width: progress + '%' }"></div>
+                        </div>
+                    </div>
+                </transition>
+
+                <!-- 加载中 -->
+                <div v-if="isAnalyzing" style="text-align: center; margin-top: 20px;">
+                    <div class="progress-rect">
+                        <div class="progress-rect-bar">
+                            <div class="progress-rect-fill" :style="{ width: analyzeProgress + '%' }"></div>
+                        </div>
+                        <div class="progress-rect-text">{{ analyzeProgress }}%</div>
+                    </div>
+                    <p style="margin-top: 15px; color: #666;">{{ analyzeStatusText }}</p>
+                </div>
+            </div>
+
+            <!-- 结果卡片 -->
+            <div v-if="showResult" class="card result-section show">
+                <div class="result-header">
+                    <h2 class="result-title">✅ 分析完成</h2>
+                    <button class="btn" @click="reset">再分析一个</button>
+                </div>
+
+                <!-- 统计概览 -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-value">{{ resultData.total_positions }}</div>
+                        <div class="stat-label">总职位数</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">{{ resultData.total_skills }}</div>
+                        <div class="stat-label">技能词种类</div>
+                    </div>
+                    <div class="stat-card" v-if="resultData.has_trend">
+                        <div class="stat-value">📈</div>
+                        <div class="stat-label">已生成趋势报告</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">{{ sourceFilename }}</div>
+                        <div class="stat-label">源文件</div>
+                    </div>
+                </div>
+
+                <!-- Top 技能排行 -->
+                <div class="top-skills">
+                    <h3>🔥 Top 10 热门技能</h3>
+                    <ul class="skill-list">
+                        <li v-for="(item, index) in resultData.top_skills" :key="item.skill" class="skill-item">
+                            <span class="skill-rank">{{ index + 1 }}</span>
+                            <span class="skill-name">{{ item.skill }}</span>
+                            <span class="skill-count">{{ item.count }} 次</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- 趋势分析摘要 -->
+                <div class="top-skills" v-if="resultData.has_trend && resultData.trend_summary">
+                    <h3>📈 趋势分析摘要</h3>
+                    <div style="background: #f8f9ff; padding: 15px; border-radius: 8px; margin-bottom: 15px;">
+                        <p style="color: #666; margin-bottom: 10px;">
+                            <strong>时间段：</strong>{{ resultData.trend_summary.periods.join(' → ') }}
+                        </p>
+                        <div v-if="Object.keys(resultData.trend_summary.growth_rates).length > 0">
+                            <p style="color: #666; margin-bottom: 10px;"><strong>增长率 Top 5：</strong></p>
+                            <ul class="skill-list" style="margin: 0; padding: 0; list-style: none;">
+                                <li v-for="(rate, skill) in getTopGrowthRates(resultData.trend_summary.growth_rates, 5)" 
+                                    :key="skill" 
+                                    class="skill-item"
+                                    style="padding: 8px 12px; margin-bottom: 5px;">
+                                    <span class="skill-name">{{ skill }}</span>
+                                    <span class="skill-count" :style="{color: rate > 0 ? '#388e3c' : '#c62828'}">
+                                        <span v-if="rate === Infinity || rate === 'Infinity'">NEW</span>
+                                        <span v-else>{{ rate }}%</span>
+                                    </span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 下载按钮 -->
+                <div class="download-section">
+                    <a :href="resultData.download_url" class="btn" download>
+                        📥 下载完整 Excel 报表
+                    </a>
+                    <p style="margin-top: 10px; color: #666; font-size: 0.9em;">
+                        包含：总统计表、分类统计表、Top50 排行
+                        <span v-if="resultData.has_trend">、技能趋势汇总、趋势详情、增长率排名</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endraw %}
+
+    <script>
+        const { createApp } = Vue;
+
+        createApp({
+            data() {
+                return {
+                    selectedFile: null,
+                    isDragover: false,
+                    isUploading: false,
+                    isAnalyzing: false,
+                    analyzeProgress: 0,
+                    analyzeStatusText: '正在分析技能词频...',
+                    statusMessage: '',
+                    statusType: 'info',
+                    progress: 0,
+                    showResult: false,
+                    resultData: null,
+                    sourceFilename: '',
+                    useSmartMatch: true,
+                    enableTrendAnalysis: true
+                };
+            },
+            computed: {
+                uploadText() {
+                    if (this.selectedFile) {
+                        return `已选择：${this.selectedFile.name}`;
+                    }
+                    return '点击或将 CSV 文件拖拽到此处';
+                }
+            },
+            methods: {
+                simulateProgress() {
+                    // 模拟分析进度
+                    const stages = [
+                        { progress: 10, text: '读取 CSV 文件...' },
+                        { progress: 30, text: '解析职位描述...' },
+                        { progress: 50, text: 'NLP 智能分词...' },
+                        { progress: 70, text: '技能词匹配中...' },
+                        { progress: 85, text: '生成统计报表...' },
+                        { progress: 95, text: '生成 Excel 文件...' },
+                        { progress: 100, text: '分析完成！' }
+                    ];
+                    
+                    let stageIndex = 0;
+                    const interval = setInterval(() => {
+                        if (stageIndex < stages.length) {
+                            const stage = stages[stageIndex];
+                            this.analyzeProgress = stage.progress;
+                            this.analyzeStatusText = stage.text;
+                            stageIndex++;
+                        } else {
+                            clearInterval(interval);
+                        }
+                    }, 300);
+                },
+                getTopGrowthRates(rates, n) {
+                    // 过滤掉 Infinity 并排序
+                    const finiteRates = Object.entries(rates)
+                        .filter(([_, rate]) => rate !== Infinity && rate !== -Infinity)
+                        .sort((a, b) => b[1] - a[1])
+                        .slice(0, n);
+                    return Object.fromEntries(finiteRates);
+                },
+                triggerFileInput() {
+                    this.$refs.fileInput.click();
+                },
+                handleDrop(e) {
+                    this.isDragover = false;
+                    const files = e.dataTransfer.files;
+                    if (files.length > 0) {
+                        this.selectFile(files[0]);
+                    }
+                },
+                handleFileSelect(e) {
+                    const files = e.target.files;
+                    if (files.length > 0) {
+                        this.selectFile(files[0]);
+                    }
+                },
+                selectFile(file) {
+                    if (!file.name.toLowerCase().endsWith('.csv')) {
+                        this.showStatus('请选择 CSV 文件', 'error');
+                        return;
+                    }
+                    
+                    if (file.size > 50 * 1024 * 1024) {
+                        this.showStatus('文件大小不能超过 50MB', 'error');
+                        return;
+                    }
+                    
+                    this.selectedFile = file;
+                    this.uploadFile();
+                },
+                async uploadFile() {
+                    if (!this.selectedFile) return;
+
+                    this.isUploading = true;
+                    this.isAnalyzing = true;
+                    this.analyzeProgress = 0;
+                    this.showResult = false;
+                    this.statusMessage = '';
+                    
+                    // 启动进度模拟
+                    this.simulateProgress();
+
+                    const formData = new FormData();
+                    formData.append('file', this.selectedFile);
+
+                    try {
+                        const response = await fetch('/upload', {
+                            method: 'POST',
+                            body: formData
+                        });
+
+                        const data = await response.json();
+
+                        if (data.success) {
+                            this.resultData = data.data;
+                            this.sourceFilename = data.data.filename.split('/').pop();
+                            this.showStatus(data.message, 'success');
+                            this.showResult = true;
+                        } else {
+                            this.showStatus(data.message, 'error');
+                        }
+                    } catch (error) {
+                        this.showStatus(`上传失败：${error.message}`, 'error');
+                    } finally {
+                        this.isUploading = false;
+                        this.isAnalyzing = false;
+                        this.progress = 0;
+                    }
+                },
+                showStatus(message, type) {
+                    this.statusMessage = message;
+                    this.statusType = type;
+                    
+                    // 3 秒后清除消息
+                    setTimeout(() => {
+                        this.statusMessage = '';
+                    }, 5000);
+                },
+                reset() {
+                    this.selectedFile = null;
+                    this.resultData = null;
+                    this.showResult = false;
+                    this.statusMessage = '';
+                    this.$refs.fileInput.value = '';
+                }
+            }
+        }).mount('#app');
+    </script>
+</body>
+</html>
