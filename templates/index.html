@@ -4,13 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>技能词频统计工具</title>
+    <meta name="description" content="上传职位 CSV 文件，智能分析技能关键词频率与趋势">
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
@@ -19,27 +16,11 @@
             padding: 40px 20px;
         }
 
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-        }
+        .container { max-width: 900px; margin: 0 auto; }
 
-        .header {
-            text-align: center;
-            color: white;
-            margin-bottom: 40px;
-        }
-
-        .header h1 {
-            font-size: 2.5em;
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
-        }
-
-        .header p {
-            font-size: 1.1em;
-            opacity: 0.9;
-        }
+        .header { text-align: center; color: white; margin-bottom: 40px; }
+        .header h1 { font-size: 2.5em; margin-bottom: 10px; text-shadow: 2px 2px 4px rgba(0,0,0,0.2); }
+        .header p { font-size: 1.1em; opacity: 0.9; }
 
         .card {
             background: white;
@@ -49,306 +30,144 @@
             margin-bottom: 20px;
         }
 
+        .card h3 { color: #333; margin-bottom: 15px; }
+
+        /* 上传区域 */
         .upload-area {
             border: 3px dashed #667eea;
             border-radius: 8px;
-            padding: 60px 20px;
+            padding: 50px 20px;
             text-align: center;
             cursor: pointer;
             transition: all 0.3s ease;
             background: #f8f9ff;
         }
+        .upload-area:hover { border-color: #764ba2; background: #f0f2ff; }
+        .upload-area.dragover { border-color: #764ba2; background: #e8ebff; transform: scale(1.02); }
+        .upload-area.has-file { border-color: #388e3c; background: #e8f5e9; border-style: solid; }
+        .upload-icon { font-size: 48px; margin-bottom: 15px; }
+        .upload-text { font-size: 1.1em; color: #333; margin-bottom: 8px; }
+        .upload-hint { color: #666; font-size: 0.9em; }
+        .file-input { display: none; }
 
-        .upload-area:hover {
-            border-color: #764ba2;
-            background: #f0f2ff;
-        }
-
-        .upload-area.dragover {
-            border-color: #764ba2;
-            background: #e8ebff;
-            transform: scale(1.02);
-        }
-
-        .upload-icon {
-            font-size: 48px;
-            margin-bottom: 20px;
-        }
-
-        .upload-text {
-            font-size: 1.2em;
-            color: #333;
-            margin-bottom: 10px;
-        }
-
-        .upload-hint {
-            color: #666;
-            font-size: 0.9em;
-        }
-
-        .file-input {
-            display: none;
-        }
-
-        .btn {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            border: none;
-            padding: 12px 30px;
-            border-radius: 6px;
-            font-size: 1em;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            display: inline-block;
-        }
-
-        .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
-        }
-
-        .btn:disabled {
-            opacity: 0.6;
-            cursor: not-allowed;
-            transform: none;
-        }
-
-        .status {
-            margin-top: 20px;
-            padding: 15px;
-            border-radius: 6px;
-            text-align: center;
-        }
-
-        .status.info {
-            background: #e3f2fd;
-            color: #1976d2;
-        }
-
-        .status.success {
-            background: #e8f5e9;
-            color: #388e3c;
-        }
-
-        .status.error {
-            background: #ffebee;
-            color: #c62828;
-        }
-
-        .status.warning {
-            background: #fff3e0;
-            color: #f57c00;
-        }
-
-        .progress-bar {
-            width: 100%;
-            height: 8px;
-            background: #f0f0f0;
-            border-radius: 4px;
-            overflow: hidden;
+        /* 已选文件信息 */
+        .file-info {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 16px;
+            background: #f0fdf4;
+            border: 1px solid #86efac;
+            border-radius: 8px;
             margin-top: 15px;
         }
+        .file-info .file-icon { font-size: 24px; }
+        .file-info .file-name { flex: 1; font-weight: 500; color: #166534; }
+        .file-info .file-size { color: #666; font-size: 0.9em; }
+        .file-info .file-remove {
+            background: none; border: none; cursor: pointer;
+            font-size: 18px; color: #999; padding: 4px 8px; border-radius: 4px;
+        }
+        .file-info .file-remove:hover { background: #fee2e2; color: #dc2626; }
 
-        .progress-fill {
-            height: 100%;
-            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
-            transition: width 0.3s ease;
-            width: 0%;
+        /* 按钮 */
+        .btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white; border: none;
+            padding: 14px 36px; border-radius: 8px;
+            font-size: 1.05em; cursor: pointer;
+            transition: all 0.3s ease; text-decoration: none;
+            display: inline-flex; align-items: center; gap: 8px;
+        }
+        .btn:hover { transform: translateY(-2px); box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4); }
+        .btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; box-shadow: none; }
+        .btn-secondary {
+            background: white; color: #667eea;
+            border: 2px solid #667eea;
+        }
+        .btn-secondary:hover { background: #f0f2ff; }
+
+        /* 分析按钮区域 */
+        .action-bar {
+            display: flex; justify-content: center; gap: 12px;
+            margin-top: 20px; padding-top: 20px;
+            border-top: 1px solid #eee;
         }
 
-        /* 圆角矩形进度条 */
-        .progress-rect {
-            width: 100%;
-            max-width: 300px;
-            margin: 20px auto;
-        }
+        /* 状态消息 */
+        .status { margin-top: 20px; padding: 15px; border-radius: 6px; text-align: center; }
+        .status.info { background: #e3f2fd; color: #1976d2; }
+        .status.success { background: #e8f5e9; color: #388e3c; }
+        .status.error { background: #ffebee; color: #c62828; }
 
+        /* 进度条 */
+        .progress-rect { width: 100%; max-width: 300px; margin: 20px auto; }
         .progress-rect-bar {
-            width: 100%;
-            height: 24px;
-            background: #f0f0f0;
-            border-radius: 12px;
-            overflow: hidden;
-            position: relative;
+            width: 100%; height: 24px; background: #f0f0f0;
+            border-radius: 12px; overflow: hidden; position: relative;
             box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
         }
-
         .progress-rect-fill {
             height: 100%;
             background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
-            border-radius: 12px;
-            transition: width 0.3s ease;
-            width: 0%;
+            border-radius: 12px; transition: width 0.3s ease;
             box-shadow: 0 2px 8px rgba(102, 126, 234, 0.4);
         }
+        .progress-rect-text { text-align: center; margin-top: 10px; font-size: 1.8em; font-weight: bold; color: #667eea; }
 
-        .progress-rect-text {
-            text-align: center;
-            margin-top: 10px;
-            font-size: 1.8em;
-            font-weight: bold;
-            color: #667eea;
+        /* 表单控件 */
+        .form-group { margin-bottom: 16px; }
+        .form-label { display: block; margin-bottom: 8px; font-weight: 500; color: #333; }
+        .form-select, .form-input {
+            width: 100%; padding: 10px 12px;
+            border: 1px solid #ddd; border-radius: 6px;
+            font-size: 14px; transition: border-color 0.2s;
         }
+        .form-select:focus, .form-input:focus { border-color: #667eea; outline: none; box-shadow: 0 0 0 3px rgba(102,126,234,0.1); }
 
-        .loading-spinner {
-            display: inline-block;
-            width: 50px;
-            height: 50px;
-            border: 4px solid #f0f0f0;
-            border-top-color: #667eea;
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-        }
+        /* 结果卡片 */
+        .result-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; padding-bottom: 15px; border-bottom: 2px solid #f0f0f0; }
+        .result-title { font-size: 1.5em; color: #333; }
+        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; margin-bottom: 25px; }
+        .stat-card { background: #f8f9ff; padding: 20px; border-radius: 8px; text-align: center; }
+        .stat-value { font-size: 2em; font-weight: bold; color: #667eea; margin-bottom: 5px; }
+        .stat-label { color: #666; font-size: 0.9em; }
 
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
-
-        .result-section {
-            display: none;
-        }
-
-        .result-section.show {
-            display: block;
-        }
-
-        .result-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-            padding-bottom: 15px;
-            border-bottom: 2px solid #f0f0f0;
-        }
-
-        .result-title {
-            font-size: 1.5em;
-            color: #333;
-        }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            margin-bottom: 30px;
-        }
-
-        .stat-card {
-            background: #f8f9ff;
-            padding: 20px;
-            border-radius: 8px;
-            text-align: center;
-        }
-
-        .stat-value {
-            font-size: 2em;
-            font-weight: bold;
-            color: #667eea;
-            margin-bottom: 5px;
-        }
-
-        .stat-label {
-            color: #666;
-            font-size: 0.9em;
-        }
-
-        .top-skills {
-            margin-top: 20px;
-        }
-
-        .top-skills h3 {
-            color: #333;
-            margin-bottom: 15px;
-        }
-
-        .skill-list {
-            list-style: none;
-        }
-
+        .skill-list { list-style: none; }
         .skill-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 12px 15px;
-            background: #f8f9ff;
-            margin-bottom: 8px;
-            border-radius: 6px;
-            transition: all 0.2s ease;
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 12px 15px; background: #f8f9ff; margin-bottom: 8px;
+            border-radius: 6px; transition: all 0.2s ease;
         }
-
-        .skill-item:hover {
-            background: #f0f2ff;
-            transform: translateX(5px);
-        }
-
+        .skill-item:hover { background: #f0f2ff; transform: translateX(5px); }
         .skill-rank {
-            display: inline-block;
-            width: 30px;
-            height: 30px;
-            line-height: 30px;
-            text-align: center;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            border-radius: 50%;
-            margin-right: 15px;
-            font-weight: bold;
+            display: inline-block; width: 30px; height: 30px; line-height: 30px;
+            text-align: center; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white; border-radius: 50%; margin-right: 15px; font-weight: bold;
         }
+        .skill-name { flex: 1; color: #333; }
+        .skill-count { color: #667eea; font-weight: bold; font-size: 1.1em; }
 
-        .skill-name {
-            flex: 1;
-            color: #333;
-        }
+        .download-section { text-align: center; margin-top: 30px; padding-top: 20px; border-top: 2px solid #f0f0f0; }
 
-        .skill-count {
-            color: #667eea;
-            font-weight: bold;
-            font-size: 1.1em;
-        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+        .fade-enter-active, .fade-leave-active { transition: opacity 0.3s ease; }
+        .fade-enter-from, .fade-leave-to { opacity: 0; }
 
-        .download-section {
-            text-align: center;
-            margin-top: 30px;
-            padding-top: 20px;
-            border-top: 2px solid #f0f0f0;
-        }
-
-        .loading-spinner {
-            display: inline-block;
-            width: 40px;
-            height: 40px;
-            border: 4px solid #f0f0f0;
-            border-top-color: #667eea;
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-        }
-
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
-
-        .fade-enter-active, .fade-leave-active {
-            transition: opacity 0.3s ease;
-        }
-
-        .fade-enter-from, .fade-leave-to {
-            opacity: 0;
-        }
-
-        /* 响应式 */
         @media (max-width: 600px) {
-            .header h1 {
-                font-size: 1.8em;
-            }
-
-            .card {
-                padding: 20px;
-            }
-
-            .upload-area {
-                padding: 40px 15px;
-            }
+            .header h1 { font-size: 1.8em; }
+            .card { padding: 20px; }
+            .upload-area { padding: 40px 15px; }
+            .action-bar { flex-direction: column; }
         }
+
+        /* 进度条步进样式 */
+        .step-container { margin-bottom: 20px; padding: 15px; border-radius: 8px; background: #f8f9fa; border-left: 4px solid #ddd; transition: all 0.3s; }
+        .step-container.active { border-left-color: #667eea; background: #eef2ff; }
+        .step-container.completed { border-left-color: #10b981; }
+        .step-container.pending { opacity: 0.5; }
+        .step-title { font-weight: bold; margin-bottom: 10px; color: #333; }
+        .step-status { font-size: 0.9em; color: #666; margin-bottom: 5px; }
     </style>
 </head>
 <body>
@@ -361,62 +180,142 @@
                 <p>上传职位 CSV 文件，智能分析技能关键词频率 + 趋势分析</p>
             </div>
 
-            <!-- 选项设置 -->
-            <div class="card" style="margin-top: 20px;">
-                <h3 style="margin-bottom: 15px; color: #333;">⚙️ 分析选项</h3>
-                <div style="display: flex; gap: 20px; flex-wrap: wrap;">
-                    <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
-                        <input type="checkbox" v-model="useSmartMatch" checked>
-                        <span>✨ 智能 NLP 匹配（推荐）</span>
-                    </label>
-                    <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
-                        <input type="checkbox" v-model="enableTrendAnalysis" checked>
-                        <span>📈 趋势分析（需日期列）</span>
-                    </label>
-                </div>
-                <p style="margin-top: 10px; color: #666; font-size: 0.9em;">
-                    💡 提示：趋势分析需要 CSV 包含日期列（如：发布日期、pub_date 等）
-                </p>
-            </div>
-
-            <!-- 上传卡片 -->
-            <div class="card">
-                <div 
-                    class="upload-area" 
-                    :class="{ dragover: isDragover }"
+            <!-- 步骤 1：上传文件 -->
+            <div class="card" v-if="!showResult">
+                <h3>📁 第一步：选择 CSV 文件</h3>
+                <div
+                    class="upload-area"
+                    :class="{ dragover: isDragover, 'has-file': selectedFile }"
                     @dragover.prevent="isDragover = true"
                     @dragleave.prevent="isDragover = false"
                     @drop.prevent="handleDrop"
                     @click="triggerFileInput"
                 >
-                    <div class="upload-icon">📁</div>
+                    <div class="upload-icon">{{ selectedFile ? '✅' : '📁' }}</div>
                     <div class="upload-text">
-                        {{ uploadText }}
+                        {{ selectedFile ? '文件已选择，可点击重新选择' : '点击或将 CSV 文件拖拽到此处' }}
                     </div>
-                    <div class="upload-hint">
-                        支持拖拽或点击选择 CSV 文件（最大 50MB）
-                    </div>
-                    <input 
-                        type="file" 
-                        class="file-input" 
+                    <div class="upload-hint">支持 CSV 文件（最大 50MB）</div>
+                    <input
+                        type="file"
+                        class="file-input"
                         ref="fileInput"
                         accept=".csv"
                         @change="handleFileSelect"
                     >
                 </div>
 
-                <!-- 状态提示 -->
-                <transition name="fade">
-                    <div v-if="statusMessage" class="status" :class="statusType">
-                        {{ statusMessage }}
-                        <div v-if="isUploading" class="progress-bar">
-                            <div class="progress-fill" :style="{ width: progress + '%' }"></div>
-                        </div>
-                    </div>
-                </transition>
+                <!-- 已选文件信息 -->
+                <div v-if="selectedFile" class="file-info">
+                    <span class="file-icon">📄</span>
+                    <span class="file-name">{{ selectedFile.name }}</span>
+                    <span class="file-size">{{ formatFileSize(selectedFile.size) }}</span>
+                    <button class="file-remove" @click.stop="removeFile" title="移除文件">✕</button>
+                </div>
+            </div>
 
-                <!-- 加载中 -->
-                <div v-if="isAnalyzing" style="text-align: center; margin-top: 20px;">
+            <!-- 步骤 2：配置分析参数 -->
+            <div class="card" v-if="selectedFile && !showResult && !isAnalyzing">
+                <h3>🤖 第二步：选择分析模式</h3>
+
+                <!-- 模式选择 -->
+                <div class="form-group">
+                    <label class="form-label">识别方式</label>
+                    <select v-model="llmMode" class="form-select">
+                        <option value="jieba">🚀 快速模式（Jieba 分词）- 零成本</option>
+                        <option value="llm">✨ 智能模式（大模型）- 高精度</option>
+                        <option value="both">🔬 对比模式（双模式）- 可对比</option>
+                    </select>
+                </div>
+
+                <!-- Provider 选择 -->
+                <div class="form-group" v-if="llmMode === 'llm' || llmMode === 'both'">
+                    <label class="form-label">📡 大模型 Provider</label>
+                    <select v-model="selectedProvider" class="form-select">
+                        <option value="aliyun">通义千问（阿里云）- 最稳定</option>
+                        <option value="xiaomi">小米 Mimo - 性价比高 ⭐</option>
+                        <option value="deepseek">深度求索（DeepSeek）- 代码能力强 ⭐⭐</option>
+                        <option value="baidu">文心一言（百度）</option>
+                        <option value="iflytek">讯飞星火</option>
+                    </select>
+                </div>
+
+                <!-- 解析数量限制输入 -->
+                <div class="form-group" v-if="llmMode === 'llm' || llmMode === 'both'">
+                    <label class="form-label" style="display: flex; justify-content: space-between;">
+                        <span>⚙️ 大模型解析条数上限</span>
+                        <span style="color: #667eea; font-size: 0.9em;">(默认为 500)</span>
+                    </label>
+                    <input type="number" v-model.number="llmLimit" class="form-input" placeholder="输入大模型处理的职位数量上限，为空按 500 处理" min="1">
+                    <p style="color: #666; font-size: 0.85em; margin-top: 8px;">
+                        💡 数量越多，分析结果中发现的新技能越全面，但也更耗时且消耗更多 Token 额度。
+                    </p>
+                </div>
+
+                <!-- API Key 输入 -->
+                <div class="form-group" v-if="llmMode === 'llm' || llmMode === 'both'">
+                    <label class="form-label" style="display: flex; justify-content: space-between;">
+                        <span>🔑 API Key <span style="color: #c62828;">*</span></span>
+                        <span style="color: #667eea; font-size: 0.9em;">(仅浏览器本地保存)</span>
+                    </label>
+                    <div style="display: flex; gap: 10px; position: relative;">
+                        <div style="position: relative; flex: 1;">
+                            <input
+                                :type="showApiKey ? 'text' : 'password'"
+                                v-model="apiKey"
+                                class="form-input"
+                                style="padding-right: 40px; font-family: monospace;"
+                                placeholder="请输入您的 API Key"
+                            >
+                            <button
+                                type="button"
+                                @click="showApiKey = !showApiKey"
+                                style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); background: none; border: none; cursor: pointer; font-size: 16px;"
+                            >{{ showApiKey ? '🙈' : '👁️' }}</button>
+                        </div>
+                        <button class="btn btn-secondary" style="padding: 10px 20px; font-size: 0.9em;" @click="testConnection" :disabled="testingConnection || !apiKey.trim()">
+                            {{ testingConnection ? '测试中...' : '🧪 验证连接' }}
+                        </button>
+                    </div>
+                    <p v-if="showApiKeyError" style="color: #c62828; font-size: 0.9em; margin-top: 5px;">
+                        ⚠️ 使用大模型模式必须提供 API Key
+                    </p>
+                    <p v-if="connectionResult" :style="{color: connectionResult.success ? '#2e7d32' : '#c62828', fontSize: '0.9em', margin: '5px 0 0 0'}">
+                        {{ connectionResult.message }}
+                    </p>
+                    <p style="color: #666; font-size: 0.85em; margin-top: 8px;">
+                        💡 还没有 API Key？
+                        <a href="https://www.aliyun.com/product/dashscope" target="_blank" style="color: #667eea;">阿里云</a> |
+                        <a href="https://ai.mi.com/open.html" target="_blank" style="color: #667eea;">小米 AI</a> |
+                        <a href="https://platform.deepseek.com/" target="_blank" style="color: #667eea;">DeepSeek</a>
+                    </p>
+                </div>
+
+                <!-- 趋势分析开关 -->
+                <div style="padding-top: 15px; border-top: 1px solid #eee;">
+                    <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+                        <input type="checkbox" v-model="enableTrendAnalysis">
+                        <span>📈 趋势分析（需日期列）</span>
+                    </label>
+                    <p style="color: #666; font-size: 0.85em; margin-top: 8px;">
+                        💡 趋势分析需要 CSV 包含日期列（如：发布日期、pub_date 等）
+                    </p>
+                </div>
+
+                <!-- 开始分析按钮 -->
+                <div class="action-bar">
+                    <button class="btn" @click="startAnalysis" :disabled="!canStartAnalysis">
+                        🚀 开始分析
+                    </button>
+                    <button class="btn btn-secondary" @click="removeFile">
+                        🔄 重新选择文件
+                    </button>
+                </div>
+            </div>
+
+            <!-- 分析中 -->
+            <div class="card" v-if="isAnalyzing">
+                <div v-if="llmMode !== 'both'" style="text-align: center; padding: 30px 0;">
                     <div class="progress-rect">
                         <div class="progress-rect-bar">
                             <div class="progress-rect-fill" :style="{ width: analyzeProgress + '%' }"></div>
@@ -425,13 +324,48 @@
                     </div>
                     <p style="margin-top: 15px; color: #666;">{{ analyzeStatusText }}</p>
                 </div>
+                
+                <div v-else style="padding: 20px 10px;">
+                    <h3 style="text-align: center; margin-bottom: 25px;">🔄 智能对比流水线处理中</h3>
+                    
+                    <!-- 阶段一：LLM -->
+                    <div class="step-container" :class="{ active: currentStep === 1, completed: currentStep > 1 }">
+                        <div class="step-title">阶段一：大模型探索新技能 (500条) <span v-if="currentStep === 1" class="spinner"></span><span v-if="currentStep > 1">✅</span></div>
+                        <div class="step-status">{{ step1Text }}</div>
+                        <div class="progress-rect" style="height: 12px; margin-top: 8px;">
+                            <div class="progress-rect-bar" style="height: 12px; border-radius: 6px;">
+                                <div class="progress-rect-fill" :style="{ width: step1Progress + '%', background: currentStep > 1 ? '#10b981' : '' }" style="border-radius: 6px;"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 阶段二：Jieba -->
+                    <div class="step-container" :class="{ active: currentStep === 2, pending: currentStep < 2, completed: currentStep > 2 }">
+                        <div class="step-title">阶段二：Jieba 全量扫描最新词库 <span v-if="currentStep === 2" class="spinner"></span><span v-if="currentStep > 2">✅</span></div>
+                        <div class="step-status">{{ step2Text }}</div>
+                        <div class="progress-rect" style="height: 12px; margin-top: 8px;">
+                            <div class="progress-rect-bar" style="height: 12px; border-radius: 6px;">
+                                <div class="progress-rect-fill" :style="{ width: step2Progress + '%' }" style="border-radius: 6px;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
 
+            <!-- 状态提示 -->
+            <transition name="fade">
+                <div v-if="statusMessage" class="card" style="padding: 15px;">
+                    <div class="status" :class="statusType" style="margin: 0;">
+                        {{ statusMessage }}
+                    </div>
+                </div>
+            </transition>
+
             <!-- 结果卡片 -->
-            <div v-if="showResult" class="card result-section show">
+            <div v-if="showResult" class="card">
                 <div class="result-header">
                     <h2 class="result-title">✅ 分析完成</h2>
-                    <button class="btn" @click="reset">再分析一个</button>
+                    <button class="btn btn-secondary" @click="reset">再分析一个</button>
                 </div>
 
                 <!-- 统计概览 -->
@@ -449,46 +383,35 @@
                         <div class="stat-label">已生成趋势报告</div>
                     </div>
                     <div class="stat-card">
-                        <div class="stat-value">{{ sourceFilename }}</div>
-                        <div class="stat-label">源文件</div>
+                        <div class="stat-value" style="font-size: 1em; word-break: break-all;">{{ resultData.mode === 'jieba' ? '快速' : resultData.mode === 'llm' ? '智能' : '对比' }}</div>
+                        <div class="stat-label">分析模式</div>
                     </div>
                 </div>
 
                 <!-- Top 技能排行 -->
-                <div class="top-skills">
-                    <h3>🔥 Top 10 热门技能</h3>
+                <div>
+                    <h3 style="color: #333; margin-bottom: 15px;">🔥 Top 10 热门技能</h3>
                     <ul class="skill-list">
                         <li v-for="(item, index) in resultData.top_skills" :key="item.skill" class="skill-item">
                             <span class="skill-rank">{{ index + 1 }}</span>
                             <span class="skill-name">{{ item.skill }}</span>
+                            <span v-if="item.avg_salary !== undefined && item.avg_salary !== null" class="skill-salary" style="margin-right: 15px; color: #ff4d4f; font-weight: bold; background: #fff0f6; padding: 2px 8px; border-radius: 4px; border: 1px solid #ffadd2; font-size: 0.9em;">
+                                💰 ¥ {{ item.avg_salary }}万/年
+                            </span>
                             <span class="skill-count">{{ item.count }} 次</span>
                         </li>
                     </ul>
                 </div>
 
-                <!-- 趋势分析摘要 -->
-                <div class="top-skills" v-if="resultData.has_trend && resultData.trend_summary">
-                    <h3>📈 趋势分析摘要</h3>
-                    <div style="background: #f8f9ff; padding: 15px; border-radius: 8px; margin-bottom: 15px;">
-                        <p style="color: #666; margin-bottom: 10px;">
-                            <strong>时间段：</strong>{{ resultData.trend_summary.periods.join(' → ') }}
-                        </p>
-                        <div v-if="Object.keys(resultData.trend_summary.growth_rates).length > 0">
-                            <p style="color: #666; margin-bottom: 10px;"><strong>增长率 Top 5：</strong></p>
-                            <ul class="skill-list" style="margin: 0; padding: 0; list-style: none;">
-                                <li v-for="(rate, skill) in getTopGrowthRates(resultData.trend_summary.growth_rates, 5)" 
-                                    :key="skill" 
-                                    class="skill-item"
-                                    style="padding: 8px 12px; margin-bottom: 5px;">
-                                    <span class="skill-name">{{ skill }}</span>
-                                    <span class="skill-count" :style="{color: rate > 0 ? '#388e3c' : '#c62828'}">
-                                        <span v-if="rate === Infinity || rate === 'Infinity'">NEW</span>
-                                        <span v-else>{{ rate }}%</span>
-                                    </span>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
+                <!-- 新技能发现（LLM 模式） -->
+                <div v-if="resultData.new_skills && resultData.new_skills.length > 0" style="margin-top: 25px;">
+                    <h3 style="color: #333; margin-bottom: 15px;">✨ 新发现技能</h3>
+                    <ul class="skill-list">
+                        <li v-for="ns in resultData.new_skills" :key="ns.skill" class="skill-item">
+                            <span class="skill-name">{{ ns.skill }}</span>
+                            <span class="skill-count" style="color: #f57c00;">{{ ns.frequency }}次 · {{ ns.category }}</span>
+                        </li>
+                    </ul>
                 </div>
 
                 <!-- 下载按钮 -->
@@ -497,7 +420,7 @@
                         📥 下载完整 Excel 报表
                     </a>
                     <p style="margin-top: 10px; color: #666; font-size: 0.9em;">
-                        包含：总统计表、分类统计表、Top50 排行
+                        包含：🔥高薪技能分析、总统计表、分类统计表、Top50 排行
                         <span v-if="resultData.has_trend">、技能趋势汇总、趋势详情、增长率排名</span>
                     </p>
                 </div>
@@ -514,60 +437,63 @@
                 return {
                     selectedFile: null,
                     isDragover: false,
-                    isUploading: false,
                     isAnalyzing: false,
                     analyzeProgress: 0,
                     analyzeStatusText: '正在分析技能词频...',
                     statusMessage: '',
                     statusType: 'info',
-                    progress: 0,
                     showResult: false,
                     resultData: null,
-                    sourceFilename: '',
-                    useSmartMatch: true,
-                    enableTrendAnalysis: true
+                    enableTrendAnalysis: true,
+                    // LLM 配置
+                    llmMode: 'jieba',
+                    selectedProvider: 'xiaomi',
+                    llmLimit: 500,
+                    apiKey: '',
+                    showApiKeyError: false,
+                    showApiKey: false,
+                    testingConnection: false,
+                    connectionResult: null,
+                    // 真实任务进度跟踪
+                    taskId: null,
+                    currentStep: 1,
+                    step1Progress: 0,
+                    step2Progress: 0,
+                    step1Text: '等待分配任务...',
+                    step2Text: '等待阶段一完成...'
                 };
             },
+            created() {
+                // 初始化时从 LocalStorage 加载配置
+                const savedMode = localStorage.getItem('jobAnalysis_llmMode');
+                const savedProvider = localStorage.getItem('jobAnalysis_provider');
+                const savedLimit = localStorage.getItem('jobAnalysis_llmLimit');
+                const savedApiKey = localStorage.getItem('jobAnalysis_apiKey');
+
+                if (savedMode) this.llmMode = savedMode;
+                if (savedProvider) this.selectedProvider = savedProvider;
+                if (savedLimit) this.llmLimit = parseInt(savedLimit) || 500;
+                if (savedApiKey) this.apiKey = savedApiKey;
+            },
+            watch: {
+                // 监听值的变化并实时保存到 LocalStorage
+                llmMode(val) { localStorage.setItem('jobAnalysis_llmMode', val); },
+                selectedProvider(val) { localStorage.setItem('jobAnalysis_provider', val); },
+                llmLimit(val) { localStorage.setItem('jobAnalysis_llmLimit', val); },
+                apiKey(val) { localStorage.setItem('jobAnalysis_apiKey', val); }
+            },
             computed: {
-                uploadText() {
-                    if (this.selectedFile) {
-                        return `已选择：${this.selectedFile.name}`;
-                    }
-                    return '点击或将 CSV 文件拖拽到此处';
+                canStartAnalysis() {
+                    if (!this.selectedFile) return false;
+                    if ((this.llmMode === 'llm' || this.llmMode === 'both') && !this.apiKey.trim()) return false;
+                    return true;
                 }
             },
             methods: {
-                simulateProgress() {
-                    // 模拟分析进度
-                    const stages = [
-                        { progress: 10, text: '读取 CSV 文件...' },
-                        { progress: 30, text: '解析职位描述...' },
-                        { progress: 50, text: 'NLP 智能分词...' },
-                        { progress: 70, text: '技能词匹配中...' },
-                        { progress: 85, text: '生成统计报表...' },
-                        { progress: 95, text: '生成 Excel 文件...' },
-                        { progress: 100, text: '分析完成！' }
-                    ];
-                    
-                    let stageIndex = 0;
-                    const interval = setInterval(() => {
-                        if (stageIndex < stages.length) {
-                            const stage = stages[stageIndex];
-                            this.analyzeProgress = stage.progress;
-                            this.analyzeStatusText = stage.text;
-                            stageIndex++;
-                        } else {
-                            clearInterval(interval);
-                        }
-                    }, 300);
-                },
-                getTopGrowthRates(rates, n) {
-                    // 过滤掉 Infinity 并排序
-                    const finiteRates = Object.entries(rates)
-                        .filter(([_, rate]) => rate !== Infinity && rate !== -Infinity)
-                        .sort((a, b) => b[1] - a[1])
-                        .slice(0, n);
-                    return Object.fromEntries(finiteRates);
+                formatFileSize(bytes) {
+                    if (bytes < 1024) return bytes + ' B';
+                    if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + ' KB';
+                    return (bytes / (1024 * 1024)).toFixed(1) + ' MB';
                 },
                 triggerFileInput() {
                     this.$refs.fileInput.click();
@@ -575,77 +501,168 @@
                 handleDrop(e) {
                     this.isDragover = false;
                     const files = e.dataTransfer.files;
-                    if (files.length > 0) {
-                        this.selectFile(files[0]);
-                    }
+                    if (files.length > 0) this.selectFile(files[0]);
                 },
                 handleFileSelect(e) {
                     const files = e.target.files;
-                    if (files.length > 0) {
-                        this.selectFile(files[0]);
-                    }
+                    if (files.length > 0) this.selectFile(files[0]);
                 },
                 selectFile(file) {
+                    // 仅选择文件，不自动开始分析
                     if (!file.name.toLowerCase().endsWith('.csv')) {
                         this.showStatus('请选择 CSV 文件', 'error');
                         return;
                     }
-                    
                     if (file.size > 50 * 1024 * 1024) {
                         this.showStatus('文件大小不能超过 50MB', 'error');
                         return;
                     }
-                    
                     this.selectedFile = file;
+                    this.statusMessage = '';
+                },
+                removeFile() {
+                    this.selectedFile = null;
+                    this.$refs.fileInput.value = '';
+                    this.statusMessage = '';
+                },
+                async testConnection() {
+                    if (!this.apiKey.trim()) return;
+                    this.testingConnection = true;
+                    this.connectionResult = null;
+
+                    const formData = new FormData();
+                    formData.append('provider', this.selectedProvider);
+                    formData.append('api_key', this.apiKey.trim());
+
+                    try {
+                        const response = await fetch('/test_llm', {
+                            method: 'POST',
+                            body: formData
+                        });
+                        const data = await response.json();
+                        
+                        this.connectionResult = {
+                            success: data.success,
+                            message: data.success ? '✅ 连接成功！(API Key 有效)' : `❌ 连接失败：${data.message}`
+                        };
+                    } catch (error) {
+                        this.connectionResult = {
+                            success: false,
+                            message: `❌ 请求异常：网络超时或未知错误`
+                        };
+                    } finally {
+                        this.testingConnection = false;
+                    }
+                },
+                startAnalysis() {
+                    // 验证 API Key
+                    if ((this.llmMode === 'llm' || this.llmMode === 'both') && !this.apiKey.trim()) {
+                        this.showApiKeyError = true;
+                        this.showStatus('使用大模型模式必须提供 API Key', 'error');
+                        return;
+                    }
+                    this.showApiKeyError = false;
                     this.uploadFile();
                 },
                 async uploadFile() {
                     if (!this.selectedFile) return;
 
-                    this.isUploading = true;
                     this.isAnalyzing = true;
                     this.analyzeProgress = 0;
+                    this.analyzeStatusText = '准备上传数据...';
+                    this.taskId = crypto.randomUUID();
+                    this.currentStep = 1;
+                    this.step1Progress = 0;
+                    this.step2Progress = 0;
+                    this.step1Text = '正在提取并传输数据...';
+                    this.step2Text = '等待大模型探索完成...';
                     this.showResult = false;
                     this.statusMessage = '';
-                    
-                    // 启动进度模拟
-                    this.simulateProgress();
+
+                    // 启动真实进度轮询
+                    this.startProgressTracking();
 
                     const formData = new FormData();
                     formData.append('file', this.selectedFile);
+                    formData.append('mode', this.llmMode);
+                    formData.append('enable_trend', this.enableTrendAnalysis);
+                    formData.append('task_id', this.taskId);
+
+                    // LLM 模式附加参数
+                    if (this.llmMode === 'llm' || this.llmMode === 'both') {
+                        formData.append('provider', this.selectedProvider);
+                        formData.append('api_key', this.apiKey.trim());
+                        formData.append('llm_limit', this.llmLimit || 500);
+                    }
 
                     try {
                         const response = await fetch('/upload', {
                             method: 'POST',
                             body: formData
                         });
-
                         const data = await response.json();
 
                         if (data.success) {
+                            clearInterval(this.progressInterval);
+                            this.analyzeProgress = 100;
+                            this.step1Progress = 100;
+                            this.step2Progress = 100;
+                            this.currentStep = 3;
+                            this.analyzeStatusText = '分析完成！';
                             this.resultData = data.data;
-                            this.sourceFilename = data.data.filename.split('/').pop();
                             this.showStatus(data.message, 'success');
-                            this.showResult = true;
+                            setTimeout(() => {
+                                this.showResult = true;
+                                this.isAnalyzing = false;
+                            }, 500);
                         } else {
+                            clearInterval(this.progressInterval);
                             this.showStatus(data.message, 'error');
+                            this.isAnalyzing = false;
                         }
                     } catch (error) {
-                        this.showStatus(`上传失败：${error.message}`, 'error');
-                    } finally {
-                        this.isUploading = false;
+                        clearInterval(this.progressInterval);
+                        this.showStatus(`请求失败：网络超时或未知错误 (${error.message})`, 'error');
                         this.isAnalyzing = false;
-                        this.progress = 0;
                     }
+                },
+                startProgressTracking() {
+                    const pollProgress = async () => {
+                        try {
+                            if (!this.isAnalyzing || !this.taskId) return;
+                            const res = await fetch('/progress?task_id=' + this.taskId);
+                            const data = await res.json();
+                            if (data.success && data.data) {
+                                const info = data.data;
+                                if (this.llmMode === 'both') {
+                                    this.currentStep = info.step || 1;
+                                    if (this.currentStep === 1) {
+                                        this.step1Progress = info.progress || 0;
+                                        this.step1Text = info.message || '处理中...';
+                                    } else {
+                                        this.step1Progress = 100;
+                                        this.step1Text = '大模型探索完成！新发现词汇已注入系统。';
+                                        this.step2Progress = info.progress || 0;
+                                        this.step2Text = info.message || '处理中...';
+                                    }
+                                } else {
+                                    this.analyzeProgress = info.progress || 0;
+                                    this.analyzeStatusText = info.message || '处理中...';
+                                }
+                            }
+                        } catch (err) {}
+                    };
+                    
+                    // 初始稍微延时再轮询，以防刚发请求就轮询
+                    setTimeout(pollProgress, 1000);
+                    this.progressInterval = setInterval(pollProgress, 1000);
                 },
                 showStatus(message, type) {
                     this.statusMessage = message;
                     this.statusType = type;
-                    
-                    // 3 秒后清除消息
-                    setTimeout(() => {
-                        this.statusMessage = '';
-                    }, 5000);
+                    if (type !== 'error') {
+                        setTimeout(() => { this.statusMessage = ''; }, 5000);
+                    }
                 },
                 reset() {
                     this.selectedFile = null;

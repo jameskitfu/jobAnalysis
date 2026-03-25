@@ -10,6 +10,9 @@ from typing import Dict, List, Set, Tuple, Optional
 from pathlib import Path
 from collections import defaultdict
 
+# 新增
+from services.salary_analyzer import SalaryAnalyzer
+
 
 class SmartSkillMatcher:
     """智能技能匹配器（NLP 增强版）"""
@@ -36,6 +39,25 @@ class SmartSkillMatcher:
         self._build_synonym_map()
         self._load_jieba_dict()
         self._build_context_patterns()
+        
+        # 优化：构建反向查找索引
+        self.skill_to_category: Dict[str, str] = {}
+        self.skill_to_standard: Dict[str, str] = {}
+        self._build_fast_lookup_index()
+        
+        # 薪水解析器
+        self.salary_analyzer = SalaryAnalyzer()
+
+
+    def _build_fast_lookup_index(self):
+        """构建用于 O(1) 查找的快速索引"""
+        for category, skills in self.skill_categories.items():
+            for skill in skills:
+                skill_lower = skill.lower()
+                self.skill_to_category[skill_lower] = category
+                self.skill_to_standard[skill_lower] = self._get_standard_name(skill)
+        
+        self.skill_lookup_set = set(self.skill_to_category.keys())
     
     def _load_config(self):
         """加载技能词库配置文件"""
@@ -51,6 +73,7 @@ class SmartSkillMatcher:
         for category, skills in hard_skills.items():
             if isinstance(skills, list):
                 for skill in skills:
+                    skill = str(skill).strip()
                     all_skills_set.add(skill)
                     if category not in self.skill_categories:
                         self.skill_categories[category] = []
@@ -60,26 +83,23 @@ class SmartSkillMatcher:
         soft_skills = self.skills_config.get('soft_skills', [])
         if isinstance(soft_skills, list):
             for skill in soft_skills:
+                skill = str(skill).strip()
                 all_skills_set.add(skill)
             if 'soft_skills' not in self.skill_categories:
                 self.skill_categories['soft_skills'] = []
-            self.skill_categories['soft_skills'].extend(soft_skills)
+            self.skill_categories['soft_skills'].extend([str(s).strip() for s in soft_skills])
         
         # 按长度降序排序
         self.all_skills = sorted(list(all_skills_set), key=lambda x: len(x), reverse=True)
     
     def _build_synonym_map(self):
-        """构建同义词映射"""
-        self.synonym_map = {
-            'golang': 'Go',
-            'react.js': 'React',
-            'vue': 'Vue.js',
-            'k8s': 'Kubernetes',
-            'express.js': 'Express',
-            'aws': 'AWS',
-            'gcp': 'Google Cloud',
-            '微服务': 'Microservices',
-        }
+        """构建同义词映射表（从配置文件加载）"""
+        self.synonym_map = {}
+        synonyms = self.skills_config.get('synonyms', {})
+        if isinstance(synonyms, dict):
+            # 统一转为小写作为键
+            for key, value in synonyms.items():
+                self.synonym_map[key.lower()] = value
     
     def _load_jieba_dict(self):
         """加载自定义分词词典"""
@@ -366,7 +386,8 @@ class SmartSkillMatcher:
     
     def find_skills_smart(self, text: str) -> Dict[str, List[str]]:
         """
-        智能识别文本中的技能
+        智能识别文本中的技能 (优化版)
+        使用反向查找算法，复杂度从 O(Skills) 降至 O(Tokens)
         
         Args:
             text: 职位描述文本
@@ -375,31 +396,33 @@ class SmartSkillMatcher:
             匹配到的技能字典 {类别：[技能列表]}
         """
         matched_skills: Dict[str, Set[str]] = defaultdict(set)
+        
+        # 1. 预处理文本
         preprocessed_text = self._preprocess_text(text)
         
-        # 使用 jieba 分词
-        seg_text = jieba.lcut(text)
-        seg_set = set(seg_text)
+        # 2. 使用 jieba 分词
+        # 搜索模式的分词结果更细，适合识别嵌入的词
+        seg_text = jieba.lcut_for_search(text)
+        tokens = set(t.strip().lower() for t in seg_text if t.strip())
         
-        for skill in self.all_skills:
-            skill_lower = skill.lower()
-            
-            # 方法 1：直接字符串匹配（快速路径）
-            if skill_lower in preprocessed_text.lower():
-                # 验证上下文
-                if self._is_valid_skill_match(text, skill):
-                    category = self._get_skill_category(skill)
-                    if category:
-                        standard_name = self._get_standard_name(skill)
-                        matched_skills[category].add(standard_name)
-            
-            # 方法 2：分词匹配（处理变体）
-            elif skill_lower in seg_set:
-                category = self._get_skill_category(skill)
-                if category:
-                    standard_name = self._get_standard_name(skill)
+        # 3. 反向查找 (O(Tokens))
+        for token in tokens:
+            if token in self.skill_lookup_set:
+                # 针对识别出的词执行上下文验证
+                if self._is_valid_skill_match(text, token):
+                    category = self.skill_to_category[token]
+                    standard_name = self.skill_to_standard[token]
                     matched_skills[category].add(standard_name)
         
+        # 4. 针对极长技能词的额外扫描（由于 jieba 可能将长英文短语切散，针对长度 > 10 的核心词做兜底）
+        for skill in self.all_skills:
+            if len(skill) > 10:
+                skill_lower = skill.lower()
+                if skill_lower in preprocessed_text and self._is_valid_skill_match(text, skill):
+                    category = self._get_skill_category(skill)
+                    if category:
+                        matched_skills[category].add(self._get_standard_name(skill))
+                        
         return {k: list(v) for k, v in matched_skills.items()}
     
     def _get_skill_category(self, skill: str) -> Optional[str]:
@@ -411,13 +434,13 @@ class SmartSkillMatcher:
         for category, skills in hard_skills.items():
             if isinstance(skills, list):
                 for s in skills:
-                    if s.lower() == skill_lower:
+                    if str(s).strip().lower() == skill_lower:
                         return category
         
         # 检查软技能
         soft_skills = self.skills_config.get('soft_skills', [])
         for s in soft_skills:
-            if s.lower() == skill_lower:
+            if str(s).strip().lower() == skill_lower:
                 return 'soft_skills'
         
         return None
@@ -432,32 +455,49 @@ class SmartSkillMatcher:
     def count_skills_from_texts(
         self, 
         texts: List[str],
-        use_smart: bool = True
-    ) -> Tuple[Dict[str, int], Dict[str, Dict[str, int]]]:
+        use_smart: bool = True,
+        progress_callback: Optional[callable] = None,
+        salaries: Optional[List[Optional[str]]] = None
+    ) -> Tuple[Dict[str, int], Dict[str, Dict[str, int]], Dict[str, List[float]]]:
         """
-        统计技能频率
+        统计技能频率并关联薪资
         
         Args:
             texts: 职位描述文本列表
             use_smart: 是否使用智能匹配
+            progress_callback: 进度回调函数，接收 (current, total)
+            salaries: 与 texts 一一对应的薪资文本列表
             
         Returns:
-            (总统计表，分类统计表)
+            (总统计表，分类统计表，技能薪资表) {skill: [salary1, salary2...]}
         """
         total_counts: Dict[str, int] = defaultdict(int)
         category_counts: Dict[str, Dict[str, int]] = defaultdict(lambda: defaultdict(int))
+        skill_salaries: Dict[str, List[float]] = defaultdict(list)
         
         matcher = self.find_skills_smart if use_smart else self.find_skills_simple
+        total_texts = len(texts)
         
-        for text in texts:
+        for i, text in enumerate(texts):
             found_skills = matcher(text)
+            
+            # 解析当条薪水
+            salary_val = None
+            if salaries and i < len(salaries) and salaries[i]:
+                salary_val = self.salary_analyzer.parse_annual_salary(salaries[i])
             
             for category, skills in found_skills.items():
                 for skill in skills:
                     total_counts[skill] += 1
                     category_counts[category][skill] += 1
+                    if salary_val is not None:
+                        skill_salaries[skill].append(salary_val)
+            
+            # 执行进度回调 (每 1% 或每 10 条汇报一次)
+            if progress_callback and (i % max(1, total_texts // 100) == 0 or i == total_texts - 1):
+                progress_callback(i + 1, total_texts)
         
-        return dict(total_counts), {k: dict(v) for k, v in category_counts.items()}
+        return dict(total_counts), {k: dict(v) for k, v in category_counts.items()}, dict(skill_salaries)
     
     def find_skills_simple(self, text: str) -> Dict[str, List[str]]:
         """简单字符串匹配（向后兼容）"""

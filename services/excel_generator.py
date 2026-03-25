@@ -22,7 +22,8 @@ class ExcelGenerator:
         category_counts: Dict[str, Dict[str, int]],
         output_path: str,
         source_file: str = '',
-        total_positions: int = 0
+        total_positions: int = 0,
+        skill_avg_salary: Dict[str, float] = None
     ) -> str:
         """
         生成 Excel 统计报表
@@ -43,14 +44,18 @@ class ExcelGenerator:
         with pd.ExcelWriter(output_path, engine='openpyxl') as writer:
             # Sheet 1: 总统计表
             self._create_summary_sheet(
-                writer, total_counts, source_file, total_positions
+                writer, total_counts, source_file, total_positions, skill_avg_salary
             )
             
-            # Sheet 2: 分类统计
+            # Sheet 2: 分类统计表
             self._create_category_sheets(writer, category_counts)
             
             # Sheet 3: Top 技能排行
-            self._create_top_skills_sheet(writer, total_counts)
+            self._create_top_skills_sheet(writer, total_counts, skill_avg_salary)
+            
+            # Sheet X: 🔥高薪技能分析
+            if skill_avg_salary:
+                self._create_high_paying_skills_sheet(writer, skill_avg_salary, total_counts)
         
         return str(output_path)
     
@@ -63,7 +68,8 @@ class ExcelGenerator:
         detail_data: List[Dict],
         output_path: str,
         source_file: str = '',
-        total_positions: int = 0
+        total_positions: int = 0,
+        skill_avg_salary: Dict[str, float] = None
     ) -> str:
         """
         生成带趋势分析的 Excel 报表
@@ -85,13 +91,17 @@ class ExcelGenerator:
         
         with pd.ExcelWriter(output_path, engine='openpyxl') as writer:
             # Sheet 1: 总统计表
-            self._create_summary_sheet(writer, total_counts, source_file, total_positions)
+            self._create_summary_sheet(writer, total_counts, source_file, total_positions, skill_avg_salary)
             
             # Sheet 2: 分类统计
             self._create_category_sheets(writer, category_counts)
             
             # Sheet 3: Top 技能排行
             self._create_top_skills_sheet(writer, total_counts)
+            
+            # Sheet X: 高薪技能榜
+            if skill_avg_salary:
+                self._create_high_paying_skills_sheet(writer, skill_avg_salary, total_counts)
             
             # Sheet 4+: 趋势分析
             if trend_data and 'error' not in trend_data:
@@ -149,7 +159,8 @@ class ExcelGenerator:
         writer: pd.ExcelWriter,
         total_counts: Dict[str, int],
         source_file: str,
-        total_positions: int
+        total_positions: int,
+        skill_avg_salary: Dict[str, float] = None
     ):
         """
         创建总统计工作表
@@ -167,12 +178,18 @@ class ExcelGenerator:
         data = []
         for skill, count in sorted(total_counts.items(), key=lambda x: x[1], reverse=True):
             percentage = (count / total_positions * 100) if total_positions > 0 else 0
-            data.append({
+            row_dict = {
                 '技能词': skill,
                 '出现次数': count,
                 '占比 (%)': round(percentage, 2),
                 '累计占比': None  # 后面计算
-            })
+            }
+            if skill_avg_salary and skill in skill_avg_salary:
+                row_dict['平均年薪(万)'] = skill_avg_salary[skill]
+            elif skill_avg_salary:
+                row_dict['平均年薪(万)'] = None
+                
+            data.append(row_dict)
         
         # 计算累计占比
         cumulative = 0
@@ -183,11 +200,11 @@ class ExcelGenerator:
         df = pd.DataFrame(data)
         
         # 写入 Excel
-        df.to_excel(writer, sheet_name='总统计', index=False)
+        df.to_excel(writer, sheet_name='总统计表', index=False)
         
         # 添加表头信息
-        worksheet = writer.sheets['总统计']
-        worksheet.insert_rows(0, 3)
+        worksheet = writer.sheets['总统计表']
+        worksheet.insert_rows(1, 3)
         
         # 写入表头信息
         worksheet.cell(row=1, column=1, value=f'技能词频统计报表')
@@ -209,6 +226,35 @@ class ExcelGenerator:
         worksheet.column_dimensions['B'].width = 12
         worksheet.column_dimensions['C'].width = 12
         worksheet.column_dimensions['D'].width = 12
+        if skill_avg_salary:
+            worksheet.column_dimensions['E'].width = 15
+            worksheet.column_dimensions['F'].width = 15
+            
+    def _create_high_paying_skills_sheet(
+        self,
+        writer: pd.ExcelWriter,
+        skill_avg_salary: Dict[str, float],
+        total_counts: Dict[str, int]
+    ):
+        """创建高薪技能榜单"""
+        # 只选取那些总计出现过并且薪水不为空的技能
+        data = []
+        for skill, avg_sal in sorted(skill_avg_salary.items(), key=lambda x: x[1], reverse=True):
+            data.append({
+                '排名': len(data) + 1,
+                '技能词': skill,
+                '平均年薪(万)': avg_sal,
+                '出现频次': total_counts.get(skill, 0)
+            })
+            
+        df = pd.DataFrame(data)
+        sheet_name = '🔥高薪技能分析'
+        df.to_excel(writer, sheet_name=sheet_name, index=False)
+        worksheet = writer.sheets[sheet_name]
+        worksheet.column_dimensions['A'].width = 8
+        worksheet.column_dimensions['B'].width = 25
+        worksheet.column_dimensions['C'].width = 15
+        worksheet.column_dimensions['D'].width = 12
     
     def _create_category_sheets(
         self,
@@ -216,7 +262,7 @@ class ExcelGenerator:
         category_counts: Dict[str, Dict[str, int]]
     ):
         """
-        创建分类统计工作表
+        创建分类统计工作表（合并到单张 Sheet，避免分类过多导致卡死）
         
         Args:
             writer: Excel Writer
@@ -237,55 +283,57 @@ class ExcelGenerator:
             'soft_skills': '软技能'
         }
         
+        # 合并所有分类到一张表中
+        all_data = []
         for category_en, skills in category_counts.items():
-            # 获取中文名称
             category_cn = category_names.get(category_en, category_en)
-            
-            # 构建数据
-            data = []
             total_in_category = sum(skills.values())
             for skill, count in sorted(skills.items(), key=lambda x: x[1], reverse=True):
                 percentage = (count / total_in_category * 100) if total_in_category > 0 else 0
-                data.append({
+                all_data.append({
+                    '分类': category_cn,
                     '技能词': skill,
                     '出现次数': count,
                     '类别内占比 (%)': round(percentage, 2)
                 })
-            
-            df = pd.DataFrame(data)
-            
-            # 限制 sheet 名称长度（Excel 限制 31 字符）
-            sheet_name = category_cn[:31]
-            df.to_excel(writer, sheet_name=sheet_name, index=False)
-            
-            # 调整列宽
-            worksheet = writer.sheets[sheet_name]
-            worksheet.column_dimensions['A'].width = 25
-            worksheet.column_dimensions['B'].width = 12
-            worksheet.column_dimensions['C'].width = 15
+        
+        # 按出现次数降序排列
+        all_data.sort(key=lambda x: x['出现次数'], reverse=True)
+        
+        df = pd.DataFrame(all_data)
+        df.to_excel(writer, sheet_name='分类统计表', index=False)
+        
+        # 调整列宽
+        worksheet = writer.sheets['分类统计表']
+        worksheet.column_dimensions['A'].width = 20
+        worksheet.column_dimensions['B'].width = 25
+        worksheet.column_dimensions['C'].width = 12
+        worksheet.column_dimensions['D'].width = 15
     
     def _create_top_skills_sheet(
         self,
         writer: pd.ExcelWriter,
-        total_counts: Dict[str, int]
+        total_counts: Dict[str, int],
+        skill_avg_salary: Dict[str, float] = None
     ):
         """
         创建 Top 技能排行工作表
-        
-        Args:
-            writer: Excel Writer
-            total_counts: 总统计表
         """
         # 取 Top 50
         top_skills = sorted(total_counts.items(), key=lambda x: x[1], reverse=True)[:50]
         
         data = []
         for rank, (skill, count) in enumerate(top_skills, 1):
-            data.append({
+            row = {
                 '排名': rank,
                 '技能词': skill,
                 '出现次数': count
-            })
+            }
+            if skill_avg_salary and skill in skill_avg_salary:
+                row['平均年薪(万)'] = skill_avg_salary[skill]
+            elif skill_avg_salary:
+                row['平均年薪(万)'] = None
+            data.append(row)
         
         df = pd.DataFrame(data)
         df.to_excel(writer, sheet_name='Top50 排行', index=False)
@@ -295,3 +343,5 @@ class ExcelGenerator:
         worksheet.column_dimensions['A'].width = 8
         worksheet.column_dimensions['B'].width = 25
         worksheet.column_dimensions['C'].width = 12
+        if skill_avg_salary:
+            worksheet.column_dimensions['D'].width = 15

@@ -152,16 +152,16 @@ class CSVParser:
         
         desc_col = self.get_description_column()
         if desc_col is None:
-            # 如果没有找到描述列，合并所有文本列
+            # 如果没有找到描述列，合并所有文本列作为 fallback（尽量避免，但保持长度一致）
             texts = []
-            for col in self.df.columns:
-                if self.df[col].dtype == 'object':
-                    texts.extend(self.df[col].dropna().astype(str).tolist())
-            return [t for t in texts if len(t) > 10]  # 过滤太短的文本
+            for _, row in self.df.iterrows():
+                row_texts = [str(x) for x in row if pd.notna(x) and isinstance(x, str)]
+                combined = " ".join(row_texts)
+                texts.append(combined if len(combined) > 10 else "")
+            return texts
         
-        # 返回指定列的所有非空值
-        descriptions = self.df[desc_col].dropna().astype(str).tolist()
-        return [d for d in descriptions if len(d) > 10 and d != 'nan']
+        # 返回指定列，如果不符合要求则留空，保证与原始 DataFrame 长度严格一致
+        return [str(d) if pd.notna(d) and len(str(d)) > 10 and str(d).lower() != 'nan' else "" for d in self.df[desc_col]]
     
     def count_rows(self) -> int:
         """
@@ -233,3 +233,99 @@ class CSVParser:
             return [None] * len(self.df)
         
         return self.df[date_col].fillna('').astype(str).tolist()
+
+    def get_salary_column(self) -> Optional[str]:
+        """
+        获取薪水列的名称
+        
+        Returns:
+            列名，如果未找到则返回 None
+        """
+        if self.df is None:
+            return None
+            
+        salary_columns = [
+            'salary', '薪资', '薪水', '月薪', '年薪', '待遇', '薪酬', '薪水范围'
+        ]
+        
+        column_mapping = {
+            col.lower().strip(): col 
+            for col in self.df.columns
+        }
+        
+        for sal_col in salary_columns:
+            if sal_col.lower() in column_mapping:
+                return column_mapping[sal_col.lower()]
+                
+        # 尝试模糊匹配
+        for col in self.df.columns:
+            col_lower = col.lower()
+            if '薪' in col_lower or 'salary' in col_lower:
+                return col
+                
+        return None
+    
+    # 用于从文本中提取薪资的正则（兜底用）
+    _SALARY_PATTERNS = [
+        # 15-25K·14薪 / 20-35k*15
+        r'\d+(?:\.\d+)?[kK]?\s*-\s*\d+(?:\.\d+)?[kK][·*]\d+薪?',
+        # 15-25K / 15k-25k
+        r'\d+(?:\.\d+)?[kK]?\s*-\s*\d+(?:\.\d+)?[kK]',
+        # 2.5万-3.5万/月 或 2.5万-3.5万/年 或 2.5万-3.5万
+        r'\d+(?:\.\d+)?[万Ww]?\s*-\s*\d+(?:\.\d+)?[万Ww](?:/[月年])?',
+        # 300-400元/天
+        r'\d+(?:\.\d+)?\s*-\s*\d+(?:\.\d+)?元?/天',
+        # 单一: 8k / 15K
+        r'\b\d+(?:\.\d+)?[kK]\b',
+    ]
+        
+    def get_salaries(self) -> List[Optional[str]]:
+        """
+        获取所有薪资数据
+        当无独立薪资列时，从 title/description 中正则提取薪资文本
+        
+        Returns:
+            薪水字符串列表，长度与 descriptions 等长
+        """
+        if self.df is None:
+            return []
+            
+        sal_col = self.get_salary_column()
+        if sal_col is not None:
+            # 有独立薪资列，直接返回
+            return [str(x) if str(x).lower() != 'nan' else None for x in self.df[sal_col].tolist()]
+        
+        # 兜底：从 title 和 description 中提取薪资
+        import re
+        combined_pattern = re.compile('|'.join(f'({p})' for p in self._SALARY_PATTERNS))
+        
+        # 确定可能含薪资的列（优先 title，其次 description 前 200 字符）
+        title_col = None
+        desc_col = self.get_description_column()
+        for col in self.df.columns:
+            col_lower = col.lower().strip()
+            if col_lower in ['title', '职位名称', '岗位名称', '职位', '标题']:
+                title_col = col
+                break
+        
+        results = []
+        for _, row in self.df.iterrows():
+            salary_text = None
+            
+            # 先从 title 中找
+            if title_col and pd.notna(row.get(title_col)):
+                match = combined_pattern.search(str(row[title_col]))
+                if match:
+                    salary_text = match.group(0)
+            
+            # title 没找到，从 description 开头找（限制 300 字符以提高效率）
+            if salary_text is None and desc_col and pd.notna(row.get(desc_col)):
+                snippet = str(row[desc_col])[:300]
+                match = combined_pattern.search(snippet)
+                if match:
+                    salary_text = match.group(0)
+            
+            results.append(salary_text)
+        
+        return results
+

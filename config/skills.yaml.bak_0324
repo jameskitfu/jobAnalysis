@@ -1,0 +1,3646 @@
+# 技能词库配置文件
+# 用于计算机行业招聘职位的技能关键词匹配
+
+# ==================== 硬技能 - 计算机行业 ====================
+hard_skills:
+  # 编程语言
+  programming_languages:
+    - Java
+    - Python
+    - JavaScript
+    - TypeScript
+    - Go
+    - Golang
+    - C++
+    - C
+    - C#
+    - Ruby
+    - PHP
+    - Swift
+    - Kotlin
+    - Rust
+    - Scala
+    - R
+    - MATLAB
+    - Perl
+    - Shell
+    - Bash
+  
+  # 后端框架
+  backend_frameworks:
+    - Spring Boot
+    - Spring Cloud
+    - Spring MVC
+    - Django
+    - Flask
+    - FastAPI
+    - Node.js
+    - Express
+    - Express.js
+    - ASP.NET
+    - ASP.NET Core
+    - Ruby on Rails
+    - Laravel
+    - Gin
+    - Echo
+    - Beego
+    - MyBatis
+    - Hibernate
+
+  # 前端框架
+  frontend_frameworks:
+    - React
+    - React.js
+    - Vue.js
+    - Vue
+    - Angular
+    - Next.js
+    - Nuxt.js
+    - Svelte
+    - jQuery
+    - Bootstrap
+    - Tailwind CSS
+    - Element UI
+    - Ant Design
+    - Vuetify
+
+  # 机器学习/数据科学
+  ml_frameworks:
+    - TensorFlow
+    - PyTorch
+    - Scikit-learn
+    - Keras
+    - Pandas
+    - NumPy
+    - Matplotlib
+    - Seaborn
+    - OpenCV
+    - Spark
+    - Hadoop
+    - Flink
+
+  # 数据库
+  databases:
+    - MySQL
+    - PostgreSQL
+    - Oracle
+    - SQL Server
+    - SQLite
+    - MongoDB
+    - Redis
+    - Elasticsearch
+    - Cassandra
+    - DynamoDB
+    - MariaDB
+    - ClickHouse
+    - InfluxDB
+    - Neo4j
+
+  # DevOps 工具
+  devops_tools:
+    - Docker
+    - Kubernetes
+    - K8s
+    - Jenkins
+    - GitLab CI
+    - GitHub Actions
+    - Travis CI
+    - CircleCI
+    - Terraform
+    - Ansible
+    - Puppet
+    - Chef
+    - Prometheus
+    - Grafana
+    - ELK Stack
+    - Logstash
+    - Kibana
+
+  # 版本控制
+  version_control:
+    - Git
+    - SVN
+    - Mercurial
+    - GitHub
+    - GitLab
+    - Bitbucket
+
+  # 云平台
+  cloud_platforms:
+    - AWS
+    - Amazon Web Services
+    - Azure
+    - Google Cloud
+    - GCP
+    - 阿里云
+    - 腾讯云
+    - 华为云
+    - 百度云
+
+  # 操作系统
+  operating_systems:
+    - Linux
+    - Windows
+    - macOS
+    - Ubuntu
+    - CentOS
+    - Red Hat
+    - Debian
+    - Alpine
+
+  # 消息队列
+  message_queues:
+    - Kafka
+    - RabbitMQ
+    - RocketMQ
+    - ActiveMQ
+    - ZeroMQ
+    - Pulsar
+
+  # 微服务/架构
+  architecture:
+    - Microservices
+    - 微服务
+    - RESTful
+    - GraphQL
+    - gRPC
+    - Thrift
+    - Dubbo
+    - Service Mesh
+    - 服务网格
+
+# ==================== 软技能 ====================
+
+  # ==================== LLM 自动发现 ====================
+  AI 应用开发框架:
+    - LangChain
+    - Dify
+    - LangGraph
+    - AutoGen
+    - MCP
+    - AgentS
+  AI/机器学习:
+    - Agent
+    - MCP服务器
+    - Prompt
+    - 大模型算法
+    - AI大模型算法调参
+    - AI大模型本地部署
+    - 大语言模型推理
+  大语言模型:
+    - 通义千问
+    - 字节豆包
+    - ChatGLM
+    - DEEPSEEK
+    - Gemini
+    - VLA
+  AI框架:
+    - Semantic Kernal
+    - LlamaIndex
+    - Langgraph
+  低代码平台:
+    - COZE
+  硬件设计语言/方法学:
+    - FRTL
+  专用处理器:
+    - NPU
+  专用处理器/芯片:
+    - AIISP
+  AI/ML 应用:
+    - 分子表示学习
+    - 药物重定位
+  生物信息学:
+    - 多组学数据
+  AI 应用:
+    - AI智能化应用
+    - AI 工作流
+    - AI agent
+    - Agent AI
+    - chatbot
+    - 智能文档处理
+    - 知识图谱构建
+    - AI Agent
+    - AI 智能体 (Agent)
+    - RAG (检索增强生成)
+    - 多模态 AI
+    - NL2SQL
+    - 健康与情绪智能分析
+    - AI Native
+    - 文档ETL智能体
+  算法:
+    - 工程制图算法
+  AI领域:
+    - AIGC
+    - 多模态AI
+  生成模型:
+    - Diffusion
+    - diffusion
+  模型技术:
+    - LLM
+  AI Agent 框架:
+    - OpenClaw
+    - langgraph
+    - agentscope
+    - autoscope
+    - langMem
+  专业领域知识:
+    - 半导体工艺
+    - 工艺设备开发
+    - 厂内外验证
+  专业能力:
+    - 论文与专利撰写
+  项目管理:
+    - 项目进度追踪与汇报
+    - 需求分析
+  数据处理:
+    - 数据标注
+    - 连码
+  AI硬件/平台:
+    - 昇腾
+  AI软件栈:
+    - CANN
+  AI技术:
+    - RAG
+    - AI智能体
+    - Skills
+    - 多模态
+    - AI实时交互
+    - Task Planning
+    - LLM应用开发
+    - prompt工程
+    - 意图分类规则优化
+    - 实体抽取模型适配
+    - 多特征融合
+    - 生成式视频技术
+  AI开发:
+    - 算子开发
+  AI训练技术:
+    - 断点续训
+  AI工程化:
+    - AI模型部署
+    - AI应用系统开发
+  AI模型:
+    - DS
+    - Gemini3
+    - 豆包
+    - 千问
+    - deepseek
+    - GPT4
+    - Claude
+    - QwQ
+  业务系统:
+    - 供应链算法服务平台
+    - 供应链仿真引擎
+    - 供应链大脑
+    - APS
+    - BI
+  系统框架:
+    - 算法任务调度框架
+  测试技术:
+    - PK测试
+    - AI自动化
+    - 大模型测试
+  开发平台:
+    - 低代码平台
+  AI评测方法:
+    - LLMasaJudge
+    - AutoEval
+  GPU编程/推理框架:
+    - Triton
+  GPU编程:
+    - AscendC
+  GPU编程/专用语言:
+    - TileLang
+  AI 工程:
+    - Prompt Engineering
+    - 智能体架构
+    - Prompt提示词
+    - 多模态前置处理与智能增强
+    - Prompt 编写/调优
+    - 智能体工作流构建
+  自动化设备:
+    - AI机
+  专用设备:
+    - 端子、按键异性插件机
+  工程实践:
+    - 算法SDK封装
+    - IaC
+  部署技术:
+    - 边缘计算硬件部署
+    - 端侧模型部署
+  AI 技术:
+    - Prompt工程
+    - Agentic
+    - Function Call
+    - Embedding
+    - SFT
+    - 多模态数据处理
+    - AI 推理
+    - 多模态融合
+    - 大模型
+    - llm调用
+    - Post-training
+    - Single Agent
+    - Multi Agent
+    - 模型调优
+    - 决策推理
+    - 搜索
+    - AI Agent 基础服务编排
+    - 大模型集成
+    - 大模型微调
+    - 大语言模型
+    - rag
+    - 多模态技术
+  AI 框架:
+    - PydanticAI
+    - AI Agent 框架
+    - QwenAgent
+    - AutoGPT
+    - langchain
+    - 主流大模型/小模型AI开发框架
+    - RAGFlow
+    - Spring AI
+    - LLamaIndex
+    - 智能体（Agent）框架
+    - LangChain4j
+    - Agent框架
+  向量数据库:
+    - pgvector
+    - Pinecone
+    - Zvec
+    - chroma
+    - FAISS
+    - Weaviate
+  ORM 框架:
+    - SQLAlchemy
+  推理加速工具:
+    - vLLM
+  推理引擎:
+    - SGLang
+  深度学习训练:
+    - 3D混合训练技术
+  大模型训练:
+    - 稀疏激活
+    - 动态路由技术
+    - RLHF
+  微调算法:
+    - Dynamic LoRA
+  内存管理技术:
+    - PageAttention
+  强化学习:
+    - 课程学习策略
+  AI 开发者平台/框架:
+    - n8n
+  汽车工程:
+    - NVH
+  工程仿真:
+    - CAE
+  AI 基础设施:
+    - AI Infra
+    - AI Agent Infra
+    - AI 软件栈
+    - 推理引擎
+    - Agent Memory
+    - AI异构计算软件栈
+  系统运维:
+    - SLA
+    - 可观测性
+    - AI系统维护
+    - 系统监控
+  LLM推理框架:
+    - sglang
+  性能分析工具:
+    - nsys
+    - ncu
+    - 火焰图
+    - Profiler
+    - Tune
+  LLM优化技术:
+    - Speculative Decoding
+    - DeepEP
+  大模型:
+    - Qwen
+    - DeepSeek
+    - 通义
+    - 文心一言
+    - LLaMA
+    - GLM
+    - Kimi
+    - Minimax
+    - DS系列
+  AI编程工具:
+    - Vibe Coding
+    - Cursor
+    - Copilot
+    - Codex
+  AI工具/界面:
+    - Stable Diffusion WebUI
+  AI模型微调技术:
+    - LoRA
+  AI视频生成模型:
+    - Sora
+  AI应用技术:
+    - 提示词工程
+    - 长上下文记忆
+    - 数据驱动的模型降阶技术
+    - 自然语言大模型的自动化流程构建
+    - 思维链提示
+    - 少样本/零样本学习
+    - 角色设定技巧
+    - AI工作流搭建
+  AI生成技术:
+    - AI配音
+    - AI字幕
+  仿真工具:
+    - shapeAl
+  仿真功能:
+    - 智能网格生成
+    - 仿真错误自动诊断
+  AI应用:
+    - 自然语言报告生成
+    - 智能体Agent
+    - Al助理
+    - QA问答系统
+    - 语义检索工具
+    - Alagent
+    - 政务Agent
+    - 大语言模型(LLM)应用开发
+    - 多模态AI服务
+    - AI交互
+  AI 产品架构:
+    - Memory 管理体系
+  数据湖格式:
+    - Paimon
+  低代码平台/AI平台:
+    - Hiagent
+    - Coze
+  高性能计算:
+    - GPGPU
+    - 类CUDA算子性能优化
+    - HPC调度系统设计
+  深度学习:
+    - DNN
+  自研AI平台:
+    - AI Echo (Workflow/Agent)平台
+  AI协议/框架:
+    - MCP (MultiAgent Communication Protocol)
+  AI技术/工具:
+    - Mem
+  AI 开发工具:
+    - AI 编程工具
+  AI 应用框架:
+    - AI 驱动的工作流 / Agent
+    - LLM Agent
+  AI芯片/硬件平台:
+    - Rockchip
+  AI 优化:
+    - 大模型推理加速优化
+    - 模型量化
+  AI 安全:
+    - 对抗样本检测
+    - 模型可解释性增强
+  开发流程:
+    - 安全开发流程SDL
+    - POC验证
+  大模型架构:
+    - MoE
+  AI/机器学习模型:
+    - 降阶模型
+  模型交换格式:
+    - ONNX
+  深度学习编译器:
+    - TVM
+    - Inductor
+  AI/自动化工具:
+    - 扣子
+    - 飞书 aily
+  AI辅助开发工具:
+    - Codeium
+  办公自动化工具:
+    - 多维表格工具
+  AI 运维平台:
+    - LLMOps
+  前端架构:
+    - Local First
+  AI 运维:
+    - AI可观测性
+  智能体/工作流框架:
+    - Rivet
+    - Agno
+  仿真测试:
+    - 半实物仿真
+  编译器中间表示:
+    - 算子图IR
+  编译器后端:
+    - 内核生成
+  编译器优化:
+    - 算子自动生成
+    - 自动调度
+    - 图优化
+    - 算子融合
+    - 内存复用
+    - 数据布局转换
+    - 矢量化
+    - 线程/块映射
+  AI 交互机制:
+    - Function Calling
+  AI 系统架构:
+    - 多模型调度集成
+  AI硬件/解决方案:
+    - LLM一体机
+  AI Agent框架:
+    - Eliza
+  大模型生态:
+    - GPT
+    - Genmini
+  服务模式:
+    - MaaS
+  模型优化:
+    - 量化压缩
+    - 动态批处理
+  AI Agent开发平台:
+    - FastGPT
+  RAG框架:
+    - FlowRAG
+  Memory管理框架:
+    - MemGPT
+    - LangMem
+    - Zep
+  Agent开发框架:
+    - AutogenAI
+    - DSPy
+    - CrewAI
+  领域专用语言:
+    - DSL
+  模型优化技术:
+    - 领域蒸馏
+    - 模型压缩
+    - 知识蒸馏
+    - 模型裁剪
+    - 模型小型化
+    - 模型轻量化
+  编译器技术:
+    - 图编译器
+    - AI 编译器
+    - IREE
+    - Triton DSL
+    - Pass
+    - pass层
+  AI 范式:
+    - Agentic AI
+  AI芯片软件栈:
+    - AI Runtime
+    - UMD
+  异构计算框架:
+    - clr
+  数据库:
+    - Apache Doris
+    - Vector DB
+    - 向量数据库
+    - 图数据库
+  工业数字化:
+    - 数字孪生
+  工业应用:
+    - 工业APP
+  图像处理算法:
+    - AI ISP
+    - AI Denoise
+    - AI DRC
+    - AI HDR
+    - AI Demosaic
+    - AISR
+  业务应用:
+    - 自动化报表生成
+    - 流程机器人
+  AI工具/平台:
+    - Silly Tavern
+  AI Agent 开发:
+    - 单agent开发
+    - 多agent开发
+  AI Agent 调优:
+    - 准确性调优
+  编译器基础设施:
+    - MLIR
+    - Linalg
+  编译器优化策略:
+    - Op Fusion
+    - AutoTuning
+    - CodeGen
+  AI/ML工具:
+    - Verl
+  性能优化:
+    - 算子调优
+    - 高性能算子库优化
+    - 录像流畅性
+    - 内存相关问题
+  多智能体系统框架/研究项目:
+    - Camel
+    - MetaGPT
+  AI 组件:
+    - Agent决策引擎
+  金融交易接口:
+    - CCXT
+    - CTP
+  后端服务:
+    - SBS
+  系统优化:
+    - 异构调度
+    - 浏览器内核加速
+    - 性能优化
+  开发工具:
+    - AI 可视化Studio工具
+    - SDK工具链集成
+    - AI编程工具
+    - Claude Code
+    - claudeCode
+    - cursor
+    - 自动化工具链
+    - 自动化脚本
+    - AI Coding 工具
+    - AI Vibe Coding
+  性能分析:
+    - 可视化性能Debugging&Profiler
+  算法能力:
+    - 算子公式推导
+  AI Agent平台:
+    - 扣子Coze
+  AI 模型:
+    - 端侧大模型
+    - 世界模型
+    - 预训练大模型
+    - 开源大语言模型
+    - 多模态模型
+    - gpt oss
+  计算机视觉/应用场景:
+    - 咖啡豆识别
+  推荐系统/应用场景:
+    - 参数推荐
+  异常检测/应用场景:
+    - 故障智能诊断
+  AI 产品:
+    - AI SAAA化产品
+  AI 工具/框架:
+    - DataAgent
+  AI 平台:
+    - 智能体平台
+    - AI+数据平台
+  AI 领域:
+    - 空间智能
+  传感器技术:
+    - IMU
+    - TOF
+    - RTK
+  仿真技术:
+    - 调度数字孪生
+  系统架构:
+    - AI调度平台
+    - AI 中台
+  模型格式:
+    - safetensors
+  AI 平台/工具:
+    - HuggingFace
+  AI 应用设计:
+    - chatflow
+  大模型技术:
+    - Prompt 调优
+    - 提示工程
+    - 微调技术
+    - Prompt 工程
+    - Alignment
+    - Memory
+  大模型平台:
+    - coze
+    - dify
+  AI 平台/框架:
+    - DIFY
+  语音技术/API:
+    - 科大讯飞
+    - 百度语音识别
+  可编程逻辑器件:
+    - FPGA
+    - CPLD
+  AI 应用场景:
+    - Code Agent
+    - Browser Agent
+    - 教育Agent
+    - 智能问答
+    - 语音交互
+  AI 架构:
+    - 多智能体协同框架
+    - MultiAgent
+    - 长链 Agent
+    - 插件化方案
+    - 多 Agent 协作工作流
+    - Agent 架构
+  AI 产品/平台:
+    - KitChain
+  AI 协议/架构:
+    - MCP模型上下文协议
+  AI 记忆增强技术:
+    - GraphRAG
+  AI 关键技术:
+    - ReAct循环
+    - 思维树ToT
+  AI 工程实践:
+    - 混合记忆管理
+    - 自动化评估EvalLoop
+  计算机视觉算法:
+    - Stateofart
+    - ViC SeIL
+    - YOLO系列
+  硬件仿真平台:
+    - Palladium
+  高速接口技术:
+    - Serdes/PHY
+  芯片调试:
+    - Bringup
+  验证流程:
+    - Signoff
+  硬件架构:
+    - 寒武纪芯片
+    - AI芯片多芯片架构
+    - SoC
+    - MCU
+  数据治理标准:
+    - DCMM
+  国产化硬件:
+    - 鲲鹏
+  AI部署技术:
+    - 端侧模型轻量化部署
+  AI应用功能:
+    - 智能提醒
+  AI应用类型:
+    - Web Agent
+    - ChatBI
+  模型开发:
+    - 垂类模型后训练
+  大模型部署工具:
+    - Ollama
+  大模型推理框架:
+    - llama.cpp
+  AI开发工具:
+    - Model IDE
+    - Windsurf
+    - Trae
+    - CodeBuddy
+    - Google ADK
+  领域特定模型:
+    - 源网荷协调运行
+    - 二网平衡调控
+    - 负荷预测及预测性调控
+    - 以需定供精准调控
+    - 多能互补
+    - 系统评估及优化
+  分布式存储:
+    - minio
+    - GPFS
+  云计算平台:
+    - 智算云平台
+  网络架构:
+    - 智算中心网络架构
+  应用类型:
+    - AINative
+    - Agent 应用
+  交互技术:
+    - Streaming
+  AI交互:
+    - Prompt界面
+  建模方法:
+    - 业务本体
+    - 决策模型
+  电池技术指标:
+    - SOH
+    - RUL
+  电池管理系统:
+    - BMS
+  AI 模型优化:
+    - 低资源微调大模型方法
+    - 用户偏好对齐
+  AI 应用领域:
+    - AI for coding
+    - AI4Science
+  AI 工具/数据库:
+    - ChromaDB
+  系统架构/工具:
+    - 工作流引擎
+  智能化软件工程:
+    - 代码缺陷自动检测与修复
+    - 代码自动重构
+    - 代码自动移植
+    - 代码自动合并
+    - 软件开源成分风险分析
+    - 代码搜索
+  市场与商务:
+    - KOL/博主资源筛选与建联
+  运营分析:
+    - 达人合作数据整理与复盘
+  运营:
+    - 社群运营
+  AI运维:
+    - AI模型的生产和性能监控
+  业务/产品:
+    - Lazzie
+  工程角色/方法论:
+    - SRE
+    - 平台工程
+  数据技术:
+    - pipeline
+    - 知识库
+  专用领域算法:
+    - AI助听器芯片算法
+  嵌入式AI算法:
+    - 端侧AI芯片音频算法
+  计算机视觉应用:
+    - OCR
+  NLP技术:
+    - 思维链
+  机器学习技术:
+    - 联邦学习
+    - 强化学习
+  AI应用开发:
+    - 智能体流程编排
+    - 智能体开发
+  运维技术:
+    - IT设施的智能监控与故障预测
+  特定领域SDK:
+    - 智驾核心算法SDK
+  特定领域模型:
+    - 智驾模型
+  AI/图像工具:
+    - ComfyUI
+    - SD/WebUI
+  开发框架/插件:
+    - CEP
+    - UXP
+  AI 开发技术:
+    - Agent开发
+  自动化技术:
+    - RPA
+  大数据平台:
+    - DataWorks
+  人工智能:
+    - AI大模型技术
+    - AI大模型
+    - 智能体
+    - AI/大模型
+  编程规范:
+    - PSR
+  服务器环境:
+    - LNMP
+  AI/大模型:
+    - 元宝
+    - LLMs
+    - Vidu
+  模型微调技术:
+    - QLoRA
+    - LORA
+    - Finetuning
+  处理器平台:
+    - RK35xx
+    - Jetson
+  AI辅助工具:
+    - 大模型工具辅助
+  Python 库/异步编程:
+    - Asyncio
+  Prompt Engineering 技巧:
+    - CoT
+  行业特定数据处理:
+    - 冶金连铸过程数据
+  行业特定AI应用:
+    - 钢水质量预测
+    - 核电设备故障诊断
+  行业特定AI技术:
+    - 小样本缺陷检测
+  行业特定技术:
+    - 高温环境图像预处理
+    - 小样本故障诊断技术
+  AI自动化/辅助工具:
+    - Antigravity
+  AI模型/工具:
+    - Claude 3.5
+  AI 编程工具:
+    - GitHub Copilot
+    - 通义灵码
+    - OpenCode
+  产品领域:
+    - TPM
+  项目/领域:
+    - ASI for SciTech
+  嵌入式人工智能:
+    - 嵌入式AI
+  机器学习优化:
+    - 模型剪枝
+  智能体工作流:
+    - PlanandExecute
+  模型量化:
+    - GGUF
+  模型推理优化:
+    - TensorRT
+  提示工程:
+    - ToT
+  AI 平台/课程:
+    - DeepLearning.AI
+  开发范式:
+    - AINative 开发
+  AI编译器:
+    - GLOW
+  通用技能:
+    - AI
+  设计:
+    - UI
+    - MG
+  设计/开发:
+    - SD
+  自动化技术融合:
+    - AI+RPA
+  编译器与工具链:
+    - A1 编译器
+  分布式训练加速框架:
+    - DeepSpeed
+    - MegatronLM
+  分布式计算框架:
+    - Ray
+  机器学习工程化:
+    - MLOps
+  AI编程助手:
+    - ChatGPT
+  统计学:
+    - 方差分析
+  业务系统/流程:
+    - AI短剧内容生成pipeline
+  半导体设备/业界方案:
+    - Lam
+    - AMAT
+  性能指标:
+    - E10/E95 Availability
+    - Throughput (WPH)
+    - 路径冲突率
+  大规模训练框架:
+    - TransformerEngine
+  底层算子库:
+    - Cutlass
+  Kernel编程语言框架:
+    - cutile
+  通信库:
+    - CCL
+    - SHMEM
+  互联方案:
+    - UALink
+    - SUE
+    - UEC
+  系统可靠性:
+    - RAS
+  芯片设计指标:
+    - PPA
+  调试技术:
+    - cpu trace
+  AI/ML 基础设施:
+    - LLM 训练流水线
+    - 计算集群优化
+  学术会议:
+    - NeurIPS
+    - ICML
+    - CVPR
+    - ICASSP
+  AI 系统:
+    - 多模态Agent
+    - 自主Agent
+    - 协作Agent
+  AI/ML框架:
+    - Claude Agent SDK
+  监控/可观测性:
+    - LangSmith
+    - W&B
+  AI/ML技术:
+    - Fewshot学习
+    - CoT推理
+    - 上下文压缩
+    - 混合检索
+    - Context Engineering
+    - Context engineering
+    - chainofthought
+    - prompt
+    - chaining
+    - memory 机制
+  AI 开发范式:
+    - AI Coding
+    - 低代码 AI
+  AI 开发思维:
+    - AI 先行思维
+  AI 交互技能:
+    - 提示词设计
+    - 上下文管理
+  AI 工程资产:
+    - 智能体定义
+    - AI 编码资产
+  AI Agent/应用:
+    - DeepResearch Agent
+  信息检索技术:
+    - 多跳检索与推理
+  大模型优化技术:
+    - 去幻觉
+  大模型训练技术:
+    - 后训练
+  AI基础设施/平台:
+    - Model-as-a-Service
+  AI系统:
+    - AI训练系统
+    - AI应用系统
+    - 多智能体协作系统
+    - AI芯片软件生态
+    - AI底层软件栈
+  计算机视觉:
+    - 图形识别
+    - 目标机非人识别
+    - 点云数据分割算法
+  自然语言处理:
+    - 语言模型
+    - 信息抽取
+  AI 数据工程:
+    - AI+数据集成管道
+    - AI+数据治理算子
+    - AI智能取数
+  智能硬件产品:
+    - AI一体机
+  售前技术流程:
+    - POC测试
+  数据分析工具:
+    - BI 系统
+  汽车开发工具:
+    - ETAS
+    - Vector
+  AI 模型能力:
+    - 工具调?
+  AI/ML 系统架构:
+    - RAG pipelines
+  机器学习平台/工具:
+    - Feature Stores
+  AI/ML 技术:
+    - prompt engineering
+  AI框架机制:
+    - Autograd
+  AI框架/代理:
+    - autogen
+    - CrewAImcp
+    - AtoA
+  系统/工具:
+    - 仿真系统
+  AI 工程化:
+    - 模型生命周期管理
+    - AI 能力网关
+    - 大模型推理与编排
+    - 提示词管理
+  系统工程:
+    - Agent 监控与评估体系
+  存储架构:
+    - SAN
+    - NAS
+    - 对象存储
+  容灾技术:
+    - 存储双活
+  汽车电子/智能座舱:
+    - 车型语音前端链路解决方案
+  音频工程:
+    - audio录音链路打通
+  前端工具/低代码平台:
+    - builder.io
+  AI工具/工程实践:
+    - AI辅助编程
+  AI概念/行业应用:
+    - 可追溯结果AI
+  AI 协议:
+    - MCP (Model Context Protocol)
+    - A2A (Agent to Agent)
+  机器学习框架:
+    - JAX
+  AI/ML 技能:
+    - 指令微调
+    - 链式推理
+    - 高性能训练
+    - 推理优化
+  RPA工具:
+    - 影刀RPA
+  AI技术领域:
+    - AI工程化
+  AI开发平台:
+    - 百炼
+  LLM应用框架:
+    - Langchain
+    - llamaindex
+  移动开发技术:
+    - Hybrid开发
+  嵌入式硬件:
+    - 杰理芯片方案
+    - ASR芯片方案
+    - 展锐芯片方案
+  研究方向:
+    - AI for Science
+  自动化/工作流平台:
+    - N8N
+  RPA 平台:
+    - UiPath
+    - 影刀
+  项目方法:
+    - POC
+  电商框架:
+    - Spree Commerce
+  仓储系统:
+    - 易仓海外仓系统
+  神经渲染:
+    - Nerf
+  数据处理场景:
+    - 实时日志处理
+    - 离线报表生成
+  AI 组件/系统:
+    - 空间语义理解小脑
+  AI优化:
+    - 智能体行为调优
+  大数据技术:
+    - MaxCompute
+  AI/机器学习技术:
+    - Reranking
+    - RAG应用
+    - 生成式AI
+  推理加速框架:
+    - TensorRT-LLM
+  模型理论:
+    - Scaling Law
+  数据方法论:
+    - Data Centric
+  AI工具平台:
+    - 毕昇
+  AI 开发平台:
+    - 智能体开发平台
+    - FASTGPT
+  AI 服务开发:
+    - MCP服务开发
+  大模型问题:
+    - Hallucination
+  业务领域/团队:
+    - Marketplace Intelligence & Data
+  算法领域:
+    - 商品算法
+    - 营销算法
+    - 评价算法
+    - world model
+  数据产品/分析:
+    - 用户画像
+  AI 能力:
+    - 机器翻译
+    - 图像算法
+    - 实人认证
+  AI 框架/范式:
+    - 多Agent协作编排
+    - 上下文与状态管理
+    - 智能决策引擎
+  产品/平台:
+    - 神州问学
+  AI 图像生成控制模块:
+    - ControlNet
+  AI 模型适配技术:
+    - IPAdapter
+  AI 工具:
+    - Automatic1111 WebUI
+    - InvokeAI
+    - Manus
+  NLP库/框架:
+    - Transformers (Hugging Face)
+  AI配音/音视频工具:
+    - 剪映
+    - 魔音工坊
+    - 讯飞智作
+    - Play.ht
+  嵌入式/平台特定框架:
+    - MTK平台相机框架
+  硬件产品:
+    - 边缘计算一体机
+    - 智能安防摄像头
+    - AI芯片板卡
+  AI服务接口:
+    - OpenAI API
+  特定应用领域:
+    - 无人机巡检
+  跨领域知识:
+    - 无人机飞行原理
+  网络技术:
+    - RDMA over Converged Ethernet
+  网络设备:
+    - Mellanox
+  GPU架构:
+    - Ampere
+    - Hopper
+    - Blackwell
+  模型类型:
+    - VLM
+  协议/框架:
+    - MCP Server
+    - MCP 协议
+  AI/系统组件:
+    - 模型调度
+  AI 开发工具/监控:
+    - Langfuse
+  AI 服务/接口:
+    - LLM API
+  系统架构/开发运维:
+    - 服务和流程编排
+  汽车软件架构:
+    - AUTOSAR
+  GPU 计算环境:
+    - CUDA
+  知识图谱:
+    - KAG
+  AI 优化技术:
+    - Flash Attention
+    - FlashAttention
+  高性能计算库:
+    - CUTLASS
+  GPU 计算库:
+    - cuBLAS
+  大模型微调技术:
+    - PTuning
+  嵌入式系统/固件:
+    - OpenBMC
+  移动开发:
+    - 无障碍功能
+  移动开发/游戏:
+    - 动画类输出
+  AI 方法:
+    - 智能体协同
+  工程领域:
+    - 系统控制
+    - 流体仿真
+    - 热舒适
+  合规标准:
+    - 信创合规
+  深度学习框架:
+    - Flow
+  行业特定系统:
+    - 医疗AI产品系统
+  行业经验:
+    - 医院信息化项目
+  AI应用方向:
+    - AI信号检测
+  硬件平台:
+    - AI SoC芯片平台
+  NPU 工具链:
+    - Pulsar2
+    - RKNN2
+  AI 硬件:
+    - TPU
+  架构思维:
+    - 全栈思维
+  工作方法:
+    - 自动化思维
+  算法应用:
+    - PHM
+  向量数据库/搜索引擎:
+    - Milvus
+  机器人应用:
+    - 机器人工位方案
+  AI工具/库:
+    - AI大模型训练加速库
+  机器人技术:
+    - 机器人控制系统
+    - SimtoReal
+  推理算法:
+    - AngLe
+  自然语言处理算法:
+    - InA
+  AI理论:
+    - scaling law
+  计算机视觉模型:
+    - YOLO
+    - yolo
+    - qwenvl
+    - Segment Anything
+  AI 协议/框架:
+    - mcp
+  RAG 技术:
+    - flowRAG
+  AI 平台/模型库:
+    - Hugging Face
+  AI视频工具:
+    - Topaz
+    - RealESRGAN
+    - DAIN
+  AI工具:
+    - 智能文档
+    - AI编译器
+  管理工具:
+    - 任务智能分发
+    - 质量自动化检测
+    - 资源调度看板
+  物联网与人工智能交叉领域:
+    - AIoT
+  低功耗设计:
+    - μA级待机功耗
+  硬件:
+    - AI芯片
+    - GPU
+    - 一体机硬件
+  领域知识图谱:
+    - 制造业知识图谱
+  图像标注工具:
+    - labelimage
+    - CVAT
+  AI前沿技术:
+    - 具身智能
+  办公软件技能:
+    - PPT能力
+  分布式训练优化:
+    - ZeRO
+  训练优化技术:
+    - 混合精度训练
+  图数据库:
+    - TigerGraph
+  大语言模型/Embedding模型:
+    - BGE
+  开源大语言模型:
+    - Yi
+    - Baichuan
+    - Mistral
+  时序预测模型:
+    - NBEATS
+    - TCN
+  大模型对齐技术:
+    - Constitutional AI
+  强化学习算法:
+    - ModelBased RL
+  AI 安全技术:
+    - 隐私计算落地
+  AI 模型类型:
+    - 行业适配模型
+  硬件协同技术:
+    - AI芯片软硬件协同
+  数学/算法:
+    - SDE
+  生成式AI模型:
+    - Stable Diffusion
+  编译器优化技术:
+    - 内存分配
+    - 指令调度
+    - polyhedral model
+  专业领域:
+    - AI编译技术
+  嵌入式平台:
+    - RK3588
+    - Jetson Orin Nano
+    - Hi3559A
+    - 爱芯元智
+  AI 服务:
+    - openai
+  AI应用领域:
+    - AI4S
+  工程文档:
+    - DVP
+  运维角色/领域:
+    - AI平台SRE
+  大模型训练框架:
+    - Megatron-LM
+  系统设计:
+    - AI系统设计
+  系统开发:
+    - AI系统开发
+  硬件加速技术:
+    - ROCm
+    - Ascend
+  机器学习:
+    - 垂直模型
+  广告营销:
+    - SEM
+    - SEO
+    - 竞价排名
+    - 转化归因
+  计算化学算法:
+    - FEP
+    - MD
+    - Docking
+  领域知识:
+    - HVAC
+    - 过冷站群控
+  领域算法:
+    - 预测性运维
+    - 负荷预测
+    - 能效寻优
+    - 设备组合寻优
+  编译器/硬件适配框架:
+    - OpenAI Triton
+  编译器/性能优化工具:
+    - tuner
+  系统扩展技术:
+    - Scale up
+  机器学习系统:
+    - 数据飞轮
+  模型能力:
+    - Reasoning能力
+  算法工程:
+    - 大模型数据工程
+    - 预训练算法
+    - Agent架构及算法
+    - 模型效果测评
+    - 模型infra及部署
+  Runtime Environment:
+    - NodeJS
+  Database Design:
+    - ER Diagram
+  AI Technology:
+    - AI Large Model Integration
+  计算机视觉任务:
+    - 万物分割
+    - 万物识别
+    - 开放性目标检测
+  AI/LLM 工具:
+    - MCP Tools
+  AI音频技术:
+    - 神经音频效果器
+    - DDSP
+    - Diffusion模型用于音频
+    - Neural Parametric Filters
+  音乐生成AI:
+    - MusicLM
+    - MuseNet
+    - Jukebox
+  音频处理AI:
+    - Demucs
+    - CREPE
+  AI平台:
+    - AI在线推理平台
+  生成式AI:
+    - 图生图(Image-to-Image)
+    - 图生视频(Image-to-Video)
+  AI 监控工具:
+    - LangFuse
+  分布式计算:
+    - DePIN
+  区块链开发工具:
+    - 多链 SDK
+  区块链工具:
+    - indexer
+  AI视频生成:
+    - T2V
+  贝叶斯优化框架:
+    - BoTorch
+  高斯过程框架:
+    - GPyTorch
+  优化算法:
+    - qEHVI
+  神经网络:
+    - MLP
+  自动化机器学习:
+    - AutoML
+  代理模型:
+    - Surrogate Model
+  光学仿真软件:
+    - Zemax
+  模型架构:
+    - Transformer
+  AI/数据工程:
+    - 领域知识库构建
+  数据工程:
+    - 文档结构化处理
+    - 数据管道优化
+    - 工艺性能联合数据库
+  AI 应用框架/工具:
+    - Llama Index
+  AI 推理框架:
+    - TGI
+  战略与管理:
+    - AI战略规划
+  AI工程:
+    - 模型全生命周期管理
+  平台与基础设施:
+    - AI资源平台
+  AI应用场景:
+    - 晶体缺陷预测
+    - 外延厚度/均匀性控制
+    - 器件性能反向设计
+    - 在线监测与质量控制模型
+  数据标注工具:
+    - 数据标注开源框架
+  数据标注平台:
+    - 智能标注平台
+  CSS 布局技术:
+    - Flex/Grid 布局
+  JavaScript 标准:
+    - ES6+
+  AI 应用开发:
+    - AI 前端集成
+  AI/大语言模型:
+    - LLama
+  AI应用平台:
+    - AIGC视频生成平台
+  AI优化库:
+    - xFormers
+  生成模型组件:
+    - VAE
+    - UNet
+  图像处理库:
+    - ITK
+    - SimpleITK
+    - PyDicom
+  数据格式/标准:
+    - DICOM
+  硬件接口协议:
+    - CXL type1/2/3
+  大模型应用技术:
+    - FineTuning
+  AI系统架构:
+    - 多智能体系统
+    - 自主智能体
+  平台技术:
+    - Unity安卓端
+  多媒体技术:
+    - 3D数字人
+    - 数字人表情/语音同步
+  工程与验证:
+    - CQV
+    - GMP
+    - FAT
+    - SAT
+    - IOQ
+    - CIP
+  自动化系统:
+    - Delta V
+  AI基础设施:
+    - 高性能算子库
+  MLOps:
+    - 模型部署
+    - ML服务封装
+  AI应用/算法:
+    - AIAgent
+  神经网络架构:
+    - CRN
+    - Mamba
+  音频算法任务:
+    - 声音分离
+    - 去啸叫
+    - 言语增强
+  工程能力:
+    - 算法性能调优
+  NLP模型:
+    - BiLSTMCRF
+    - BERTCRF
+  验证技术:
+    - Formal Verification
+    - Pattern向量
+  计算机视觉/硬件:
+    - 3D相机标定
+  AI 评估方法:
+    - 大模型能力测评
+  数据建模:
+    - UModel
+  领域特定语言:
+    - Halide
+
+
+  # ==================== LLM 自动发现 ====================
+  容器技术:
+    - POD
+  运营/市场:
+    - KOL
+  控制理论:
+    - FDI
+  机器学习算法:
+    - DBM
+  AI 应用:
+    - AI 办公工具
+    - AI 培训
+    - agent智能体
+    - 智能体 Agent
+    - 检索增强问答
+    - 提示设计
+    - Search/DeepSearch Agent
+    - AI专业知识库
+    - 多步对话 / 智能体Agent流程
+    - 安全垂类大模型智能体Agent
+  第三方AI服务:
+    - OpenAI
+  AI 编程工具:
+    - CodeGeeX
+    - 通义千问编程助手
+    - v0
+    - TRAE
+  分布式事务框架:
+    - Seata
+  分布式锁算法:
+    - Redlock
+  大语言模型:
+    - QwenMax
+    - Llama
+    - Llama3
+  AI 系统:
+    - 实验语义理解与推理引擎
+    - 智能Agent系统
+    - 工具编排
+    - 智能任务编排
+    - 自主代理系统
+    - 专家系统
+  知识工程:
+    - 实验知识图谱
+  大模型:
+    - Deepseek
+    - chatgpt
+    - 混元
+    - 智谱
+    - BERT
+    - GPT4o
+    - Llama 3
+  AI/机器学习:
+    - 生成式 AI
+    - 对话系统
+    - 向量知识库
+    - AI图像识别算法
+    - GenAI
+    - Grok
+    - ElevenLabs
+    - Modular RAG
+    - Chunking
+    - Hybrid Search
+    - ReRanking
+    - Local LLM
+    - 生成式相关技术及应用
+    - AI 智能体
+  产品领域:
+    - AI to C 产品
+  业务经验:
+    - To C 高并发业务
+  规则引擎/工作流框架:
+    - LiteFlow
+  行业大模型:
+    - 智能质控基座大模型
+  AI工具:
+    - AI即梦
+    - 即梦
+    - copilot
+    - AI训练工具
+    - 剪映AI
+    - DID
+  流程管理:
+    - SOP标准作业程序
+  大模型部署工具:
+    - ollama
+  大模型推理引擎:
+    - vllm
+  知识库/智能体平台:
+    - FastGpt
+  AI框架:
+    - Megatron
+    - Semantic Kernel
+    - Haystack
+    - OneFlow
+    - Paddle
+  AI算子:
+    - flashattn
+  开发工具/方法论:
+    - AI vibe coding
+  计算机视觉库:
+    - Halcon
+  AI框架优化:
+    - PyTorch Compile
+  模型微调技术:
+    - Ptuning
+    - PEFT
+  大模型技术:
+    - LMM
+    - 模型评测
+    - LLM Evaluation
+    - 量化
+    - 蒸馏
+  机器学习技术:
+    - RFT
+    - distillation
+    - quantization
+  AI技术:
+    - prompt-engineering
+    - 模型预训练
+    - NLP模型微调
+    - 知识工程
+    - 流程自动化
+    - 大语言模型应用
+    - 大模型研究
+    - 思维链推理
+    - 记忆压缩策略
+  AI安全攻击:
+    - Prompt Injection
+    - Jailbreaking
+  AI 应用开发框架:
+    - adk
+  后端服务:
+    - mcp服务
+  智能体平台:
+    - 扣子 Coze
+    - 百度文心智能体
+    - 智谱清流
+  检测设备:
+    - AOI
+    - SPI
+  电子元器件:
+    - BGA
+    - LGA
+  数据管理:
+    - 标注体系
+  音频处理芯片:
+    - OnSemi
+    - Cirrus Logic
+    - Widex
+  网络平台/产品:
+    - NCE
+  网络解决方案:
+    - Intent-Driven Network
+  AI 平台/基础设施:
+    - Agent Orchestration
+  AI Agent 能力:
+    - 工具调用
+    - 策略管理
+    - 多模态交互
+  AI 架构:
+    - 多 Agent 系统
+    - 多 Agent 协同设计
+    - 多智能体协同
+    - 智能体架构设计
+    - Agentic Workflow
+    - 多智能体工作流
+  AI 平台/应用:
+    - 智能流程平台
+    - 对话 Agent 平台
+  数据检索:
+    - 搜索引擎
+  行业经验:
+    - Adtech
+  系统经验:
+    - 推荐系统
+  平台/系统:
+    - AI 开放平台
+    - AI数据服务平台
+  AutoML 工具:
+    - Optuna
+  领域工具库:
+    - 金融NLP工具包
+    - 时序预测模块
+  AI 框架:
+    - Agent协同框架
+    - Agent 框架
+    - 大模型应用及智能体框架
+    - AI Agent开发框架
+    - Langgragh
+    - AgentBuilder
+  机器学习模型:
+    - 图神经网络
+    - transformer
+  专业背景:
+    - 3T相关专业
+  移动开发问题分析:
+    - JE
+    - ANR
+    - NE
+  AI系统:
+    - 算子库
+    - 任务导向型代理
+    - 上下文引擎
+  服务模式:
+    - RaaS (Result as a Service)
+  角色/职位:
+    - PDFE (产品设计前端工程师)
+    - ABE (架构与后端工程师)
+  开发方法论:
+    - AI 软件开发新范式
+    - AI出码模式
+  技术理念:
+    - 架构洁癖
+    - 技术品味
+    - 硅基智能
+  AI应用:
+    - LLM智能体
+    - 大模型API调用
+    - AI驱动的生成式设计
+    - Text2SQL
+    - 代理模型
+    - 材料参数反求
+    - AI选品
+    - AI语音对话
+    - 识图
+    - 绘本
+    - 健身
+  硬件与工具链:
+    - AI芯片工具链
+  AI 框架/技术:
+    - Tool Use
+  AI 技术:
+    - 多模态大模型
+    - 智能体终身学习
+    - 提示词优化
+    - 智能体搭建
+    - LLM 微调
+    - 私有模型训练与部署
+    - 边缘推理
+    - 特征识别
+    - 记忆机制
+    - 模型微调
+    - 大模型调优
+    - 专用Prompt
+    - Agent工作流
+    - Prompt优化
+  AI 开发:
+    - LLM 应用开发
+    - Agent 开发技术
+    - AI-generated Code
+  广告技术:
+    - OCPM
+    - CPA
+  高性能网络:
+    - RDMA
+  电商分析工具:
+    - Jungle Scout
+    - Keepa
+  电商平台:
+    - 1688
+    - 速卖通
+    - 亚马逊
+    - TikTok
+    - Temu
+  机器人技术:
+    - Sim2Real
+  分布式通信库:
+    - NVSHMEM
+    - nvshmem
+  分布式存储:
+    - MinIO
+  爬虫技术:
+    - Headless Chrome
+  多模态大语言模型:
+    - MLLM
+  AI 开发框架:
+    - llamaIndex
+    - LLAMA Index
+  AI应用场景:
+    - AI内容工厂
+  自动驾驶领域:
+    - 智驾系统
+  开发工具/方法:
+    - AI coding
+  工程能力:
+    - 集成能力
+  项目经验:
+    - 量产经验
+  AI推理框架:
+    - KTransformers
+  编译优化技术:
+    - Dynamo
+  AI编译优化:
+    - Auto Fusion
+  AI模型:
+    - 验证码识别模型
+    - 内容分类模型
+    - 实体抽取模型
+    - 多模态数据解析模型
+    - SD系列
+    - 图像大模型
+  芯片设计工具:
+    - ESL工具
+  多模态融合算法:
+    - BEVFormer
+    - BEVFusion
+  数据集格式:
+    - KITTI
+    - nuScenes
+  AI/测试领域:
+    - AI大模型应用测试
+  AI 编程助手:
+    - GitHub Copilot Chat
+  新兴角色:
+    - AI 驾驶员
+  开发模式:
+    - AI Agent 编排
+  人工智能框架:
+    - Autonomous Agent
+  数据库服务:
+    - DAS
+  运维系统:
+    - Azure SRE Agent
+  分布式追踪:
+    - Google Dapper
+    - Facebook Canopy
+  性能监控:
+    - AliYun TcpRT
+    - Amazon Performance Insights
+  AI 工具链:
+    - 自动化数据标注工具链
+  移动操作系统:
+    - 鸿蒙
+  强化学习框架:
+    - RLVR
+    - VERL
+    - TRL
+  AI 工程化:
+    - 大模型API集成
+    - Prompt管理
+  优化求解器:
+    - COPT
+  机器学习框架:
+    - Java ML
+    - MindSpore
+  工业AI应用:
+    - 智能排产
+  AI/高性能计算:
+    - AI 训练框架通信逻辑
+  AI工程术语:
+    - PE
+  AI 工具:
+    - claudecode
+  工业软件:
+    - CAX
+  中间件:
+    - 消息队列
+  AI 基础设施:
+    - AI知识库
+    - 大模型网关
+    - AIInfra
+  AI推理服务框架:
+    - Triton Inference Server
+  语音算法工程:
+    - 语音前端算法开发支持
+  机器学习:
+    - 物理信息神经网络
+    - 深度代理模型
+    - 模型评估指标
+  优化设计:
+    - 拓扑优化
+  图像处理算法:
+    - Demosaic
+  AI/大模型:
+    - 盘古大模型
+  云平台/产品:
+    - 华为云Stack
+  AI 平台:
+    - AWS Bedrock
+    - Agentic Platform
+    - DashScope
+  AI 框架/平台:
+    - Bisheng
+    - FoundationAgents
+  编译器中间表示:
+    - HLO
+    - MHLO
+  编译器:
+    - 昇腾NPU编译器
+  检索增强生成技术:
+    - Agentic RAG
+  系统集成:
+    - 生态知名软件仓适配对接
+  检索技术:
+    - 倒排检索
+    - 向量检索
+    - 重排序
+  检索算法:
+    - 召回/粗排/精排
+  技术前沿:
+    - Agent/LLM?业新范式
+  工业指标:
+    - OEE
+  模型优化技术:
+    - 模型加速
+    - 常量折叠
+  计算机视觉任务:
+    - 目标检测
+    - 图像分割
+  模型处理技术:
+    - 后处理能力
+  高性能计算:
+    - IB网络
+    - 超算
+  生物信息学/特定领域知识:
+    - 单细胞组学
+  计算机视觉:
+    - SOT
+    - MOT
+    - 图像分类
+  大模型数据:
+    - 指令数据构建
+  能源管理系统:
+    - HEMS
+    - EMS
+  机器视觉库:
+    - HalCon
+  异常检测算法:
+    - 自编码器
+    - 隔离森林
+    - Local Outlier Factor
+  分析方法:
+    - 根因分析
+  算法领域:
+    - 具身智能算法
+    - agent算法
+    - 搜广推大模型应用
+  芯片验证:
+    - presilicon
+  处理器架构:
+    - 硬件加速单元
+  AI/ML 基础设施:
+    - 大模型数据处理管道
+  AI/ML 工程:
+    - 模型服务化开发
+  平台/基础设施:
+    - AI Open Platform
+  特定软件/系统:
+    - 恒久软件
+  网络控制平台:
+    - ODL
+    - ONOS
+  AI计算场景:
+    - AI智算
+  AI 算法:
+    - Generative AI
+  AI应用/产品:
+    - AI智能体/AI助手/copilot/千问/豆包
+    - UI Agent
+  大模型微调技术:
+    - Lora
+    - sft
+    - rlhf
+  国产化技术生态:
+    - 信创全栈生态
+  系统集成与部署:
+    - 国产化适配
+  AI前沿领域:
+    - 具身AI
+  物联网:
+    - IOT设备物联开发
+  计算机视觉技术:
+    - rPPG
+  AI 方法:
+    - LLM大模型预训练
+    - 高效微调
+  硬件加速:
+    - 华为CANN
+    - DPU
+  ComfyUI插件:
+    - Impact Pack
+    - WAS Suite
+  LLM推理优化技术:
+    - PagedAttention
+    - Continuous Batching
+    - MoE offloading
+  GPU编程:
+    - PTX
+    - SASS
+  性能分析模型:
+    - Roofline
+  语音合成:
+    - VITS
+  语音识别:
+    - Whisper
+  计算机视觉/数字人:
+    - SadTalker
+  计算机视觉/语音驱动:
+    - Wav2Lip
+  数据处理:
+    - 图像标注
+    - 文档ETL
+    - 数据清洗
+  AI开发工具平台:
+    - MindStudio
+  业务知识:
+    - L2C
+  领域知识:
+    - MuitiModel
+    - CrossModel
+    - 电力市场交易和调度
+    - 新型电力系统
+    - 自动驾驶
+  操作系统/中间件:
+    - AgentOS
+    - AIOS
+  系统框架:
+    - HAL
+  行业特定流程:
+    - 车规级软件开发
+  后端框架:
+    - Spring Al
+  AI 模型:
+    - 文心
+  LLM 应用技术:
+    - OpenAI Function Calling
+  CAD API:
+    - SolidWorks API
+    - Inventor API
+  AI 功能模块:
+    - 任务规划
+    - 记忆管理
+    - 多智能体协作
+  AI 评估:
+    - 智能体效果评估体系
+  NLP 技术:
+    - 文本分割
+  信息检索:
+    - 检索排序
+  AI 集成:
+    - AI 模型应用开发 API
+  AI 平台组件:
+    - LLM Proxy
+  AI 安全/治理:
+    - Guardrail
+  软技能:
+    - 数据探矿直觉
+    - 跨领域联想能力
+    - 方案设计
+    - 持续优化
+  跨端互联框架:
+    - HyperConnect
+  操作系统:
+    - HarmonyOS
+  跨端互联系统:
+    - 潘塔纳尔
+  系统架构:
+    - 分布式软总线
+    - 系统集成
+  网络技术:
+    - 异构网络融合
+    - 协议模拟
+  AI应用开发:
+    - skills开发
+  仿真软件:
+    - dymola
+    - trnsys
+  AI Agent 框架:
+    - Langchain4j
+  分布式计算:
+    - 集合通信库
+  AI框架组件:
+    - 加速库
+    - Aten
+  模型监控:
+    - OOD检测
+  数据闭环:
+    - Bad Case自动回流标注
+  优化工具:
+    - 优化建模与求解工具或框架
+  大模型工程:
+    - Prompt / 提示词模板设计
+  RAG架构:
+    - 知识更新
+  AI 应用评估:
+    - 持续评估监测
+  人机交互:
+    - AI与人工客服协同
+  大模型优化:
+    - 处理幻觉不确定性
+  重排模型/工具:
+    - bgereranker
+  分类模型/算法:
+    - L0轻分类
+  评分/阈值系统:
+    - S分
+  内容生成/拼接引擎:
+    - 缺口引擎
+  内容生成策略:
+    - 尾注拼接
+  提示工程/实验:
+    - Prompt A/B
+  运维指标:
+    - MTTR
+  开源编辑器/组件:
+    - pdf.js
+    - codemirror
+    - slate.js
+    - tiptap
+  算法:
+    - 启发式算法
+    - 数学优化算法
+  AI 服务:
+    - 大模型推理服务
+    - Midjourney API
+  AI 运维:
+    - AI 模型私有化部署
+    - AI 应用平台
+  AI/LLM 应用框架:
+    - RAGFLOW
+    - DBGPT
+  垂直领域知识:
+    - 物联感知
+  数据处理能力:
+    - 数据整合能力
+  数据处理流程:
+    - 离线海量数据生产
+  AI能力:
+    - 内容理解
+  业务领域:
+    - ToB应用场景
+  融合决策系统:
+    - LLM+优化算法
+  向量数据库:
+    - Chroma
+    - Qdrant
+    - LanceDB
+  部署技术:
+    - 嵌入式/边缘计算
+    - 端侧芯片部署
+  AI 应用监控:
+    - Arize Phoenix
+  AI 模型/嵌入模型:
+    - bge
+  AI 模型/检索服务:
+    - Cohere Rerank
+  领域特定AI模型:
+    - 源网荷协调运行模型
+    - 二网平衡调控模型
+    - 负荷预测及预测性调控模型
+    - 以需定供精准调控模型
+    - 多能互补模型
+    - 系统评估及优化模型
+  机器学习基础设施:
+    - ML Infra
+  深度学习全栈:
+    - Deep Learning FullStack
+  GPU加速基础设施与运维:
+    - CUDA/加速Infra & Ops
+  大语言模型/多模态大语言模型:
+    - LLM/MLLM
+  模型架构:
+    - 新记忆系统
+    - 新 attention 结构
+    - 轻量化架构
+  云平台:
+    - 火山
+  系统启动与调试:
+    - bringup
+  模型训练:
+    - continued pretrain
+    - 偏好优化
+    - RL
+  前沿实验:
+    - frontier experiments
+  实验方法:
+    - 消融
+  AI 应用/框架:
+    - AnythingLLM
+  文档分析技术:
+    - Delta Analysis
+  机械工程:
+    - 轴承设计
+  工程技术文档:
+    - 试验大纲编制
+  资源管理:
+    - 算力调度策略
+  硬件/性能优化:
+    - GPU计算加速
+  AI模型/工具:
+    - 海螺
+  AI基础设施:
+    - AI Infrastructure
+  系统设计:
+    - HW/SW Co-Design
+  存储技术:
+    - Distributed Storage
+  多模态模型:
+    - QwenVL
+    - GPT-4V
+  AI 应用范式:
+    - 智能 Agents
+  AI 工程:
+    - AI 质量评测体系
+    - AI 数据体系
+    - 提示词
+    - AI Prompt Template
+  AI 安全:
+    - 智能体特有安全
+  安全技术:
+    - TEE
+    - Trustzone
+    - Intel SGX
+    - TDX
+    - AMD SEV
+  性能优化:
+    - WebGPU加速
+  向量模型/嵌入模型:
+    - M3E
+  AI Agent 协议:
+    - MCP协议
+  AI 框架/模型:
+    - OpenManus
+  方法论:
+    - PoC
+  项目管理/业务:
+    - AI应用生态闭环
+  AI 大模型:
+    - LimiX
+  AI 方法论:
+    - 因果AI
+  AI/ML技术:
+    - ASR/TTS
+  AI/ML 技能:
+    - 评测模型建模
+  项目管理/方法论:
+    - SOP
+  研究方法:
+    - SOTA
+  AI Agent 组件:
+    - Tool Library
+  方法论/理念:
+    - AI 提效
+  工作理念/方法论:
+    - 超级个体
+  自动驾驶算法:
+    - E2E
+  自动驾驶系统:
+    - Onboard
+  AI 开发工具:
+    - 训练工具链
+    - 微调工具链
+    - 评估工具链
+    - 推理工具链
+    - antigravity
+  AI 系统技术:
+    - 分布式训练
+    - 分布式推理
+  系统优化:
+    - 框架优化
+    - 算力优化
+    - 通信优化
+    - 存储优化
+  AI 系统架构:
+    - 端到端 AI 模型能力
+  编译器技术:
+    - 图优化Pass
+    - 算子定义
+    - 计算图分割
+  系统部署:
+    - 云边部署
+  AI 微调技术:
+    - DreamBooth
+  图像生成模型:
+    - SDXL
+  AI Agent组件:
+    - Planner模块
+    - 记忆系统
+    - 工具MCP
+  AI实践经验:
+    - Agent应用落地
+  机器学习平台:
+    - MiniMax
+  系统优化技术:
+    - ML for System
+    - 内存复用优化
+  硬件平台:
+    - J6
+    - Orin
+  部署与推理引擎:
+    - NNRT
+  AI 建模技术:
+    - Agent行为建模
+  大语言模型技术:
+    - LLM微调
+    - LLM推理优化
+  AI 决策技术:
+    - Agent行为决策机制
+  计算优化技术:
+    - 并行计算
+  AI系统开发:
+    - 大模型工程化
+    - 分布式训练框架
+    - 边缘 AI 部署
+  AI 编码助手:
+    - Amazon CodeWhisperer
+    - Tabnine
+  开发流程:
+    - GitFlow
+    - TrunkBased
+  CI/CD 工具:
+    - Runner/Action
+  专业设备:
+    - 天文相机
+    - 天文成像设备
+    - 望远镜
+    - 赤道仪
+    - 电子调焦器
+    - 电动调焦器
+    - 滤光轮
+  专业软件:
+    - 天文软件
+  AI推理服务:
+    - sGlang
+  产品/平台:
+    - FusionOne AI
+    - FusionXplay
+    - 企业智脑
+  计算平台:
+    - 异构计算平台
+  优化技术:
+    - 模型性能优化
+    - 精度优化
+  软件工具/框架:
+    - 规则引擎
+  可视化工具:
+    - PyVista
+  深度学习模型:
+    - SSD
+    - RCNN
+  金融AI应用:
+    - AI辅助选股体系
+  金融工具开发:
+    - 投研可视化看板
+  AI工程化:
+    - AI辅助全流程开发
+    - AI增强型应用
+  嵌入式AI/神经网络库:
+    - CMSIS-NN
+  特定领域应用/设备控制:
+    - 微脉冲扩香时序控制
+  特定领域应用/安全机制:
+    - 剂量/安全联锁
+  传感器技术:
+    - VOC传感器
+  特定领域应用/执行器:
+    - 流量/泵
+  安全对抗技术:
+    - 设备指纹绕过
+    - 行为拟人化
+    - 人机验证绕过
+    - 环境检测绕过
+  虚拟化技术:
+    - 云手机
+  大模型服务:
+    - Claude API
+    - DeepSeek API
+  营销技术:
+    - GEO
+  工程领域:
+    - Growth Engineering
+  生成式AI应用:
+    - AIGC文生图
+  AI 智能体技术:
+    - 智能体编排
+  汽车AI系统:
+    - 知识大脑
+  AI 开发工具包:
+    - DTK
+  AI 推理框架:
+    - RKNN
+  AI 代理框架:
+    - MindSporeAgent
+  训练范式:
+    - Prompt Learning
+  Go并发库:
+    - errgroup
+  消息队列:
+    - NATS
+  专用硬件架构:
+    - AI CPU同构融合计算芯片
+  并行计算优化:
+    - tile策略调度
+  芯片架构:
+    - 多die
+  RPA 工具:
+    - 实在智能
+  3D生成模型:
+    - NeRF
+  生成模型:
+    - Diffusion Models
+  3D生成API:
+    - TripoAI
+  3D建模软件:
+    - Meshmixer
+  AI 应用领域:
+    - 多智能体协同软件
+    - Materials Informatics
+  AI 应用特质:
+    - Token狂热消耗者
+  专用设备:
+    - 韩国恩成铆钉机
+    - 松下跳线机
+    - 中禾旭卧式立式插件机
+  AI/ML 开发:
+    - 模型开发
+  运维:
+    - 部署
+    - 运维
+  软件工程AI应用领域:
+    - AI4SE
+  AI4SE开源数据集:
+    - SWEbench
+    - DeepSWE
+    - CodeContests
+  决策算法:
+    - Diffusion Policy
+  强化学习算法:
+    - PPO
+    - SAC
+  半导体行业职位:
+    - AE/FAE
+  能源行业系统:
+    - 虚拟电厂
+    - 智慧储能
+    - 新能源预测
+  能源业务逻辑:
+    - 功率预测
+    - 交易指令下发
+    - 设备监控
+  大模型微调工具:
+    - Axolotl
+  AI Agent 核心概念:
+    - 工具调用 (tool calling)
+    - 记忆管理 (memory/state)
+  AI Agent 流程控制:
+    - 轮次管理
+    - 回溯/纠错
+  多智能体编排:
+    - JADE
+    - SPADE
+  多智能体技术:
+    - 群体智能
+  计算技术:
+    - 分布式计算
+  AI伦理与安全:
+    - 偏见缓解
+  目标检测算法:
+    - Yolo
+  图像分割算法:
+    - Unet
+  AI应用技术:
+    - Agent技术
+  AI协同机制:
+    - A2A
+  记忆系统:
+    - STM
+    - LTM
+  检索系统:
+    - Hybrid RAG
+  开发工具:
+    - Agent SDK
+  AI机制:
+    - ToolCalling
+  安全架构:
+    - AI安全框架
+  模型安全技术:
+    - 对抗训练
+    - 模型加固
+  AI监控工具:
+    - Weights & Biases
+  机器学习方法:
+    - 自监督
+    - 数据增强方法
+  制造业术语:
+    - BOM
+  跨学科领域:
+    - 材料信息学
+  系统调度技术:
+    - 异构计算任务分配
+  模型压缩技术:
+    - 混合精度量化
+    - 稀疏化
+  芯片平台:
+    - 海思
+    - 联咏
+    - 瑞芯微
+  汽车工程文档:
+    - SOR
+    - EWO
+  时序预测算法:
+    - Prophet
+  前端开发:
+    - 微信小程序开发
+  AI应用/自动化:
+    - 工作流智能体开发
+  AI/算法:
+    - 算法研究
+  AI 协作工具:
+    - AI Programming Partner
+  AI 工作流:
+    - Agent Workflow
+  AI 框架/工具:
+    - LLM Agents
+  汽车工程:
+    - 车身控制
+    - 空调系统
+    - 能量管理
+    - 底盘调校
+    - 热管理
+    - 运动能量
+  系统软件:
+    - KMD
+  AI推理引擎:
+    - Executorch
+  垂直领域应用:
+    - 智能座舱
+  AI 系统设计:
+    - Agent 生态
+    - 跨场景 Agent 协同
+  运维技术:
+    - AIOps
+  数据采集技术:
+    - Web Intelligence
+  化学信息学库:
+    - RDKit
+  机器学习运维工具:
+    - MLflow
+  AI 设计方法:
+    - 反向设计
+  材料发现方法:
+    - 活性空间探索
+  材料研发方法:
+    - 高通量计算/模拟/实验
+  计算材料学:
+    - 材料分子建模
+  AIGC生成算法:
+    - Text2Image
+    - Text2Video
+    - image2video
+  计算架构:
+    - 边缘计算
+  AI计算平台:
+    - 智算
+  推理引擎:
+    - Hugging Face Transformers
+  互联技术:
+    - XLINK
+  网络硬件:
+    - NIC
+    - SmartNIC
+
+
+  # ==================== LLM 自动发现 ====================
+  AI 开源项目:
+    - DeepChat
+    - CherryStudio
+    - Firecrawl
+  跨端技术:
+    - CMP
+  通信机制:
+    - JSBridge
+  前端状态管理框架:
+    - Dva
+  前端开发框架:
+    - Umi
+  前端开发工具:
+    - Mock
+  构建工具:
+    - rolp
+    - FIS
+    - Espbuild
+    - Roolup
+    - Turborepo
+    - Rspack
+  编译器技术:
+    - Solidity 编译器
+  区块链技术:
+    - EVM
+    - 区块链支付
+    - 数字钱包
+  开发工具/方法:
+    - AI辅助开发
+    - AI编程
+  遥感技术:
+    - 3S
+    - RS
+  定位技术:
+    - GNSS
+  地理信息系统:
+    - GIS
+  前端框架:
+    - 跨端框架
+    - 若依框架
+    - RIA框架
+    - Vue 3.0
+    - uview
+    - react active
+    - RN
+    - uniVue
+    - Taro
+    - EasyUI
+    - ng
+    - ArcoVue
+    - Ember
+    - 第三方混合框架
+    - Lit
+  开发工具:
+    - HBuilder
+    - 可视化编程工具
+    - 代码生成工具
+    - 智能IDE插件
+    - AI开发工具
+    - AI 开发辅助工具
+    - AI工具
+    - P4
+    - Shotgun
+    - AI辅助编程工具
+    - AI 工具
+    - Storybook
+  移动端开发框架:
+    - H5+
+    - Uniapp
+  微前端框架:
+    - qiankun
+    - 乾坤
+    - microapp
+    - Wujie
+  微前端技术:
+    - Module Federation
+  云计算模型:
+    - IaaS
+    - PaaS
+  产品/项目:
+    - 通义点金
+  架构模式:
+    - BFF
+  云数据库:
+    - Amazon Aurora
+    - Azure SQL
+  数据库:
+    - Spanner
+  前端组件/库:
+    - datatable
+  GIS软件:
+    - SuperMap
+  AI/算法:
+    - GIS类AI空间算法
+  AI工具:
+    - AI工具处理GIS空间数据
+    - claude
+  网络通信技术:
+    - SSE
+  前端功能:
+    - Markdown解析
+  行业经验:
+    - 智慧矿山
+  平台/产品:
+    - Aholo
+  前端组件/解决方案:
+    - ChatUI
+  前端框架/UI库:
+    - MiniUI
+  数据可视化:
+    - uCharts
+    - 可视化图表
+  UI 框架:
+    - Vant
+    - uView
+    - shadcn/ui
+  系统架构:
+    - 三端一体化架构
+  开发平台:
+    - 低代码可视化平台
+  数据技术:
+    - 数据可视化
+  AI应用场景:
+    - AI+ 数据智能分析
+  图表库:
+    - Canvas.js
+  图形渲染技术:
+    - LOD
+  编程语言/运行时:
+    - WebAssembly
+  平台经验:
+    - Mass平台
+  机器人技术:
+    - SLAM
+  桌面端开发:
+    - Scratch
+  企业专用框架:
+    - 南网cap开发框架
+  AI应用:
+    - AI工作流
+    - AI原生应用
+    - AI对话系统
+  设计思维:
+    - AI产品交互设计
+  移动开发:
+    - 端智能
+  AI工程:
+    - AI模型微调
+    - AI推理优化
+  半导体工艺:
+    - 光掩模版制作
+    - 曝光
+    - 蚀刻
+    - 测量
+  质量管理:
+    - SPC
+  协作与办公工具:
+    - 飞书多维表格
+  前端可视化:
+    - 企业级数据大屏
+    - 企业级报表
+  前端工具库:
+    - 行业成熟报表组件和库
+  移动端开发:
+    - 移动端H5
+    - 移动端应用封装
+    - 鸿蒙应用开发
+  开发方法/平台:
+    - Low Code
+  嵌入式系统:
+    - bootloader原理
+  嵌入式系统/编译链接:
+    - .S/.ld文件
+  GIS平台:
+    - 超图
+    - 火星
+  人工智能:
+    - AI算法
+  数据架构:
+    - 数据中台
+  开发范式/平台:
+    - 低代码开发
+  开发工具/效率工具:
+    - AI编程助手
+  前端技术:
+    - Hybrid
+    - 流式渲染
+    - 微信小程序原生语法
+    - H5
+    - 实时流式渲染
+    - 增量解析
+    - 局部重排
+    - 消息去抖与重试
+  AI/低代码工具:
+    - app和小程序的ai自动生成工具
+  跨端开发框架:
+    - UniApp
+    - uniapp
+    - weex
+  工业机器人平台:
+    - KUKA
+  前端工具:
+    - 前端编译和构建工具
+    - Css 预处理语言
+  前端优化:
+    - 全链路性能优化方案
+  设计检查工具:
+    - nlint
+  状态管理:
+    - Zustand
+    - XState
+  性能优化:
+    - Worker/WASM
+  性能监控:
+    - Web Vitals
+  AI 设计工具:
+    - Figma AI
+  AI 编程助手:
+    - VSCode Copilot
+  业务系统:
+    - 企业微信SCRM系统
+    - BPM
+    - BI 工具
+    - 馆房一体化管理系统
+    - GBI
+  营销工具:
+    - H5互动游戏
+  后端技术:
+    - JSP
+  企业软件:
+    - WMS
+  前端框架/库:
+    - AUI
+  AI应用领域:
+    - AI原生游戏
+    - AI角色扮演类产品
+  AI应用技术:
+    - AI驱动的用户交互逻辑
+  项目管理工具:
+    - Jira
+    - TAPD
+  协作工具:
+    - Conference
+  协作系统:
+    - 飞书多维表
+  前端表单框架:
+    - FormilyJS
+  低代码引擎:
+    - lowcodeengine
+  数据可视化库:
+    - React Flow
+  安全技术:
+    - 活体检测
+    - 反欺诈插件
+    - 防劫持
+  行业系统:
+    - POS系统
+  AI 技术:
+    - Tool/Action 设计
+    - Memory & Retrieval 策略
+  数据可视化工具:
+    - DataV
+  BI工具:
+    - QuickBI
+    - FineBI
+    - Superset
+  报表工具:
+    - FileReport
+  AI/编程工具:
+    - AI编程技术
+  行业/领域经验:
+    - 物联网项目开发
+    - 物业行业经验
+    - 电商、商城、营销等行业经验
+  模板语言:
+    - Liquid
+  跨平台开发框架:
+    - APICloud
+  移动操作系统/开发平台:
+    - 鸿蒙next
+  CSS 框架/工具:
+    - UnoCSS
+  游戏引擎:
+    - 白鹭
+  模型架构技术:
+    - RoPE
+  开源项目:
+    - SmartAdmin
+    - SmartDb
+    - vueenum
+  AI工程化:
+    - Prompt工程优化
+  AI架构:
+    - MOE架构优化
+  地理信息系统工具:
+    - qgis
+  内容管理系统:
+    - Payload CMS
+  AI交互:
+    - Prompt 界面
+  产品/平台:
+    - AI原生工作流看板
+    - KiAgentS
+  低代码开发平台:
+    - Genie Studio
+  低代码框架:
+    - JNPF
+    - JECLOUD
+    - JEECG
+  UI 组件库:
+    - TDesign
+    - OpenTiny
+  前端工具/库:
+    - hiprint
+    - exceljs
+  特定应用类型:
+    - 车载小程序
+    - 轻应用
+    - 服务卡片
+  特定平台技术:
+    - 车机Web内核
+  原型设计工具:
+    - 摹客
+  芯片接口协议/内存技术:
+    - IPLPDDR456/HBM234/GDDR67
+  移动开发技术:
+    - JSBridge通信
+  可视化平台:
+    - 阿里云DataV
+    - 百度Sugar
+  UI框架:
+    - AntDesignXVue
+    - Mint
+  AI 编程工具:
+    - Cusor
+    - 通义千问代码助手
+    - Kiro
+  CI/CD工具:
+    - ADO
+  容器与编排工具:
+    - Helm
+  XR硬件平台:
+    - PICO4Ultra
+    - Quest3
+    - Vision Pro
+  开发工具/方法论:
+    - 低代码
+    - 低代码/零代码
+  项目管理认证:
+    - PMP
+  广告变现:
+    - IAA Monetization
+  安全/调试:
+    - Packet Capture
+  AI交互技术:
+    - 流式输出
+  硬件设计:
+    - 微架构设计
+    - RTL开发
+  CPU组件:
+    - 前端取指
+    - 译码
+    - 乱序调度
+    - 访存部件
+    - 中断
+    - 浮点部件
+  编程语言标准/特性:
+    - ES6
+  工业分析方法:
+    - FTA
+  后端技术/开发平台:
+    - ColdFusion
+  前端平台:
+    - API &AI World平台
+  前端应用:
+    - AI 对话页面
+  前端开发:
+    - 工作流的页面编排
+  网络技术:
+    - httpdns
+  项目管理阶段:
+    - USR
+  测试类型:
+    - SIT
+    - UAT
+  工业软件:
+    - 工业自动化控制系统
+  工业领域:
+    - 智能制造
+  HTTP库:
+    - Axios
+  开发范式:
+    - 高码开发
+    - 低码编排
+  系统脚本:
+    - x86单机程序控制脚本
+  数据平台概念:
+    - 数据血缘
+    - 数据质量
+  游戏引擎绑定技术:
+    - JSB
+  3D技术/格式:
+    - 3dgs
+  3D渲染技术:
+    - 高斯泼溅
+  3D建模/测绘技术:
+    - 倾斜摄影
+  移动系统:
+    - Android ROM
+  芯片设计方法:
+    - 架构量化分析
+  处理器微架构技术:
+    - 分支预测算法
+    - 指令发射
+  BI/报表工具:
+    - FineReport
+  后端框架:
+    - Skynet
+  移动开发模式:
+    - HybridApp
+  前端框架特性:
+    - App Router
+  系统能力:
+    - 流控能力
+  前端优化技术:
+    - 列表/画布虚拟化
+  工程方法:
+    - VAVE
+  无人机软件:
+    - Ground Station
+  农业无人机功能:
+    - AB点作业
+  甘特图库:
+    - dhtmlxGantt
+  硬件验证/IP:
+    - RDM
+    - ARC
+    - LINK
+  验证方法:
+    - coverage收集
+  前端渲染技术:
+    - 服务器组件渲染
+  前端组件库:
+    - Storefront UI
+  三维GIS框架:
+    - Cesium
+  开发框架:
+    - 低代码框架
+  图形可视化库:
+    - mxgraph
+    - gojs
+    - x6
+    - g6
+    - Jointjs
+  Web API:
+    - webworker
+  前端架构:
+    - 微前端框架
+  项目管理:
+    - Product Owner
+  项目管理/交付:
+    - 端到端
+  角色/职责:
+    - 产品工程师
+  AI 通信协议:
+    - AGUI
+    - Agent Graph User Interface
+  国际化工具:
+    - react-i18next
+    - next-i18next
+    - formatjs
+  实时通信:
+    - SignalR
+  前端应用领域:
+    - 画布产品
+  行业标准与合规:
+    - 电子政务相关国家标准与安全合规要求
+  金融业务技能:
+    - M1M3阶段催收技巧
+  桌面应用技术:
+    - Tauri
+  测试框架:
+    - RTL
+  Monorepo工具:
+    - Nx
+    - TurboRepo
+  网站构建平台:
+    - Webflow
+  开发流程/方法论:
+    - AI Coding工作流
+  三维数据格式:
+    - 3D Tiles
+  技术推理模型:
+    - qwencoder
+  Shopify 主题开发:
+    - Sections & Blocks
+  Shopify 扩展开发:
+    - Checkout UI Extensions
+    - Theme App Extensions
+  Shopify 后端开发:
+    - Shopify Functions
+  Shopify 数据管理:
+    - Metafields/Metaobjects
+  前端框架/工具:
+    - vben
+  内部系统:
+    - op
+    - mp
+
+
+  # ==================== LLM 自动发现 ====================
+  AI 应用:
+    - 工业 AI 大模型
+    - AI 研发效率提升
+    - AI 运营效率提升
+    - AI 业务效果提升
+  前端框架/库:
+    - MorJS
+    - Y.js
+  移动开发框架:
+    - Weex
+    - Donut
+  AI+低代码平台:
+    - AIGCx低代码
+  特定系统/平台:
+    - TPT
+  前端框架特性:
+    - Hooks
+  行业应用:
+    - 军事应用沙盘推演
+    - 仿真推演
+    - 无人机应用开发
+  算法/协议:
+    - CRDT
+  富文本编辑器:
+    - prosemirror
+  图表工具:
+    - drawio
+  开发工具:
+    - 可视化编辑器
+    - VSCode插件
+    - DevEco Studio
+  AI前端应用:
+    - 生成式UI
+    - 智能组件推荐
+    - 自然语言转组件编排
+    - UI布局智能优化
+  交互技术:
+    - 拖拽式组件布局
+  组件技术:
+    - 组件联动
+  地理信息系统:
+    - WebGis
+    - Gis
+  数据可视化库:
+    - AntV G6
+  前端框架/工具:
+    - Vben Admin
+  营销推广:
+    - 社群建群引流
+  前端组件/应用:
+    - 多维表格
+  开发工具/方法论:
+    - AI 辅助编程工作流
+  前端工具:
+    - Snowpack
+    - Vue Resource
+    - Rolp
+    - Rsbuild
+  物联网/车联网技术:
+    - OTA
+  即时通讯/机器人开发:
+    - TG bot
+  AI辅助开发工具:
+    - cloude code
+    - CodeWhisperer
+  专业工具/系统:
+    - 3D点云标注工具
+    - 4D时序点云标注工具
+    - 2D与3D融合标注系统
+  标注功能:
+    - 点云框标注
+    - 语义分割
+    - 目标跟踪
+    - 多帧协同标注
+    - 状态追踪
+    - 自动化标注辅助
+    - 自动预标注
+    - 智能插值
+  AI辅助编程工具:
+    - claude code
+    - ChatGPT Codex
+    - Gemini Code
+    - CodeStitch
+    - Grok Code
+  UI 组件库:
+    - elementUi
+    - Shadcn UI
+  生成式AI工具:
+    - control net
+  生物信息学工具:
+    - MobiVision
+  生物信息学技能:
+    - 单细胞多组学分析
+  设计软件:
+    - pixso
+  芯片设计约束文件:
+    - SDC
+  芯片低功耗设计文件:
+    - UPF
+  Web打印库:
+    - Lodop
+    - HiPrint
+  数据可视化:
+    - MCChart
+    - 数据驾驶舱
+    - AntV X6
+    - Gantt
+  版本控制:
+    - hg
+  浏览器扩展框架:
+    - wxt
+  前端概念:
+    - 状态管理
+  领域知识:
+    - 金融/银行业领域知识
+    - 地理信息系统
+    - 三维可视化
+  前端技术:
+    - 动态化技术
+    - 互动渲染
+    - SSE/流式响应渲染
+    - 实时交互
+  大模型应用:
+    - Prompt 优化
+  电商指标:
+    - GMV
+  管理模式:
+    - 阿米巴经营模式
+  跨端开发框架:
+    - uni-app
+    - unionapp
+  跨平台开发技术:
+    - React Native 与安卓原生的交互适配、桥接
+  硬件描述语言:
+    - Chisel
+  前端设计流程:
+    - STA
+  验证方法学:
+    - Testbench
+  UI框架/组件库:
+    - Shadcn
+  AI应用:
+    - AI数据分析Agent
+  安全技术:
+    - 可信执行环境
+  平台/工具:
+    - 机器学习等AI平台的机器全生命周期管理
+    - DevOps的基础设施提效工具
+  开发模式:
+    - Hybrid Web
+  设计系统:
+    - DesignSystem
+  跨端技术:
+    - Hybrid App
+  可视化/图形库:
+    - reactflow
+  前端框架/UI库:
+    - traui
+    - Sencha Ext.NET
+  前端架构:
+    - 无头电商架构
+    - 微前端
+  云计算:
+    - Serverless云函数
+  地理坐标系:
+    - WGS84
+    - GCJ02
+  GIS 功能模块:
+    - 路径规划
+    - 热力图
+    - 空间分析
+  空间计算:
+    - 缓冲区分析
+    - 相交分析
+  地图库:
+    - Leaflet
+  AI 技术:
+    - ai agent
+    - AIAIGC/LLM
+    - AI for Code
+  工业软件/可视化:
+    - 工艺流程图
+  低代码/业务开发:
+    - 自定义流程
+    - 自定义表单
+    - 自定义报表
+  前端框架套件:
+    - Vue全家桶
+  开发工具/方法:
+    - AI工具辅助编程
+  前端框架:
+    - Node web
+    - Vuet
+    - Qwik
+  Web技术:
+    - CGI
+  专业领域/工具:
+    - BIM
+  系统/平台:
+    - DAM
+  微服务组件:
+    - Nacos
+    - Gateway
+    - Feign
+  IoT 开发框架:
+    - miotpluginsdk
+    - 米家插件框架
+  IoT 协议/规范:
+    - MIoT 规范
+  开源前端框架:
+    - JeecgBoot
+    - 若依
+  建模技术:
+    - CSG
+    - Boolean operations
+  API 交互框架:
+    - tRPC
+  营销自动化工具:
+    - Klaviyo
+  手势库:
+    - Hammer.js
+  SEO优化:
+    - TDK
+  缓存策略:
+    - LRU
+  性能优化:
+    - CRA
+  AI应用领域:
+    - AI三维检索
+  架构模式:
+    - BFF (Backend for Frontend)
+  业务场景:
+    - 线下核销
+  业务功能:
+    - 扫码核销
+  系统集成:
+    - 3PL
+    - ERP
+    - OMS
+  销售/技术支持:
+    - design in
+    - design win
+  云服务/容器编排:
+    - AWS EKS
+  图形/3D框架:
+    - R3F
+  网络通信:
+    - Socket.io
+  业务领域/特定平台:
+    - SSV实验室
+  算法/多媒体:
+    - 音视频处理相关算法
+  自研平台:
+    - 中云图低空数智化巡检平台
+  系统架构:
+    - 低空数智大脑
+  设计领域:
+    - CMF
+  前端组件/工具:
+    - Sboard
+  工作环境:
+    - 洁净间工作
+  行业经验:
+    - 半导体制造
+  硬件/设备:
+    - 设备调试
+    - 整机测试
+    - 设备测试
+  AI 工具:
+    - 智能代码生成
+    - 研发助手
+  测试工具:
+    - 自动化测试
+  语音技术:
+    - ASR
+    - TTS
+  开发流程工具:
+    - Workflow
+  可视化软件/平台:
+    - 乐吾乐可视化组态软件
+  计算机体系结构:
+    - CPU微体系结构
+  专用硬件:
+    - AI加速器
+  模拟/射频电路:
+    - 射频/模拟前端
+  医学影像前端框架:
+    - OHIF
+    - Cornerstone
+  医学影像处理库:
+    - 影像3D库
+  即时通讯产品/平台:
+    - 有度即时通
+  前端状态管理:
+    - Context
+  性能指标:
+    - Core Web Vitals
+  行业产品经验:
+    - 实景三维商业化产品
+    - 地灾应急商业化产品
+  低代码平台:
+    - NodeRED
+  企业应用框架:
+    - Odoo
+    - OpenERP
+  构建工具:
+    - ESBuild
+    - snowpack
+  Web 技术:
+    - Web Components
+    - PWA
+  可视化库:
+    - three.js
+  图形库:
+    - Konva.js
+  开源框架:
+    - ruoyi
+    - jeecg
+  通信协议:
+    - MQTT
+  存储芯片:
+    - EMMC
+    - UFS
+  AI开发工具:
+    - Cursor Pro
+    - augment
+  扩展现实技术:
+    - XR
+  AI 开发工具:
+    - CCAntigravity
+  企业软件/平台:
+    - 致远系统
+  AI 工具/应用:
+    - AI Copilot
+  业务系统:
+    - User Link
+  UI框架:
+    - Choerodon UI
+  桌面应用框架:
+    - Electron
+  前端工程:
+    - Design System
+  业务协作:
+    - GTM
+  电商框架:
+    - Shopify Hydrogen
+  电商架构:
+    - Headless Commerce
+  动态化框架:
+    - JavaScriptCore
+  调试工具/技术:
+    - Zombie Objects
+  AI 应用开发:
+    - 工作流开发
+    - 流式调用
+    - AI 创新工具研发
+  跨平台框架:
+    - uniappx
+  编程语言:
+    - uts
+    - ArkTS
+  设计工具:
+    - PxCook
+  设计协作工具:
+    - 蓝湖
+  AI/机器学习项目经验:
+    - AI大模型项目
+    - 智能体产品项目
+  技术生态:
+    - 阿里系技术
+  AI工程技术:
+    - Context Window精细化管理
+    - Agent评估与调优
+  前端AI技术:
+    - AI生成式渲染框架
+  可视化/应用场景:
+    - 大屏
+  可视化产品/平台:
+    - EasyV
+  特定领域工具:
+    - 音频创作工具
+  AI 应用场景:
+    - 多模态智能创作
+  AI 工程化:
+    - 前端 AI 应用基础能力
+  AI 技能:
+    - AI 编程/应用实践
+
+soft_skills:
+  # 沟通能力
+  - 沟通能力
+  - 表达清晰
+  - 语言表达
+  - 书面沟通
+  - 演讲能力
+  
+  # 团队协作
+  - 团队协作
+  - 团队合作
+  - 协作精神
+  - 跨部门协作
+  
+  # 领导力
+  - 领导力
+  - 领导能力
+  - 团队管理
+  - 人员管理
+  - 指导能力
+  - Mentoring
+  
+  # 项目管理
+  - 项目管理
+  - 项目规划
+  - 进度管理
+  - 风险管理
+  - Agile
+  - Scrum
+  - 敏捷开发
+  
+  # 时间管理
+  - 时间管理
+  - 优先级管理
+  - 多任务处理
+  
+  # 问题解决
+  - 问题解决能力
+  - 问题分析
+  - 故障排查
+  - Debug 能力
+  
+  # 学习能力
+  - 学习能力
+  - 快速学习
+  - 自我驱动
+  - 持续学习
+  
+  # 思维能力
+  - 逻辑思维
+  - 分析能力
+  - 创新思维
+  - 批判性思维
+  - 系统思维
+  
+  # 工作态度
+  - 抗压能力
+  - 适应能力
+  - 责任心
+  - 自驱力
+  - 执行力
+  - 细致
+  - 严谨
+  - 主动性强
+  
+  # 其他软技能
+  - 组织能力
+  - 协调能力
+  - 谈判能力
+  - 冲突解决
+  - 决策能力
+  - 战略思维
+
+# ==================== 同义词映射 ====================
+synonyms:
+  golang: Go
+  react.js: React
+  vue: Vue.js
+  k8s: Kubernetes
+  express.js: Express
+  aws: AWS
+  gcp: Google Cloud
+  微服务: Microservices
+  深度学习: Deep Learning
+  机器学习: Machine Learning
+  自然语言处理: NLP
+  计算机视觉: CV

@@ -17,3 +17,9 @@ jieba==0.42.1
 
 # 图表生成（趋势分析）
 XlsxWriter==3.1.9
+
+# 大模型 API 集成（可选）
+dashscope>=1.14.0          # 通义千问 SDK
+aiohttp>=3.9.0             # 异步 HTTP 客户端
+pydantic>=2.0.0            # 数据校验（可选）
+requests>=2.31.0           # 同步请求

@@ -1,15 +1,27 @@
-# 技能词频统计工具
+# 技能词频统计工具 v1.2.0
 
-📊 一个基于 Web 的职位 CSV 文件技能分析工具，支持智能 NLP 匹配和趋势分析。
+📊 一个基于 Web 的职位 CSV 文件技能分析工具，支持智能 NLP 匹配、薪资关联分析和大模型混合动力引擎。
+
+## v1.2.0 重大更新 🚀
+
+- ✨ **薪资关联分析**：自动从 CSV 列（或职位描述）中提取薪资信息，计算各技能的**平均年薪**。
+- ✨ **LLM 混合动力引擎**：除了传统的 Jieba 分词，新增 **大模型 (LLM) 模式**，可发现词库外的新兴技术词汇。
+- ✨ **核心性能优化**：修复了在大批量数据下 Excel 生成卡死的问题；合并了 1000+ 碎片化分类，报表更清晰。
+- ✨ **智能薪资兜底**：若 CSV 无独立薪资列，系统会自动从职位标题或描述中正则提取薪资。
 
 ## 功能特性
 
-- ✅ **CSV 文件上传**：支持拖拽或点击上传，自动检测编码
-- ✅ **智能 NLP 匹配**：基于 jieba 分词 + 上下文语义识别，准确区分技能词和普通词汇
-- ✅ **趋势分析**：按时间段（月/季/年）统计技能需求变化，生成增长率排名
-- ✅ **双维度统计**：硬技能（编程语言、框架、数据库等）+ 软技能（沟通能力、团队协作等）
-- ✅ **Excel 报表**：多 Sheet 格式，包含总统计表、分类统计表、Top50 排行、趋势汇总、增长率排名
-- ✅ **美观界面**：现代化 Web UI，支持实时进度显示、结果预览和趋势摘要
+- ✅ **CSV 文件上传**：支持拖拽或点击上传，自动检测编码。
+- ✅ **智能 NLP 匹配**：基于 Jieba 分词 + 上下文语义识别，准确区分技能词。
+- ✅ **大模型 (LLM) 发现**：支持通义千问、DeepSeek、小米 Mimo 等多种模型，发现新兴 AI 技能。
+- ✅ **薪资关联挖掘**：🔥 新增功能：统计技能与薪资的强关联，生成「高薪技能排行榜」。
+- ✅ **趋势分析**：按时间段（月/季/年）统计技能需求变化，生成增长率排名。
+- ✅ **Excel 报表**：多 Sheet 格式，包含：
+  - 🔥 **高薪技能分析** (New)
+  - 总统计表 (含平均年薪)
+  - 分类统计表 (30+ 核心大类)
+  - Top50 排行 (含平均年薪)
+  - 趋势汇总/增长率排名 (需日期列)
 
 ## 技术栈
 
@@ -18,10 +30,9 @@
 | 后端框架 | Flask 3.0 |
 | 数据处理 | pandas 2.1 |
 | Excel 生成 | openpyxl 3.1 + XlsxWriter |
-| NLP 分词 | jieba |
-| 配置文件 | PyYAML |
-| 编码检测 | chardet |
-| 前端 | Vue.js 3 + 自定义 CSS |
+| NLP 分词 | jieba + LLM (Dashscope/DeepSeek/OpenAI API) |
+| 词库管理 | PyYAML + 自研分类合并算法 |
+| 前端 | Vue.js 3 + 现代化玻璃钢化 UI |
 
 ## 快速开始
 
@@ -37,36 +48,12 @@ pip install -r requirements.txt
 python app.py
 ```
 
-### 3. 访问应用
+### 3. 使用流程
 
-打开浏览器访问：http://localhost:5001
-
-### 4. 使用流程
-
-1. 准备 CSV 文件（包含职位描述列）
-2. 拖拽或点击上传 CSV
-3. 等待分析完成
-4. 查看 Top 技能预览
-5. 下载完整 Excel 报表
-
-## CSV 格式要求
-
-CSV 文件应包含职位描述列，支持的列名：
-- `description`（推荐）
-- `job_description`
-- `职位描述`
-- `岗位描述`
-- `requirements`
-- `要求`
-- 等其他常见变体
-
-**示例 CSV 结构：**
-
-```csv
-job_id,title,description,company
-1,Java 开发工程师，"职位要求：精通 Java、Spring Boot，熟悉 MySQL、Docker..."，公司 A
-2,Python 工程师，"任职要求：熟练掌握 Python、Django，了解 Redis、Kubernetes..."，公司 B
-```
+1. 准备 CSV 文件（包含职位描述列，可选包含薪资列）。
+2. 打开：http://localhost:5001。
+3. 如果使用 **智能模式**，请填入大模型 API Key。
+4. 分析完成后查看 Web 预览，并点击 **「下载完整 Excel 报表」**。
 
 ## 项目结构
 
@@ -75,126 +62,33 @@ jobAnalysis/
 ├── app.py                      # Flask 主应用
 ├── requirements.txt            # Python 依赖
 ├── config/
-│   └── skills.yaml             # 技能词库配置
+│   └── skills.yaml             # 技能词库（已合并优化）
 ├── services/
-│   ├── csv_parser.py           # CSV 解析服务
-│   ├── skill_matcher.py        # 技能匹配引擎
-│   └── excel_generator.py      # Excel 生成服务
+│   ├── csv_parser.py           # CSV 解析与薪资提取 (v1.2.0 增强)
+│   ├── salary_analyzer.py      # 🔥 薪资标准化折算服务 (New)
+│   ├── extractors.py           # LLM/Jieba 混合提取策略 (New)
+│   ├── smart_skill_matcher.py  # 智能匹配引擎 (v1.2.0 增强)
+│   └── excel_generator.py      # Excel 报表生成 (性能优化版)
 ├── templates/
-│   └── index.html              # 前端页面
-├── uploads/                    # 临时上传目录
-├── outputs/                    # 输出文件目录
-├── test_with_date.csv          # 测试数据（带日期）
-└── test_data_fixed.csv         # 测试数据
+│   └── index.html              # 前端界面 (UI 升级)
+└── tasks/                      # 任务研发记录 (SSOT 规范)
 ```
 
 ## 技能词库
 
-词库位于 `config/skills.yaml`，包含：
+词库位于 `config/skills.yaml`，v1.2.0 已将 1000+ 碎片分类合并为 **31 个核心大类**：
+- **AI 领域**：AI Agent、大语言模型、RAG与知识工程、Prompt工程等。
+- **计算机视觉**：CV、多模态、生成式模型。
+- **硬技能**：编程语言、后端框架、前端框架、数据库等。
+- **AI 硬件**：AI芯片、高性能计算、编译器技术。
 
-### 硬技能（13 个类别）
-- 编程语言（Java、Python、JavaScript 等）
-- 后端框架（Spring Boot、Django、Flask 等）
-- 前端框架（React、Vue.js、Angular 等）
-- 数据库（MySQL、PostgreSQL、MongoDB 等）
-- DevOps 工具（Docker、Kubernetes、Jenkins 等）
-- 云平台（AWS、Azure、阿里云等）
-- 操作系统（Linux、Windows、macOS 等）
-- 消息队列（Kafka、RabbitMQ 等）
-- 架构技术（微服务、RESTful、GraphQL 等）
-- 版本控制（Git、SVN 等）
-- 机器学习（TensorFlow、PyTorch 等）
+## 路线图 (Roadmap)
 
-### 软技能（20+ 项）
-- 沟通能力、团队协作、领导力
-- 项目管理、时间管理、问题解决能力
-- 学习能力、逻辑思维、抗压能力等
-
-## Excel 报表说明
-
-生成的 Excel 文件包含多个 Sheet：
-
-| Sheet 名称 | 内容 |
-|-----------|------|
-| 总统计 | 所有技能按频次排序，包含占比和累计占比 |
-| 编程语言/后端框架/... | 按类别分类统计 |
-| 软技能 | 软技能专项统计 |
-| Top50 排行 | 前 50 热门技能排行 |
-| **技能趋势汇总** | ✨ 新增：按时间段统计技能频次变化 |
-| **趋势详情** | ✨ 新增：每个时间段的详细技能分布 |
-| **增长率排名** | ✨ 新增：技能需求增长率 Top20 |
-
-## API 接口
-
-### POST /upload
-上传 CSV 文件并分析
-
-**请求：**
-```
-Content-Type: multipart/form-data
-file: <CSV 文件>
-```
-
-**响应：**
-```json
-{
-  "success": true,
-  "message": "分析完成！共分析 10 个职位，匹配到 45 种技能",
-  "data": {
-    "total_positions": 10,
-    "total_skills": 45,
-    "top_skills": [{"skill": "Java", "count": 8}, ...],
-    "download_url": "/download/skill_stats_20260320_153804.xlsx"
-  }
-}
-```
-
-### GET /download/<filename>
-下载生成的 Excel 文件
-
-## 配置说明
-
-### 修改端口
-编辑 `app.py` 第 229 行：
-```python
-app.run(debug=False, host='0.0.0.0', port=5001)
-```
-
-### 自定义词库
-编辑 `config/skills.yaml`，添加或修改技能词。
-
-### 文件限制
-- 最大文件大小：50MB
-- 支持格式：CSV
-- 临时文件保留时间：1 小时
-
-## 测试
-
-使用提供的测试数据：
-```bash
-curl -X POST http://localhost:5001/upload \
-  -F "file=@test_data_fixed.csv"
-```
-
-## 常见问题
-
-### Q: CSV 解析失败？
-A: 确保 CSV 格式正确，使用英文逗号分隔，多行文本用双引号包裹。
-
-### Q: 未匹配到技能？
-A: 检查 CSV 是否包含职位描述列，或尝试修改列名为 `description`。
-
-### Q: 端口被占用？
-A: 修改 `app.py` 中的端口号，或关闭占用 5001 端口的进程。
-
-## 后续优化方向
-
-- [ ] 支持更多文件格式（Excel、JSON）
-- [ ] 添加技能同义词映射
-- [ ] 支持自定义词库上传
-- [ ] 增加词云可视化
-- [ ] 支持批量文件处理
-- [ ] 添加趋势分析功能
+- [x] v1.1.0: 增加趋势分析与 Excel 导出
+- [x] v1.2.0: 薪资关联分析与 LLM 混合引擎
+- [x] v1.2.0: 修复 Excel 生成卡死及词库分类膨胀问题
+- [ ] v2.0.0: 增加 Web 实时可视化图表 (ECharts)
+- [ ] v2.0.0: 支持多个文件批量对比分析
 
 ## License
 

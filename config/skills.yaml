@@ -1,244 +1,2536 @@
 # 技能词库配置文件
 # 用于计算机行业招聘职位的技能关键词匹配
+# 分类已合并优化
 
-# ==================== 硬技能 - 计算机行业 ====================
 hard_skills:
-  # 编程语言
   programming_languages:
-    - Java
-    - Python
-    - JavaScript
-    - TypeScript
-    - Go
-    - Golang
-    - C++
-    - C
-    - C#
-    - Ruby
-    - PHP
-    - Swift
-    - Kotlin
-    - Rust
-    - Scala
-    - R
-    - MATLAB
-    - Perl
-    - Shell
-    - Bash
-  
-  # 后端框架
+  - Java
+  - Python
+  - JavaScript
+  - TypeScript
+  - Go
+  - Golang
+  - C++
+  - C
+  - C#
+  - Ruby
+  - PHP
+  - Swift
+  - Kotlin
+  - Rust
+  - Scala
+  - R
+  - MATLAB
+  - Perl
+  - Shell
+  - Bash
   backend_frameworks:
-    - Spring Boot
-    - Spring Cloud
-    - Spring MVC
-    - Django
-    - Flask
-    - FastAPI
-    - Node.js
-    - Express
-    - Express.js
-    - ASP.NET
-    - ASP.NET Core
-    - Ruby on Rails
-    - Laravel
-    - Gin
-    - Echo
-    - Beego
-    - MyBatis
-    - Hibernate
-
-  # 前端框架
+  - Spring Boot
+  - Spring Cloud
+  - Spring MVC
+  - Django
+  - Flask
+  - FastAPI
+  - Node.js
+  - Express
+  - Express.js
+  - ASP.NET
+  - ASP.NET Core
+  - Ruby on Rails
+  - Laravel
+  - Gin
+  - Echo
+  - Beego
+  - MyBatis
+  - Hibernate
   frontend_frameworks:
-    - React
-    - React.js
-    - Vue.js
-    - Vue
-    - Angular
-    - Next.js
-    - Nuxt.js
-    - Svelte
-    - jQuery
-    - Bootstrap
-    - Tailwind CSS
-    - Element UI
-    - Ant Design
-    - Vuetify
-
-  # 机器学习/数据科学
+  - React
+  - React.js
+  - Vue.js
+  - Vue
+  - Angular
+  - Next.js
+  - Nuxt.js
+  - Svelte
+  - jQuery
+  - Bootstrap
+  - Tailwind CSS
+  - Element UI
+  - Ant Design
+  - Vuetify
   ml_frameworks:
-    - TensorFlow
-    - PyTorch
-    - Scikit-learn
-    - Keras
-    - Pandas
-    - NumPy
-    - Matplotlib
-    - Seaborn
-    - OpenCV
-    - Spark
-    - Hadoop
-    - Flink
-
-  # 数据库
+  - TensorFlow
+  - PyTorch
+  - Scikit-learn
+  - Keras
+  - Pandas
+  - NumPy
+  - Matplotlib
+  - Seaborn
+  - OpenCV
+  - Spark
+  - Hadoop
+  - Flink
   databases:
-    - MySQL
-    - PostgreSQL
-    - Oracle
-    - SQL Server
-    - SQLite
-    - MongoDB
-    - Redis
-    - Elasticsearch
-    - Cassandra
-    - DynamoDB
-    - MariaDB
-    - ClickHouse
-    - InfluxDB
-    - Neo4j
-
-  # DevOps 工具
+  - MySQL
+  - PostgreSQL
+  - Oracle
+  - SQL Server
+  - SQLite
+  - MongoDB
+  - Redis
+  - Elasticsearch
+  - Cassandra
+  - DynamoDB
+  - MariaDB
+  - ClickHouse
+  - InfluxDB
+  - Neo4j
   devops_tools:
-    - Docker
-    - Kubernetes
-    - K8s
-    - Jenkins
-    - GitLab CI
-    - GitHub Actions
-    - Travis CI
-    - CircleCI
-    - Terraform
-    - Ansible
-    - Puppet
-    - Chef
-    - Prometheus
-    - Grafana
-    - ELK Stack
-    - Logstash
-    - Kibana
-
-  # 版本控制
+  - Docker
+  - Kubernetes
+  - K8s
+  - Jenkins
+  - GitLab CI
+  - GitHub Actions
+  - Travis CI
+  - CircleCI
+  - Terraform
+  - Ansible
+  - Puppet
+  - Chef
+  - Prometheus
+  - Grafana
+  - ELK Stack
+  - Logstash
+  - Kibana
   version_control:
-    - Git
-    - SVN
-    - Mercurial
-    - GitHub
-    - GitLab
-    - Bitbucket
-
-  # 云平台
+  - Git
+  - SVN
+  - Mercurial
+  - GitHub
+  - GitLab
+  - Bitbucket
   cloud_platforms:
-    - AWS
-    - Amazon Web Services
-    - Azure
-    - Google Cloud
-    - GCP
-    - 阿里云
-    - 腾讯云
-    - 华为云
-    - 百度云
-
-  # 操作系统
+  - AWS
+  - Amazon Web Services
+  - Azure
+  - Google Cloud
+  - GCP
+  - 阿里云
+  - 腾讯云
+  - 华为云
+  - 百度云
   operating_systems:
-    - Linux
-    - Windows
-    - macOS
-    - Ubuntu
-    - CentOS
-    - Red Hat
-    - Debian
-    - Alpine
-
-  # 消息队列
+  - Linux
+  - Windows
+  - macOS
+  - Ubuntu
+  - CentOS
+  - Red Hat
+  - Debian
+  - Alpine
   message_queues:
-    - Kafka
-    - RabbitMQ
-    - RocketMQ
-    - ActiveMQ
-    - ZeroMQ
-    - Pulsar
-
-  # 微服务/架构
+  - Kafka
+  - RabbitMQ
+  - RocketMQ
+  - ActiveMQ
+  - ZeroMQ
+  - Pulsar
   architecture:
-    - Microservices
-    - 微服务
-    - RESTful
-    - GraphQL
-    - gRPC
-    - Thrift
-    - Dubbo
-    - Service Mesh
-    - 服务网格
-
-# ==================== 软技能 ====================
+  - Microservices
+  - 微服务
+  - RESTful
+  - GraphQL
+  - gRPC
+  - Thrift
+  - Dubbo
+  - Service Mesh
+  - 服务网格
+  AI_Agent:
+  - Agentic Design Patterns
+  - Agentic Workflow
+  - Agno
+  - AutoGPT
+  - AutoGen
+  - AutogenAI
+  - BabyAGI
+  - Camel
+  - Chain of Thought
+  - Chain of Thought (CoT)
+  - ChatDev
+  - CoT
+  - CrewAI
+  - DSPy
+  - DeepResearch Agent
+  - Eliza
+  - FastGPT
+  - FastGpt
+  - Function Calling
+  - JADE
+  - LangGraph
+  - Langchain4j
+  - MAS
+  - MCP协议
+  - MetaGPT
+  - Multi-Agent Systems
+  - PlanandExecute
+  - Planner模块
+  - Planning
+  - Planning (任务规划)
+  - ReAct
+  - Reflection
+  - Reflection (反思)
+  - Reflection Loop
+  - Rivet
+  - SPADE
+  - Self-Correction
+  - Self-Correction (自我纠正)
+  - Task Decomposition
+  - ToT
+  - Tool Library
+  - Tool Use
+  - Tool Use (工具调用)
+  - 任务规划
+  - 准确性调优
+  - 单agent开发
+  - 反思
+  - 回溯/纠错
+  - 多agent开发
+  - 多智能体系统
+  - 多模态交互
+  - 工具MCP
+  - 工具调用
+  - 工具调用 (tool calling)
+  - 思绪树
+  - 思绪树 (ToT)
+  - 扣子 Coze
+  - 扣子Coze
+  - 智能体工作流
+  - 智能体编排
+  - 智谱清流
+  - 百度文心智能体
+  - 策略管理
+  - 群体智能
+  - 自我纠正
+  - 记忆管理 (memory/state)
+  - 记忆系统
+  - 轮次管理
+  - A2A (Agent to Agent)
+  - AI 智能体
+  - Agent Graph User Interface
+  - Agent Workflow
+  - Agent 应用
+  - Agent 开发技术
+  - Agent 生态
+  - Agent/LLM?业新范式
+  - AgentOS
+  - Agentic AI
+  - Agent决策引擎
+  - Agent应用落地
+  - Agent开发
+  - Agent行为决策机制
+  - Agent行为建模
+  - Autonomous Agent
+  - KiAgentS
+  - agent算法
+  - ai agent
+  - 多 Agent 协同设计
+  - 多 Agent 系统
+  - 多智能体协作
+  - 多智能体协同
+  - 多智能体工作流
+  - 智能Agent系统
+  - 智能体产品项目
+  - 智能体效果评估体系
+  - 智能体架构设计
+  - 智能体特有安全
+  - 智能体行为调优
+  - 跨场景 Agent 协同
+  RAG_and_knowledge:
+  - Agentic RAG
+  - Chroma
+  - Elasticsearch Vector
+  - Faiss
+  - FlowRAG
+  - GraphRAG
+  - KAG
+  - LTM
+  - LanceDB
+  - LangMem
+  - M3E
+  - Marqo
+  - MemGPT
+  - Milvus
+  - Pgvector
+  - Pinecone
+  - Qdrant
+  - Redis Vector Library
+  - STM
+  - Vector DB
+  - Vector Database
+  - Vector Search
+  - Weaviate
+  - Zep
+  - Zilliz
+  - flowRAG
+  - 制造业知识图谱
+  - 知识更新
+  - Distributed Storage
+  - Drag and Drop API
+  - Hybrid RAG
+  - Modular RAG
+  - Pattern向量
+  - RAG应用
+  - Web Storage API
+  - coverage收集
+  - 倒排检索
+  - 向量检索
+  - 向量知识库
+  - 多跳检索与推理
+  - 新记忆系统
+  - 检索排序
+  - 记忆压缩策略
+  - 记忆管理
+  ai_applications:
+  - AI Copilot
+  - AI Programming Partner
+  - AI SAAA化产品
+  - AI 业务效果提升
+  - AI 创新工具研发
+  - AI 研发效率提升
+  - AI 运营效率提升
+  - AI+ 数据智能分析
+  - AI4SE
+  - AIAgent
+  - AIGCx低代码
+  - AIGC文生图
+  - AIGC视频生成平台
+  - AI三维检索
+  - AI信号检测
+  - AI大模型训练加速库
+  - AI工具处理GIS空间数据
+  - AI数据分析Agent
+  - AI智能体/AI助手/copilot/千问/豆包
+  - AI编程技术
+  - AI辅助编程
+  - AI辅助选股体系
+  - AI驱动的用户交互逻辑
+  - ASR
+  - Agent
+  - Antigravity
+  - Arize Phoenix
+  - AutoGPT
+  - BabyAGI
+  - CCAntigravity
+  - ChatBI
+  - ChatGPT Codex
+  - ChromaDB
+  - CodeStitch
+  - CodeWhisperer
+  - Codex
+  - Comet ML
+  - ComfyUI
+  - Copilot
+  - Coze
+  - Cursor
+  - Cursor Pro
+  - Cusor
+  - DAIN
+  - DTK
+  - Diffusers
+  - Dify
+  - Figma AI
+  - Flowise
+  - Gemini Code
+  - Genie Studio
+  - Grok Code
+  - Hiagent
+  - Hugging Face
+  - HuggingFace
+  - JECLOUD
+  - JEECG
+  - JNPF
+  - Kiro
+  - KitChain
+  - LangChain
+  - LangFuse
+  - Langflow
+  - Langfuse
+  - LlamaIndex
+  - MLflow
+  - Materials Informatics
+  - Mem
+  - Memory 管理体系
+  - MindStudio
+  - Multi-Agent
+  - NodeRED
+  - Play.ht
+  - Prompt 界面
+  - RealESRGAN
+  - SD/WebUI
+  - Semantic Kernel
+  - Silly Tavern
+  - Stable Diffusion WebUI
+  - TTS
+  - Token狂热消耗者
+  - Topaz
+  - Transformers
+  - UI Agent
+  - UI布局智能优化
+  - VITS
+  - Verl
+  - Vibe Coding
+  - W&B
+  - Wav2Lip
+  - Web Agent
+  - Weights & Biases
+  - Whisper
+  - app和小程序的ai自动生成工具
+  - augment
+  - builder.io
+  - chatflow
+  - claude
+  - claude code
+  - cloude code
+  - control net
+  - lowcodeengine
+  - skills开发
+  - 分子表示学习
+  - 剪映
+  - 可追溯结果AI
+  - 多智能体协同软件
+  - 多模态智能创作
+  - 大模型工具辅助
+  - 对话 Agent 平台
+  - 工业 AI 大模型
+  - 工作流开发
+  - 工作流智能体开发
+  - 扣子
+  - 持续评估监测
+  - 智能 Agents
+  - 智能代码生成
+  - 智能排产
+  - 智能提醒
+  - 智能流程平台
+  - 智能组件推荐
+  - 核电设备故障诊断
+  - 毕昇
+  - 流式调用
+  - 流式输出
+  - 海螺
+  - 生成式UI
+  - 百度语音识别
+  - 研发助手
+  - 科大讯飞
+  - 自动化数据标注工具链
+  - 自定义报表
+  - 自定义流程
+  - 自定义表单
+  - 自然语言转组件编排
+  - 药物重定位
+  - 讯飞智作
+  - 语音前端算法开发支持
+  - 通义千问代码助手
+  - 钢水质量预测
+  - 飞书 aily
+  - 魔音工坊
+  - 3D数字人
+  - AI
+  - AI Coding工作流
+  - AI Ethics
+  - AI Large Model Integration
+  - AI Open Platform
+  - AI Programming Assistant
+  - AI for Science
+  - AI to C 产品
+  - AI 先行思维
+  - AI 对话页面
+  - AI 提效
+  - AI 模型应用开发 API
+  - AI 编程/应用实践
+  - AI 软件开发新范式
+  - AI 驾驶员
+  - AIGC
+  - AINative
+  - AIOS
+  - AIoT
+  - AI产品交互设计
+  - AI原生工作流看板
+  - AI字幕
+  - AI生成式渲染框架
+  - AI配音
+  - Baidu Comate
+  - Explainable AI
+  - Guardrail
+  - Guardrails
+  - Jailbreaking
+  - Jailbreaking (越狱)
+  - Naive UI
+  - NeMo Guardrails
+  - Tailwind CSS
+  - Workflow
+  - 低代码 AI
+  - 低代码可视化平台
+  - 低代码开发
+  - 低代码框架
+  - 医疗AI产品系统
+  - 对话系统
+  - 工作流的页面编排
+  - 数字人表情/语音同步
+  - 生成式 AI
+  - 生成式AI
+  - 音频创作工具
+  ai_coding_tools:
+  - ChatGPT
+  - VSCode Copilot
+  - AI Coding
+  - AI for Code
+  - AI-generated Code
+  - Cursor
+  ai_engineering:
+  - AI Prompt Template
+  - AI 应用平台
+  - AI 数据体系
+  - AI 模型私有化部署
+  - AI 编码资产
+  - AI 质量评测体系
+  - AI+数据治理算子
+  - AI+数据集成管道
+  - AI推理优化
+  - AI智能取数
+  - AI模型微调
+  - AI模型的生产和性能监控
+  - Active Learning
+  - Agent评估与调优
+  - Argilla
+  - BentoML
+  - Context Window精细化管理
+  - DPO
+  - DPO (直接偏好优化)
+  - Data Augmentation
+  - Data Flywheel
+  - Data Flywheel (数据飞轮)
+  - Dataset Distillation
+  - DeepSpeed
+  - Executorch
+  - Hugging Face Transformers
+  - Inference
+  - KServe
+  - Knowledge Distillation
+  - LLMOps
+  - LM Studio
+  - Labelbox
+  - Megatron-LM
+  - Model Compression
+  - NNRT
+  - ONNX
+  - ORPO
+  - Ollama
+  - OpenVINO
+  - PE
+  - PPO
+  - Prompt工程优化
+  - Pruning
+  - Quantization
+  - RLHF
+  - RLHF (人类反馈强化学习)
+  - Ray
+  - Scale AI
+  - Seldon Core
+  - Snorkel
+  - Synthetic Data Generation
+  - Synthetic Data Generation (合成数据生成)
+  - TGI
+  - TensorRT
+  - TensorRT-LLM
+  - Triton
+  - Triton Inference Server
+  - Weak Supervision
+  - vLLM
+  - 人类反馈强化学习
+  - 前端 AI 应用基础能力
+  - 合成数据生成
+  - 提示词
+  - 数据飞轮
+  - 智能体定义
+  - 模型服务化开发
+  - 混合记忆管理
+  - 直接偏好优化
+  - 端侧模型轻量化部署
+  - 自动化评估EvalLoop
+  - 领域知识库构建
+  - sGlang
+  - 云边部署
+  - 分布式推理
+  - 实验语义理解与推理引擎
+  - 模型部署
+  - 端侧AI芯片音频算法
+  - 端侧芯片部署
+  - 边缘 AI 部署
+  ai_frameworks:
+  - AI Agent开发框架
+  - AI 驱动的工作流 / Agent
+  - Agent 框架
+  - AgentBuilder
+  - Agent协同框架
+  - AnythingLLM
+  - Aten
+  - AtoA
+  - Autograd
+  - Bisheng
+  - Claude Agent SDK
+  - CrewAImcp
+  - DIFY
+  - DataAgent
+  - FoundationAgents
+  - Haystack
+  - KTransformers
+  - LLAMA Index
+  - LLM Agent
+  - LLM Agents
+  - Langgragh
+  - Llama Index
+  - MCP (MultiAgent Communication Protocol)
+  - Megatron
+  - MindSporeAgent
+  - OneFlow
+  - OpenManus
+  - Paddle
+  - PyTorch Compile
+  - RKNN
+  - Semantic Kernel
+  - Tool Use
+  - Triton Inference Server
+  - adk
+  - autogen
+  - llamaIndex
+  - mcp
+  - n8n
+  - 上下文与状态管理
+  - 加速库
+  - 多Agent协作编排
+  - 大模型应用及智能体框架
+  - 智能决策引擎
+  ai_hardware:
+  - AI CPU同构融合计算芯片
+  - AI Runtime
+  - AI 训练框架通信逻辑
+  - AIISP
+  - AI一体机
+  - AI加速器
+  - AI芯片
+  - AI芯片多芯片架构
+  - AI芯片工具链
+  - AI芯片板卡
+  - AI芯片软硬件协同
+  - ARC
+  - ASR芯片方案
+  - Ampere
+  - Ascend
+  - Blackwell
+  - Bringup
+  - CUDA
+  - CUDA/加速Infra & Ops
+  - CUTLASS
+  - CXL type1/2/3
+  - Chisel
+  - Cirrus Logic
+  - DPU
+  - EMMC
+  - ESL工具
+  - FRTL
+  - GPU
+  - GPU计算加速
+  - Hopper
+  - IB网络
+  - IPLPDDR456/HBM234/GDDR67
+  - J6
+  - LINK
+  - LLM一体机
+  - MCU
+  - NIC
+  - OnSemi
+  - OpenAI Triton
+  - Orin
+  - PICO4Ultra
+  - PPA
+  - PTX
+  - Palladium
+  - Pulsar2
+  - Quest3
+  - RDM
+  - RKNN2
+  - ROCm
+  - RTL开发
+  - Rockchip
+  - SASS
+  - SDC
+  - SmartNIC
+  - SoC
+  - TPU
+  - TileLang
+  - UFS
+  - UMD
+  - UPF
+  - Vision Pro
+  - Widex
+  - clr
+  - cuBLAS
+  - presilicon
+  - 一体机硬件
+  - 华为CANN
+  - 多die
+  - 寒武纪芯片
+  - 展锐芯片方案
+  - 微架构设计
+  - 整机测试
+  - 昇腾
+  - 智能安防摄像头
+  - 杰理芯片方案
+  - 架构量化分析
+  - 海思
+  - 瑞芯微
+  - 联咏
+  - 设备测试
+  - 设备调试
+  - 超算
+  - 边缘计算一体机
+  - 鲲鹏
+  - AI助听器芯片算法
+  - FPGA
+  - Jetson
+  - Jetson Orin Nano
+  - NPU
+  - Socket.io
+  - WebGPU
+  - WebSocket API
+  - 嵌入式/边缘计算
+  - 异构计算平台
+  - 硬件加速单元
+  - 算力优化
+  - 算力调度策略
+  - 边缘计算
+  ai_infrastructure:
+  - AI
+  - AI Echo (Workflow/Agent)平台
+  - AI Infrastructure
+  - AIInfra
+  - AI在线推理平台
+  - AI知识库
+  - AWS Bedrock
+  - Agent Orchestration
+  - Agentic Platform
+  - Algorithm
+  - Artificial Intelligence
+  - Big Data
+  - DL
+  - DashScope
+  - Data Science
+  - Deep Learning
+  - DeepLearning.AI
+  - FASTGPT
+  - Few-shot
+  - Hugging Face
+  - LLM Proxy
+  - ML
+  - Machine Learning
+  - Model
+  - Model-as-a-Service
+  - Neural Nets
+  - Neural Networks
+  - One-shot
+  - RL
+  - Reinforcement Learning
+  - Semi-supervised Learning
+  - Statistics
+  - Supervised Learning
+  - Transfer Learning
+  - Unsupervised Learning
+  - Zero-shot
+  - active learning
+  - 大模型数据处理管道
+  - 大模型网关
+  - 异构计算任务分配
+  - 智算
+  - 智能体开发平台
+  - 百炼
+  - AI 开放平台
+  - AI数据服务平台
+  - AI智算
+  - AI资源平台
+  - API &AI World平台
+  - ML Infra
+  - MTK平台相机框架
+  - Mass平台
+  - tile策略调度
+  - 中云图低空数智化巡检平台
+  - 乱序调度
+  - 数据中台
+  - 智算中心网络架构
+  - 智算云平台
+  - 机器学习等AI平台的机器全生命周期管理
+  - 模型调度
+  - 资源调度看板
+  ai_training:
+  - 3D混合训练技术
+  - AWQ
+  - CUDA Kernels
+  - Continous Batching
+  - DeepSpeed
+  - DoRA
+  - DreamBooth
+  - Dynamic LoRA
+  - EXL2
+  - FP8 Training
+  - Flash Attention v2
+  - Flash Attention v3
+  - GGUF
+  - GPTQ
+  - INT8 Quantization
+  - KV Cache Optimization
+  - Knowledge Distillation
+  - Knowledge Distillation (知识蒸馏)
+  - LoRA
+  - Low-rank Adaptation
+  - Low-rank Adaptation (LoRA)
+  - MegatronLM
+  - Model Pruning
+  - Model Pruning (剪枝)
+  - NF4
+  - PEFT
+  - PagedAttention
+  - Prompt Caching
+  - Prompt Learning
+  - Ptuning
+  - QLoRA
+  - Quantization
+  - Quantization (量化)
+  - RL
+  - Speculative Decoding
+  - Speculative Decoding (推测性解码)
+  - TensorRT
+  - TensorRT-LLM
+  - TransformerEngine
+  - Triton
+  - ZeRO
+  - continued pretrain
+  - vLLM
+  - 低资源微调大模型方法
+  - 偏好优化
+  - 剪枝
+  - 动态批处理
+  - 常量折叠
+  - 推测性解码
+  - 断点续训
+  - 模型加速
+  - 混合精度训练
+  - 混合精度量化
+  - 用户偏好对齐
+  - 知识蒸馏
+  - 稀疏化
+  - 量化
+  - 量化压缩
+  - NLP模型微调
+  - 分布式训练
+  - 分布式训练框架
+  - 垂类模型后训练
+  - 对抗训练
+  - 模型量化
+  - 模型预训练
+  - 轻量化架构
+  - 高效微调
+  automation_testing:
+  - AI+RPA
+  - AI大模型应用测试
+  - AI机
+  - AI自动化
+  - AutoML
+  - BackstopJS
+  - Chai
+  - Cypress
+  - Delta V
+  - Enzyme
+  - Jasmine
+  - Jest
+  - Karma
+  - Klaviyo
+  - Loki
+  - Mocha
+  - N8N
+  - Nightwatch
+  - PK测试
+  - Playwright
+  - Puppeteer
+  - RPA
+  - RTL
+  - SIT
+  - Selenium
+  - Sinon
+  - Storybook
+  - Testing Library
+  - UAT
+  - UiPath
+  - Vitest
+  - 半实物仿真
+  - 多维表格工具
+  - 大模型测试
+  - 实在智能
+  - 影刀
+  - 影刀RPA
+  - 自动化测试
+  - CodeContests
+  - POC测试
+  - Testbench
+  - 人机验证绕过
+  - 厂内外验证
+  - 验证码识别模型
+  compiler_technology:
+  - A1 编译器
+  - AutoTuning
+  - CodeGen
+  - Cutlass
+  - GLOW
+  - HLO
+  - Inductor
+  - Linalg
+  - MHLO
+  - MLIR
+  - Op Fusion
+  - Solidity 编译器
+  - TVM
+  - flashattn
+  - polyhedral model
+  - tuner
+  - 内存分配
+  - 内存复用
+  - 内核生成
+  - 图优化
+  - 指令调度
+  - 数据布局转换
+  - 昇腾NPU编译器
+  - 矢量化
+  - 算子自动生成
+  - 算子融合
+  - 线程/块映射
+  - 自动调度
+  - AI编译技术
+  - Firecrawl
+  - Jira
+  - codemirror
+  - 内存复用优化
+  - 算子公式推导
+  - 算子库
+  - 算子开发
+  computer_vision:
+  - 3D相机标定
+  - BEVFormer
+  - BEVFusion
+  - CLIP
+  - CNN
+  - CV
+  - CVAT
+  - Computer Vision
+  - ControlNet
+  - DALL-E
+  - Demosaic
+  - Embodied AI
+  - Embodied AI (具身智能)
+  - Facial Recognition
+  - Faster R-CNN
+  - Flux.1
+  - GPT-4V
+  - Generative Video
+  - HalCon
+  - Halcon
+  - ITK
+  - Image Classification
+  - Image Segmentation
+  - Image-to-Text
+  - Impact Pack
+  - LMM
+  - LMM (大型多模态模型)
+  - LMMs
+  - MOT
+  - Mask R-CNN
+  - Midjourney
+  - Multi-modal Fusion
+  - OCR
+  - Object Detection
+  - Pika
+  - PyDicom
+  - QwenVL
+  - ResNet
+  - Runway Gen-3
+  - SDXL
+  - SOT
+  - SSD
+  - SadTalker
+  - Segment Anything
+  - SigLIP
+  - SimpleITK
+  - Sora
+  - Stable Diffusion
+  - Stable Diffusion 3
+  - Stateofart
+  - T2V
+  - Text-to-Video
+  - Unet
+  - VGG
+  - VLM
+  - ViC SeIL
+  - ViT
+  - Vision Transformer
+  - Vision Transformer (ViT)
+  - Visual Language Models
+  - Visual Language Models (VLM)
+  - WAS Suite
+  - YOLO
+  - YOLO系列
+  - labelimage
+  - qwenvl
+  - rPPG
+  - yolo
+  - 具身智能
+  - 咖啡豆识别
+  - 图像分割
+  - 图像分类
+  - 大型多模态模型
+  - 目标检测
+  - 2D与3D融合标注系统
+  - 3D Tiles
+  - 3D点云标注工具
+  - 3dgs
+  - 4D时序点云标注工具
+  - AI图像识别算法
+  - Bad Case自动回流标注
+  - CVPR
+  - Diffusion Models
+  - Diffusion Policy
+  - Diffusion模型用于音频
+  - Yolo
+  - 图像标注
+  - 图像算法
+  - 图生视频(Image-to-Video)
+  - 多帧协同标注
+  - 多模态AI
+  - 多模态数据解析模型
+  - 影像3D库
+  - 数据标注开源框架
+  - 智能标注平台
+  - 标注体系
+  - 点云框标注
+  - 自动化标注辅助
+  - 自动预标注
+  - 音视频处理相关算法
+  - 高温环境图像预处理
+  data_technology:
+  - DCMM
+  - DataWorks
+  - MaxCompute
+  - Paimon
+  - 数据可视化
+  - BI 系统
+  - Data Centric
+  - DataV
+  - datatable
+  - 冶金连铸过程数据
+  - 数据增强方法
+  - 数据探矿直觉
+  - 数据整合能力
+  - 数据清洗
+  - 数据血缘
+  - 数据质量
+  - 数据飞轮
+  - 数据驾驶舱
+  - 文档ETL
+  - 方差分析
+  - 根因分析
+  - 相交分析
+  - 离线报表生成
+  - 离线海量数据生产
+  - 空间分析
+  - 缓冲区分析
+  - 行业成熟报表组件和库
+  - 达人合作数据整理与复盘
+  - 阿里云DataV
+  dev_tools:
+  - AI 辅助编程工作流
+  - AI工具辅助编程
+  - AI编程助手
+  - DevEco Studio
+  - Mock
+  - Packet Capture
+  - Profiler
+  - Roofline
+  - Tune
+  - VSCode插件
+  - Zombie Objects
+  - bringup
+  - cpu trace
+  - ncu
+  - nsys
+  - 可视化性能Debugging&Profiler
+  - 可视化编辑器
+  - 多链 SDK
+  - 智驾核心算法SDK
+  - 火焰图
+  - CherryStudio
+  - Generative Video
+  - Halide
+  - Text2Video
+  - image2video
+  - miotpluginsdk
+  - 全链路性能优化方案
+  - 模型性能优化
+  domain_specific:
+  - AE/FAE
+  - AI应用生态闭环
+  - AI短剧内容生成pipeline
+  - AMAT
+  - AUTOSAR
+  - Agent 监控与评估体系
+  - Agent架构及算法
+  - BMS
+  - CAE
+  - CCXT
+  - CIP
+  - CQV
+  - CTP
+  - CircleCI
+  - Commitlint
+  - DVP
+  - Design System
+  - Docker
+  - ESLint
+  - ETAS
+  - EWO
+  - EditorConfig
+  - FAT
+  - FTA
+  - GMP
+  - GTM
+  - Git
+  - GitHub Actions
+  - GitLab CI
+  - Growth Engineering
+  - Husky
+  - IOQ
+  - IaC
+  - Jenkins
+  - KUKA
+  - Kubernetes
+  - L2C
+  - Lam
+  - Lazzie
+  - M1M3阶段催收技巧
+  - MLOps
+  - Marketplace Intelligence & Data
+  - Micro-frontends
+  - MicroApp
+  - MobiVision
+  - Module Federation
+  - OEE
+  - Prettier
+  - Prompt A/B
+  - Qiankun
+  - RUL
+  - SAT
+  - SOH
+  - SOR
+  - SRE
+  - SSV实验室
+  - SVN
+  - Single-spa
+  - StandardJS
+  - Stylelint
+  - To C 高并发业务
+  - ToB应用场景
+  - ToT
+  - Travis CI
+  - User Link
+  - VAVE
+  - VOC传感器
+  - Vector
+  - Wujie
+  - Zemax
+  - audio录音链路打通
+  - dymola
+  - lint-staged
+  - shapeAl
+  - trnsys
+  - 交易指令下发
+  - 代码搜索
+  - 代码缺陷自动检测与修复
+  - 代码自动合并
+  - 代码自动移植
+  - 代码自动重构
+  - 仿真错误自动诊断
+  - 光掩模版制作
+  - 功率预测
+  - 单细胞多组学分析
+  - 单细胞组学
+  - 多组学数据
+  - 大模型数据工程
+  - 实验知识图谱
+  - 工业APP
+  - 工业自动化控制系统
+  - 工艺性能联合数据库
+  - 工艺流程图
+  - 平台工程
+  - 底盘调校
+  - 扫码核销
+  - 投研可视化看板
+  - 数字孪生
+  - 数据管道优化
+  - 文档结构化处理
+  - 智能制造
+  - 智能网格生成
+  - 曝光
+  - 模型infra及部署
+  - 模型效果测评
+  - 流程机器人
+  - 测量
+  - 热管理
+  - 知识大脑
+  - 空调系统
+  - 算法SDK封装
+  - 线下核销
+  - 能量管理
+  - 自动化报表生成
+  - 蚀刻
+  - 设备监控
+  - 试验大纲编制
+  - 调度数字孪生
+  - 车型语音前端链路解决方案
+  - 车身控制
+  - 软件开源成分风险分析
+  - 轴承设计
+  - 运动能量
+  - 集成能力
+  - 预训练算法
+  - ABE (架构与后端工程师)
+  - AI工程化
+  - PDFE (产品设计前端工程师)
+  - 产品工程师
+  - 仿真推演
+  - 仿真系统
+  - 半导体制造
+  - 半导体工艺
+  - 新能源预测
+  - 无人机巡检
+  - 无人机应用开发
+  - 无人机飞行原理
+  - 智驾模型
+  - 智驾系统
+  - 机器人工位方案
+  - 知识工程
+  - 金融/银行业领域知识
+  large_language_models:
+  - AIGC
+  - Arize Phoenix
+  - Axolotl
+  - BERT
+  - BGE
+  - Baichuan
+  - Chain of Thought
+  - Claude API
+  - CoT
+  - Constitutional AI
+  - Context Window
+  - Continuous Batching
+  - DBGPT
+  - DPO
+  - DeepEP
+  - DeepSeek API
+  - Deepseek
+  - Fine-tuning
+  - FineTuning
+  - Foundation Model
+  - G-Eval
+  - G-Eval (模型评估)
+  - GPT
+  - GPT4o
+  - Generative AI
+  - Genmini
+  - Grafana for AI
+  - HITL
+  - Hallucination
+  - Human-in-the-loop
+  - Human-in-the-loop (HITL)
+  - Instruction Tuning
+  - KV Cache
+  - LLM
+  - LLM Benchmarking
+  - LLM Evaluation
+  - LLM Ops
+  - LLM/MLLM
+  - LLM微调
+  - LLM推理优化
+  - LLama
+  - LMM
+  - LangSmith
+  - Langchain
+  - Large Language Model
+  - LimiX
+  - Llama
+  - Llama 3
+  - Llama3
+  - LoRA
+  - Lora
+  - MCP Tools
+  - MLLM
+  - MLflow
+  - MMLU
+  - Megatron-LM
+  - Mistral
+  - MoE
+  - MoE offloading
+  - OpenAI Function Calling
+  - P-tuning
+  - PEFT
+  - PPO
+  - PagedAttention
+  - Prometheus Monitoring
+  - Prompt / 提示词模板设计
+  - Prompt Design
+  - Prompt Engineering
+  - Prompt 优化
+  - QLoRA
+  - QwenMax
+  - RAG
+  - RAG Evaluation
+  - RAGAS
+  - RAGFLOW
+  - RLHF
+  - ReAct
+  - React.js
+  - ReactJS
+  - Retrieval-Augmented Generation
+  - SFT
+  - Speculative Decoding
+  - Tot
+  - Tree of Thoughts
+  - W&B
+  - W&B (Weights & Biases)
+  - Weights & Biases
+  - Yi
+  - chatgpt
+  - coze
+  - dify
+  - llama.cpp
+  - llamaindex
+  - ollama
+  - rlhf
+  - sft
+  - sglang
+  - vllm
+  - 动态路由技术
+  - 去幻觉
+  - 后训练
+  - 处理幻觉不确定性
+  - 指令数据构建
+  - 智能质控基座大模型
+  - 智谱
+  - 模型评估
+  - 模型评测
+  - 混元
+  - 盘古大模型
+  - 稀疏激活
+  - 蒸馏
+  - 量化
+  - AIAIGC/LLM
+  - AI大模型项目
+  - Claude 3 Opus
+  - Claude 3.5 Sonnet
+  - DeepSeek-Coder-V2
+  - DeepSeek-V2.5
+  - GPT-4o
+  - GPT-4o mini
+  - GitHub Copilot
+  - LLM API
+  - LLM 应用开发
+  - LLM+优化算法
+  - LLMasaJudge
+  - LLM大模型预训练
+  - Llama 3.1 405B
+  - Llama 3.1 70B
+  - Llama Guard
+  - Local LLM
+  - MiniMax
+  - Qwen2-72B
+  - claude-3-opus
+  - claude-3-sonnet
+  - deepseek-llm-67b
+  - gemini-1.5-flash
+  - gpt-3.5-turbo
+  - gpt-4-0125-preview
+  - llama-2-70b
+  - llama-3-70b
+  - llama-3-8b
+  - qwen-max
+  - qwencoder
+  - 图像大模型
+  - 大模型工程化
+  - 大模型推理加速优化
+  - 大模型推理服务
+  - 大模型研究
+  - 大模型能力测评
+  - 搜广推大模型应用
+  - 文心
+  - 通义灵码
+  - 通义点金
+  nlp_technology:
+  - ALBERT
+  - Attention
+  - BERT
+  - BERTCRF
+  - BiLSTMCRF
+  - Claude
+  - ELMo
+  - FastText
+  - GPT
+  - GPT-2
+  - GPT-3
+  - GPT-4
+  - Gemini
+  - GloVe
+  - InA
+  - LayerNorm
+  - Llama
+  - Llama 2
+  - Llama 3
+  - Mistral
+  - Multi-Head Attention
+  - NLG
+  - NLP
+  - NLU
+  - Natural Language Processing
+  - PaLM
+  - Positional Encoding
+  - RoBERTa
+  - Self-Attention
+  - T5
+  - Tokenization
+  - Transformer
+  - Transformers (Hugging Face)
+  - Word2Vec
+  - prosemirror
+  - 信息抽取
+  - 思维链
+  - 文本分割
+  - 语言模型
+  - 实体抽取模型
+  - 机器翻译
+  - 空间语义理解小脑
+  - 语义分割
+  - 金融NLP工具包
+  prompt_engineering:
+  - CoT
+  - Preact
+  - PrimeReact
+  - Prompt Injection
+  - Prompt Injection (提示注入)
+  - Prompt Leakage
+  - ReAct循环
+  - React
+  - React 16
+  - React 17
+  - React 18
+  - React 19
+  - React Bootstrap
+  - React Hook Form
+  - React Hooks
+  - React Native
+  - React Native 与安卓原生的交互适配、桥接
+  - React Query
+  - React Router
+  - React Server Components
+  - React.js
+  - ReactJS
+  - ReactNative Web
+  - Semantic UI React
+  - prompt engineering
+  - prompt-engineering
+  - react-i18next
+  - reactflow
+  - 思维树ToT
+  - 思维链推理
+  - 提示词设计
+  system_ops:
+  - AIOps
+  - AI平台SRE
+  - AI系统维护
+  - Airflow
+  - Azure SRE Agent
+  - Dagster
+  - Data Lineage
+  - DataOps
+  - Feature Store
+  - Kubeflow
+  - LLMOps
+  - LangSmith
+  - MLOps
+  - MLflow
+  - MTTR
+  - Model Governance
+  - Model Monitoring
+  - OOD检测
+  - Prefect
+  - RAG pipelines
+  - SLA
+  - TFX
+  - W&B
+  - Web Vitals
+  - 低空数智大脑
+  - 可观测性
+  - 多智能体系统
+  - 工作流引擎
+  - 服务和流程编排
+  - 端到端 AI 模型能力
+  - 系统监控
+  - 自主智能体
+  - 运维
+  - 部署
+  - 实时日志处理
+  - 小样本故障诊断技术
+  - 故障智能诊断
+  - 预测性运维
+  other_ai_skills:
+  - .S/.ld文件
+  - '1688'
+  - 3PL
+  - 3S
+  - 3T相关专业
+  - A2A
+  - AB点作业
+  - ADO
+  - AGUI
+  - AI与人工客服协同
+  - AI出码模式
+  - AI安全框架
+  - AI战略规划
+  - AI算法
+  - AI系统开发
+  - ANR
+  - AOI
+  - APICloud
+  - ASI for SciTech
+  - ASR
+  - ASR/TTS
+  - AVIF
+  - AWS EKS
+  - Adversarial Attacks
+  - Aholo
+  - Ajv
+  - Alpine.js
+  - Amazon Aurora
+  - Amazon CodeWhisperer
+  - Android ROM
+  - AngLe
+  - Angular
+  - Angular 14
+  - Angular 15
+  - Angular 16
+  - Angular 17
+  - Angular 18
+  - Angular 2+
+  - Angular CLI
+  - Angular Material
+  - Angular.js
+  - AngularJS
+  - Anomaly Detection
+  - Ant Design
+  - Ant Design Vue
+  - AntD
+  - AntV
+  - AntV G6
+  - AntV X6
+  - Ark UI
+  - ArkTS
+  - AssemblyScript
+  - Astro
+  - Asyncio
+  - Audio Processing
+  - Auto Fusion
+  - AutoEval
+  - Axios
+  - Azure SQL
+  - BFF (Backend for Frontend)
+  - BGA
+  - BIM
+  - BOM
+  - Babel
+  - Babylon.js
+  - Backbone.js
+  - Bazel
+  - Bias Mitigation
+  - Biome
+  - BitNet 1.58b
+  - Blueprint UI
+  - BoTorch
+  - Boolean operations
+  - Bootstrap Vue
+  - CANN
+  - CCL
+  - CDN
+  - CEP
+  - CGI
+  - CMF
+  - CMSIS-NN
+  - COPT
+  - CPA
+  - CPLD
+  - CPU微体系结构
+  - CRA
+  - CRDT
+  - CREPE
+  - CRN
+  - CSG
+  - CSS
+  - CSS Grid
+  - CSS Modules
+  - CSS-in-JS
+  - CSS3
+  - Caching
+  - Caffe
+  - Canvas
+  - Canvas API
+  - Canvas.js
+  - Capacitor
+  - CatBoost
+  - Cesium
+  - Chakra UI
+  - Chart.js
+  - ChatUI
+  - Checkout UI Extensions
+  - Choerodon UI
+  - Chunking
+  - ClojureScript
+  - Code Splitting
+  - CodeGeeX
+  - Codeium
+  - CoffeeScript
+  - Cohere Rerank
+  - ColdFusion
+  - Collaborative Filtering
+  - Composition API
+  - Concurrent Mode
+  - Conference
+  - Content-Based Filtering
+  - Context
+  - Cordova
+  - Core Web Vitals
+  - Cornerstone
+  - Critical CSS
+  - D3.js
+  - DAM
+  - DAS
+  - DBM
+  - DDSP
+  - DICOM
+  - DNN
+  - DOM
+  - DSL
+  - Dart
+  - Day.js
+  - Deep Learning FullStack
+  - DeepChat
+  - DeepSWE
+  - Delta Analysis
+  - Demucs
+  - DesignSystem
+  - DevOps的基础设施提效工具
+  - Differential Privacy
+  - Docking
+  - Donut
+  - Dva
+  - Dynamo
+  - E2E
+  - ECharts
+  - EMS
+  - ER Diagram
+  - ERP
+  - ES2015
+  - ES2016
+  - ES2017
+  - ES2018
+  - ES2019
+  - ES2020
+  - ES2021
+  - ES2022
+  - ES2023
+  - ES2024
+  - ES5
+  - ES6
+  - ES6+
+  - ESBuild
+  - EVM
+  - EasyV
+  - Edge Computing
+  - Electron
+  - Element Plus
+  - Element UI
+  - ElevenLabs
+  - Elm
+  - Ember.js
+  - Emotion
+  - Enhance
+  - Evergreen
+  - F2
+  - FDI
+  - FEP
+  - Fabric.js
+  - Facebook Canopy
+  - Fast.ai
+  - Feature Stores
+  - Federated Learning
+  - Feign
+  - Fetch
+  - Fetch API
+  - File API
+  - FileReport
+  - FineBI
+  - FineReport
+  - Fittentech
+  - Flash Attention
+  - FlashAttention
+  - Flex/Grid 布局
+  - Flexbox
+  - Flow
+  - Flutter
+  - Formal Verification
+  - Formik
+  - FormilyJS
+  - Function Calling
+  - G2
+  - G6
+  - GCJ02
+  - GEO
+  - GIS类AI空间算法
+  - GMV
+  - GNN
+  - GNSS
+  - GPyTorch
+  - Gantt
+  - Gateway
+  - Gatsby
+  - Gemma 2 27B
+  - GenAI
+  - Generative AI
+  - Geolocation API
+  - Gis
+  - GitFlow
+  - Google Dapper
+  - Graph Neural Networks
+  - Gridsome
+  - Grok
+  - Grok-1.5
+  - Grok-2
+  - Grommet
+  - Ground Station
+  - Grunt
+  - Gulp
+  - H5+
+  - H5互动游戏
+  - HAL
+  - HEMS
+  - HTML
+  - HTML5
+  - HTTP/2
+  - HTTP/3
+  - HW/SW Co-Design
+  - Hallucination Detection
+  - Hallucination Detection (幻觉检测)
+  - Hammer.js
+  - HarmonyOS
+  - Headless Chrome
+  - Headless Commerce
+  - Headless UI
+  - Helm
+  - Hermes
+  - Hi3559A
+  - HiPrint
+  - Highcharts
+  - Hippie
+  - History API
+  - Hooks
+  - Htmx
+  - Hybrid App
+  - Hybrid Search
+  - Hybrid Web
+  - HybridApp
+  - HyperConnect
+  - IAA Monetization
+  - ICASSP
+  - ICML
+  - IOT设备物联开发
+  - IPAdapter
+  - ISR
+  - IaaS
+  - Image Optimization
+  - Immer
+  - Immutable.js
+  - Inferno
+  - Intent-Driven Network
+  - Intersection Observer API
+  - Inventor API
+  - Ionic
+  - JAX
+  - JE
+  - JS
+  - JSB
+  - JSBridge
+  - JSBridge通信
+  - JSCore
+  - JSP
+  - JSX
+  - Jamba 1.5
+  - Java ML
+  - JavaScript
+  - JavaScriptCore
+  - JeecgBoot
+  - Jointjs
+  - Jotai
+  - Jukebox
+  - Jungle Scout
+  - KITTI
+  - KMD
+  - KOL
+  - KOL/博主资源筛选与建联
+  - Keepa
+  - Keras
+  - Knockout
+  - Konva
+  - Konva.js
+  - L0轻分类
+  - L7
+  - LESS
+  - LGA
+  - LNMP
+  - LOD
+  - LRU
+  - Lazy Loading
+  - Leaflet
+  - Lerna
+  - LightGBM
+  - Lighthouse
+  - Linaria
+  - Liquid
+  - Lit
+  - LiteFlow
+  - Local Outlier Factor
+  - Lodash
+  - Lodop
+  - Low Code
+  - MCChart
+  - MCP (Model Context Protocol)
+  - MCP Server
+  - MCP 协议
+  - MCP服务开发
+  - MCP模型上下文协议
+  - MD
+  - MG
+  - MIoT 规范
+  - ML for System
+  - MLP
+  - ML服务封装
+  - MOE架构优化
+  - MQTT
+  - MUI
+  - MXNet
+  - Mamba
+  - Mand Mobile
+  - Mantine
+  - Mapbox GL JS
+  - Markdown解析
+  - Material UI
+  - Mellanox
+  - Meshmixer
+  - Metafields/Metaobjects
+  - Midjourney API
+  - MinIO
+  - MindSpore
+  - Mistral NeMo
+  - Mithril
+  - MobX
+  - Module Federation
+  - Moment.js
+  - MorJS
+  - MuseNet
+  - MusicLM
+  - Mutation Observer API
+  - NAS
+  - NATS
+  - NBEATS
+  - NCE
+  - NE
+  - NVSHMEM
+  - NW.js
+  - Nacos
+  - NeRF
+  - Nerf
+  - NeurIPS
+  - Neural Parametric Filters
+  - Next.js
+  - NextJS
+  - NextUI
+  - Ng-Zorro
+  - NgRx
+  - Node web
+  - NodeJS
+  - NutUI
+  - Nuxt
+  - Nuxt.js
+  - NuxtJS
+  - Nx
+  - OCPM
+  - ODL
+  - OHIF
+  - OMS
+  - ONNX
+  - ONOS
+  - OTA
+  - Odoo
+  - Onboard
+  - OpenAI
+  - OpenAI API
+  - OpenBMC
+  - OpenERP
+  - OpenLayers
+  - Options API
+  - Optuna
+  - PHM
+  - PMP
+  - POC
+  - POD
+  - POS系统
+  - PPO
+  - PPT能力
+  - PSR
+  - PWA
+  - PaaS
+  - PaddlePaddle
+  - PageAttention
+  - Panda CSS
+  - Parcel
+  - Park UI
+  - Payload CMS
+  - Performance API
+  - Pika Labs
+  - Pinia
+  - PixiJS
+  - PoC
+  - Polyrepo
+  - PostCSS
+  - Prepack
+  - PrimeVue
+  - Product Owner
+  - Prophet
+  - PureScript
+  - PxCook
+  - PyTorch
+  - PyVista
+  - Qs
+  - Quasar
+  - QuickApp
+  - QuickBI
+  - Qwik
+  - Qwik City
+  - R3F
+  - RAS
+  - RCNN
+  - RDKit
+  - RDMA
+  - RFT
+  - RJSF
+  - RK3588
+  - RK35xx
+  - RLVR
+  - RS
+  - RSC
+  - RTK Query
+  - RaaS (Result as a Service)
+  - Radix UI
+  - Ramda
+  - Ray
+  - ReRanking
+  - Reach Router
+  - Reasoning能力
+  - Recharts
+  - Recoil
+  - Recommender Systems
+  - Red Teaming
+  - Red Teaming (红色退队)
+  - Redlock
+  - Redux
+  - Redux Toolkit
+  - Remix
+  - Reranking
+  - Resize Observer API
+  - Resource Hints
+  - Responsible AI
+  - RoPE
+  - Rollup
+  - Rolp
+  - Rome
+  - Rsbuild
+  - Rspack
+  - Runner/Action
+  - Runway Gen-2
+  - Rush
+  - RxJS
+  - SAC
+  - SAN
+  - SASS
+  - SCSS
+  - SD
+  - SDE
+  - SD系列
+  - SEM
+  - SEO
+  - SHMEM
+  - SLAM
+  - SOP
+  - SOP标准作业程序
+  - SOTA
+  - SPC
+  - SPI
+  - SQLAlchemy
+  - SSD
+  - SSE
+  - SSE/流式响应渲染
+  - SSG
+  - SSR
+  - STA
+  - STT
+  - SUE
+  - SVG
+  - SWC
+  - SWEbench
+  - SWR
+  - Sboard
+  - Scale up
+  - Scaling Law
+  - Scikit-learn
+  - Scratch
+  - Seata
+  - Sections & Blocks
+  - Sencha Ext.NET
+  - Serdes/PHY
+  - Serverless云函数
+  - Service Worker
+  - Shadcn
+  - Shadcn UI
+  - Shopify Functions
+  - Shopify Hydrogen
+  - SignalR
+  - Signoff
+  - Sklearn
+  - Skynet
+  - SmartAdmin
+  - SmartDb
+  - Snowpack
+  - Solid Start
+  - SolidJS
+  - SolidWorks API
+  - Spanner
+  - Stencil
+  - Stitches
+  - Storefront UI
+  - StyleX
+  - Styled Components
+  - Stylus
+  - SuperMap
+  - Supermaven
+  - Superset
+  - Surrogate Model
+  - Suspense
+  - Svelte
+  - SvelteKit
+  - S分
+  - TAPD
+  - TCN
+  - TDK
+  - TF
+  - TG bot
+  - TPT
+  - TRL
+  - TS
+  - TSX
+  - TTS
+  - Tabnine
+  - TanStack Query
+  - Taro
+  - Tauri
+  - Temu
+  - TensorFlow
+  - Text2Image
+  - Theano
+  - Theme App Extensions
+  - Three.js
+  - TigerGraph
+  - TikTok
+  - Time Series Analysis
+  - ToolCalling
+  - Tree Shaking
+  - TripoAI
+  - TrunkBased
+  - TurboRepo
+  - Turbopack
+  - Turborepo
+  - TypeScript
+  - UALink
+  - UEC
+  - UI
+  - UModel
+  - UNet
+  - USR
+  - UXP
+  - Umi
+  - Underscore
+  - Uni-app
+  - Uniapp
+  - Unity安卓端
+  - UnoCSS
+  - V8
+  - VAE
+  - VERL
+  - VLM
+  - Valibot
+  - Valtio
+  - Vanilla Extract
+  - Vant
+  - Vapor Mode
+  - Varlet
+  - Vben Admin
+  - Victory
+  - View UI
+  - Vis.js
+  - Vite
+  - VitePress
+  - Vue
+  - Vue 2
+  - Vue 3
+  - Vue Macros
+  - Vue Resource
+  - Vue Router
+  - Vue Use
+  - Vue.js
+  - VueJS
+  - VuePress
+  - Vuelidate
+  - Vuet
+  - Vuetify
+  - Vuex
+  - Vue全家桶
+  - WGS84
+  - WMS
+  - Wasm
+  - Web Audio API
+  - Web Components
+  - Web Cryptography API
+  - Web Intelligence
+  - Web MIDI API
+  - Web Notifications API
+  - Web Vitals
+  - Web Workers API
+  - WebAssembly
+  - WebGL
+  - WebGL API
+  - WebGis
+  - WebP
+  - WebRTC API
+  - Webflow
+  - Webpack
+  - Webpack 4
+  - Webpack 5
+  - Weex
+  - Windi CSS
+  - Wouter
+  - Wujie
+  - X6
+  - XAI
+  - XGBoost
+  - XHTML
+  - XLINK
+  - XML
+  - XR
+  - XState
+  - Y.js
+  - Yarn
+  - Yarn Berry
+  - Yup
+  - Zod
+  - Zustand
+  - bge
+  - bgereranker
+  - bootloader原理
+  - cutile
+  - date-fns
+  - design in
+  - design win
+  - dhtmlxGantt
+  - distillation
+  - drawio
+  - elementUi
+  - errgroup
+  - esbuild
+  - exceljs
+  - formatjs
+  - frontier experiments
+  - g6
+  - gojs
+  - hg
+  - hiprint
+  - httpdns
+  - iView
+  - indexer
+  - jeecg
+  - mcp服务
+  - microapp
+  - mistral-7b
+  - mp
+  - mxgraph
+  - next-i18next
+  - nlint
+  - npm
+  - npm workspace
+  - nuScenes
+  - nvshmem
+  - op
+  - pdf.js
+  - pixso
+  - pnpm
+  - pnpm workspace
+  - qEHVI
+  - qgis
+  - qiankun
+  - quantization
+  - ruoyi
+  - safetensors
+  - scaling law
+  - shadcn/ui
+  - slate.js
+  - snowpack
+  - tRPC
+  - text-davinci-003
+  - three.js
+  - tiptap
+  - transformer
+  - traui
+  - uView
+  - uni-app
+  - uniappx
+  - unionapp
+  - useCallback
+  - useContext
+  - useDebugValue
+  - useDeferredValue
+  - useEffect
+  - useId
+  - useImperativeHandle
+  - useLayoutEffect
+  - useMemo
+  - useReducer
+  - useRef
+  - useState
+  - useTransition
+  - uts
+  - vueenum
+  - webworker
+  - wxt
+  - x6
+  - x86单机程序控制脚本
+  - xFormers
+  - yi-34b
+  - μA级待机功耗
+  - 三维可视化
+  - 上下文引擎
+  - 上下文管理
+  - 专家系统
+  - 业务本体
+  - 中断
+  - 中禾旭卧式立式插件机
+  - 乐吾乐可视化组态软件
+  - 乾坤
+  - 二网平衡调控
+  - 二网平衡调控模型
+  - 云手机
+  - 互动渲染
+  - 亚马逊
+  - 以需定供精准调控
+  - 以需定供精准调控模型
+  - 任务导向型代理
+  - 任务智能分发
+  - 任务规划
+  - 优化建模与求解工具或框架
+  - 低码编排
+  - 信创全栈生态
+  - 信创合规
+  - 倾斜摄影
+  - 偏见缓解
+  - 全栈思维
+  - 具身AI
+  - 具身智能
+  - 具身智能算法
+  - 内容分类模型
+  - 内容理解
+  - 军事应用沙盘推演
+  - 决策模型
+  - 分布式计算
+  - 分支预测算法
+  - 列表/画布虚拟化
+  - 剂量/安全联锁
+  - 前端取指
+  - 动态化技术
+  - 动画类输出
+  - 区块链支付
+  - 华为云Stack
+  - 南网cap开发框架
+  - 去啸叫
+  - 参数推荐
+  - 反向设计
+  - 召回/粗排/精排
+  - 可信执行环境
+  - 可解释 AI
+  - 可解释 AI (XAI)
+  - 后处理能力
+  - 启发式算法
+  - 因果AI
+  - 国产化适配
+  - 图生图(Image-to-Image)
+  - 图神经网络
+  - 地灾应急商业化产品
+  - 地理信息系统
+  - 声音分离
+  - 多维表格
+  - 多能互补
+  - 多能互补模型
+  - 大屏
+  - 大语言模型应用
+  - 天文成像设备
+  - 天文相机
+  - 天文软件
+  - 存储优化
+  - 存储双活
+  - 实人认证
+  - 实时交互
+  - 实景三维商业化产品
+  - 对象存储
+  - 射频/模拟前端
+  - 小样本缺陷检测
+  - 尾注拼接
+  - 嵌入式AI
+  - 工具编排
+  - 工具调?
+  - 工艺设备开发
+  - 并行计算
+  - 幻觉检测
+  - 微前端
+  - 微脉冲扩香时序控制
+  - 恒久软件
+  - 技术品味
+  - 拓扑优化
+  - 拖拽式组件布局
+  - 持续优化
+  - 指令发射
+  - 推荐系统
+  - 提示注入
+  - 搜索引擎
+  - 摹客
+  - 数字钱包
+  - 数学优化算法
+  - 新 attention 结构
+  - 方案设计
+  - 无头电商架构
+  - 时序预测模块
+  - 易仓海外仓系统
+  - 智慧储能
+  - 智能任务编排
+  - 智能座舱
+  - 智能插值
+  - 有度即时通
+  - 服务卡片
+  - 服务器组件渲染
+  - 望远镜
+  - 材料信息学
+  - 材料分子建模
+  - 松下跳线机
+  - 架构洁癖
+  - 框架优化
+  - 模型剪枝
+  - 模型加固
+  - 模型开发
+  - 模型评估指标
+  - 洁净间工作
+  - 活性空间探索
+  - 流控能力
+  - 流程自动化
+  - 流量/泵
+  - 浮点部件
+  - 消息队列
+  - 消融
+  - 深度代理模型
+  - 源网荷协调运行
+  - 源网荷协调运行模型
+  - 滤光轮
+  - 潘塔纳尔
+  - 火山
+  - 火星
+  - 热力图
+  - 爱芯元智
+  - 物业行业经验
+  - 物理信息神经网络
+  - 物联感知
+  - 物联网项目开发
+  - 状态管理
+  - 状态追踪
+  - 环境检测绕过
+  - 生成式相关技术及应用
+  - 用户画像
+  - 电动调焦器
+  - 电商、商城、营销等行业经验
+  - 电子政务相关国家标准与安全合规要求
+  - 电子调焦器
+  - 画布产品
+  - 白鹭
+  - 百度Sugar
+  - 目标跟踪
+  - 硅基智能
+  - 社群建群引流
+  - 社群运营
+  - 神经音频效果器
+  - 移动端H5
+  - 移动端应用封装
+  - 空间智能
+  - 竞价排名
+  - 端到端
+  - 端智能
+  - 米家插件框架
+  - 精度优化
+  - 系统评估及优化
+  - 系统评估及优化模型
+  - 红色退队
+  - 组件联动
+  - 缺口引擎
+  - 能效寻优
+  - 自主代理系统
+  - 自动化思维
+  - 自监督
+  - 自编码器
+  - 致远系统
+  - 若依
+  - 蓝湖
+  - 虚拟电厂
+  - 行业适配模型
+  - 行为拟人化
+  - 规则引擎
+  - 言语增强
+  - 论文与专利撰写
+  - 设备指纹绕过
+  - 设备组合寻优
+  - 访存部件
+  - 评测模型建模
+  - 译码
+  - 课程学习策略
+  - 负荷预测
+  - 负荷预测及预测性调控
+  - 负荷预测及预测性调控模型
+  - 质量自动化检测
+  - 赤道仪
+  - 超图
+  - 超级个体
+  - 越狱
+  - 跨领域联想能力
+  - 路径规划
+  - 车机Web内核
+  - 车规级软件开发
+  - 车载小程序
+  - 转化归因
+  - 轻应用
+  - 通信优化
+  - 速卖通
+  - 重排序
+  - 量产经验
+  - 阿米巴经营模式
+  - 阿里系技术
+  - 降阶模型
+  - 隐私计算落地
+  - 隔离森林
+  - 集合通信库
+  - 韩国恩成铆钉机
+  - 飞书多维表
+  - 飞书多维表格
+  - 高斯泼溅
+  - 高码开发
+  - 高通量计算/模拟/实验
+  - 鸿蒙
+  - 鸿蒙next
+  - 鸿蒙应用开发
 soft_skills:
-  # 沟通能力
-  - 沟通能力
-  - 表达清晰
-  - 语言表达
-  - 书面沟通
-  - 演讲能力
-  
-  # 团队协作
-  - 团队协作
-  - 团队合作
-  - 协作精神
-  - 跨部门协作
-  
-  # 领导力
-  - 领导力
-  - 领导能力
-  - 团队管理
-  - 人员管理
-  - 指导能力
-  - Mentoring
-  
-  # 项目管理
-  - 项目管理
-  - 项目规划
-  - 进度管理
-  - 风险管理
-  - Agile
-  - Scrum
-  - 敏捷开发
-  
-  # 时间管理
-  - 时间管理
-  - 优先级管理
-  - 多任务处理
-  
-  # 问题解决
-  - 问题解决能力
-  - 问题分析
-  - 故障排查
-  - Debug 能力
-  
-  # 学习能力
-  - 学习能力
-  - 快速学习
-  - 自我驱动
-  - 持续学习
-  
-  # 思维能力
-  - 逻辑思维
-  - 分析能力
-  - 创新思维
-  - 批判性思维
-  - 系统思维
-  
-  # 工作态度
-  - 抗压能力
-  - 适应能力
-  - 责任心
-  - 自驱力
-  - 执行力
-  - 细致
-  - 严谨
-  - 主动性强
-  
-  # 其他软技能
-  - 组织能力
-  - 协调能力
-  - 谈判能力
-  - 冲突解决
-  - 决策能力
-  - 战略思维
+- 沟通能力
+- 表达清晰
+- 语言表达
+- 书面沟通
+- 演讲能力
+- 团队协作
+- 团队合作
+- 协作精神
+- 跨部门协作
+- 领导力
+- 领导能力
+- 团队管理
+- 人员管理
+- 指导能力
+- Mentoring
+- 项目管理
+- 项目规划
+- 进度管理
+- 风险管理
+- Agile
+- Scrum
+- 敏捷开发
+- 时间管理
+- 优先级管理
+- 多任务处理
+- 问题解决能力
+- 问题分析
+- 故障排查
+- Debug 能力
+- 学习能力
+- 快速学习
+- 自我驱动
+- 持续学习
+- 逻辑思维
+- 分析能力
+- 创新思维
+- 批判性思维
+- 系统思维
+- 抗压能力
+- 适应能力
+- 责任心
+- 自驱力
+- 执行力
+- 细致
+- 严谨
+- 主动性强
+- 组织能力
+- 协调能力
+- 谈判能力
+- 冲突解决
+- 决策能力
+- 战略思维
+synonyms:
+  golang: Go
+  react.js: React
+  vue: Vue.js
+  k8s: Kubernetes
+  express.js: Express
+  aws: AWS
+  gcp: Google Cloud
+  微服务: Microservices
+  深度学习: Deep Learning
+  机器学习: Machine Learning
+  自然语言处理: NLP
+  计算机视觉: CV

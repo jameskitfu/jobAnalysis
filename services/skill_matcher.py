@@ -44,6 +44,7 @@ class SkillMatcher:
         for category, skills in hard_skills.items():
             if isinstance(skills, list):
                 for skill in skills:
+                    skill = str(skill).strip()
                     all_skills_set.add(skill)
                     if category not in self.skill_categories:
                         self.skill_categories[category] = []
@@ -53,10 +54,11 @@ class SkillMatcher:
         soft_skills = self.skills_config.get('soft_skills', [])
         if isinstance(soft_skills, list):
             for skill in soft_skills:
+                skill = str(skill).strip()
                 all_skills_set.add(skill)
             if 'soft_skills' not in self.skill_categories:
                 self.skill_categories['soft_skills'] = []
-            self.skill_categories['soft_skills'].extend(soft_skills)
+            self.skill_categories['soft_skills'].extend([str(s).strip() for s in soft_skills])
         
         # 按长度降序排序（优先匹配长的技能词，避免部分匹配）
         self.all_skills = sorted(
@@ -66,30 +68,21 @@ class SkillMatcher:
         )
     
     def _build_synonym_map(self):
-        """构建同义词映射表"""
-        # 常见同义词映射
-        self.synonym_map = {
-            'golang': 'Go',
-            'react.js': 'React',
-            'vue': 'Vue.js',
-            'k8s': 'Kubernetes',
-            'express.js': 'Express',
-            'aws': 'AWS',
-            'gcp': 'Google Cloud',
-            '微服务': 'Microservices',
-        }
+        """构建同义词映射表（从配置文件加载）"""
+        self.synonym_map = {}
+        synonyms = self.skills_config.get('synonyms', {})
+        if isinstance(synonyms, dict):
+            # 统一转为小写作为键，方便后续匹配
+            for key, value in synonyms.items():
+                self.synonym_map[key.lower()] = value
     
     def _normalize_text(self, text: str) -> str:
         """
         文本标准化处理
-        
-        Args:
-            text: 原始文本
-            
-        Returns:
-            标准化后的文本
         """
-        # 统一转为小写（用于英文匹配）
+        if not text:
+            return ""
+        # 统一转为小写
         return text.lower()
     
     def _find_skill_in_text(self, text: str, skill: str) -> bool:
@@ -155,13 +148,13 @@ class SkillMatcher:
         for category, skills in hard_skills.items():
             if isinstance(skills, list):
                 for s in skills:
-                    if s.lower() == skill_lower:
+                    if str(s).strip().lower() == skill_lower:
                         return category
         
         # 检查是否是软技能
         soft_skills = self.skills_config.get('soft_skills', [])
         for s in soft_skills:
-            if s.lower() == skill_lower:
+            if str(s).strip().lower() == skill_lower:
                 return 'soft_skills'
         
         return None
