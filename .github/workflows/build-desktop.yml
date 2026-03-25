@@ -2,13 +2,14 @@ name: Build Desktop Apps
 
 on:
   push:
+    branches: [main]
     tags:
       - 'v*'
   workflow_dispatch:
 
 jobs:
   build-macos-intel:
-    runs-on: macos-13
+    runs-on: macos-12
     steps:
       - uses: actions/checkout@v4
 
