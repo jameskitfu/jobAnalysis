@@ -24,11 +24,24 @@ from services.extractors import JiebaExtractor, LLMExtractor, HybridExtractor
 from services.new_skill_manager import NewSkillManager
 from services.cost_tracker import CostTracker
 
-app = Flask(__name__)
+import sys
+
+
+def get_base_dir():
+    """获取应用基础目录（兼容 PyInstaller 打包环境）"""
+    if getattr(sys, 'frozen', False):
+        # PyInstaller 打包后，资源文件在临时目录
+        return Path(sys._MEIPASS)
+    return Path(__file__).parent
+
 
 # 配置
-BASE_DIR = Path(__file__).parent
-# 使用 /tmp 目录以规避 macOS IdeaProjects 目录下的写入权限问题
+BASE_DIR = get_base_dir()
+TEMPLATE_DIR = BASE_DIR / 'templates'
+
+app = Flask(__name__, template_folder=str(TEMPLATE_DIR))
+
+# 使用 /tmp 目录存放用户上传和输出文件（跨平台可写）
 UPLOAD_FOLDER = Path('/tmp/jobAnalysis/uploads')
 OUTPUT_FOLDER = Path('/tmp/jobAnalysis/outputs')
 CONFIG_PATH = BASE_DIR / 'config' / 'skills.yaml'
@@ -587,6 +600,11 @@ def test_extractor():
         return jsonify({'success': True, 'data': result.to_dict()})
     except Exception as e:
         return jsonify({'success': False, 'message': f'测试失败：{str(e)}'}), 500
+
+
+def start_server(port=5001):
+    """启动 Flask 服务（供桌面模式调用）"""
+    app.run(debug=False, host='127.0.0.1', port=port, use_reloader=False)
 
 
 if __name__ == '__main__':
