@@ -54,8 +54,11 @@ class SmartSkillMatcher:
         for category, skills in self.skill_categories.items():
             for skill in skills:
                 skill_lower = skill.lower()
-                self.skill_to_category[skill_lower] = category
-                self.skill_to_standard[skill_lower] = self._get_standard_name(skill)
+                # 词库中同一技能可能被配置到多个类别（例如 React）。
+                # 优先保留第一次出现的类别，避免被后续“泛 AI 分类”覆盖。
+                if skill_lower not in self.skill_to_category:
+                    self.skill_to_category[skill_lower] = category
+                    self.skill_to_standard[skill_lower] = self._get_standard_name(skill)
         
         self.skill_lookup_set = set(self.skill_to_category.keys())
     
