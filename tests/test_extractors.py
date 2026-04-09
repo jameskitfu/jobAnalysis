@@ -46,6 +46,27 @@ class TestJiebaExtractor(unittest.TestCase):
         self.assertIn('frontend_frameworks', result.standard_skills)
         
         print(f"✓ 前端技能识别：{result.standard_skills}")
+
+    def test_extract_single_char_language(self):
+        """测试单字符编程语言识别（C 语言）"""
+        text = "要求掌握 C语言 开发，有嵌入式项目经验"
+
+        result = self.extractor.extract(text)
+
+        self.assertIn('programming_languages', result.standard_skills)
+        self.assertIn('C', result.standard_skills['programming_languages'])
+        print(f"✓ 单字符语言识别：{result.standard_skills}")
+
+    def test_avoid_short_substring_false_positive(self):
+        """测试短英文技能词不应匹配为其他词的子串（如 .NET -> NE）"""
+        text = ".NET开发，熟悉C#，有后端开发经验"
+
+        result = self.extractor.extract(text)
+        all_skills = [skill for skills in result.standard_skills.values() for skill in skills]
+
+        self.assertNotIn('NE', all_skills)
+        self.assertIn('C#', all_skills)
+        print(f"✓ 短词子串误报过滤：{result.standard_skills}")
     
     def test_batch_extract(self):
         """测试批量提取"""
