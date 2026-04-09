@@ -54,8 +54,11 @@ class SmartSkillMatcher:
         for category, skills in self.skill_categories.items():
             for skill in skills:
                 skill_lower = skill.lower()
-                self.skill_to_category[skill_lower] = category
-                self.skill_to_standard[skill_lower] = self._get_standard_name(skill)
+                # 词库中同一技能可能被配置到多个类别（例如 React）。
+                # 优先保留第一次出现的类别，避免被后续“泛 AI 分类”覆盖。
+                if skill_lower not in self.skill_to_category:
+                    self.skill_to_category[skill_lower] = category
+                    self.skill_to_standard[skill_lower] = self._get_standard_name(skill)
         
         self.skill_lookup_set = set(self.skill_to_category.keys())
     
@@ -197,6 +200,13 @@ class SmartSkillMatcher:
             是否是有效的技能提及
         """
         contexts = self._extract_skill_context(text, skill)
+
+        # 超短英文技能词容易发生子串误匹配（例如 ".NET" 里的 "NE"）。
+        # 对长度 <= 2 的纯字母技能，要求命中时两侧不是字母数字。
+        if len(skill) <= 2 and skill.isalpha():
+            boundary_pattern = rf'(?<![A-Za-z0-9]){re.escape(skill)}(?![A-Za-z0-9])'
+            if not re.search(boundary_pattern, text, re.IGNORECASE):
+                return False
         
         for ctx in contexts:
             full_ctx = (ctx['before'] + ' ' + ctx['after']).lower()
@@ -422,6 +432,20 @@ class SmartSkillMatcher:
                     category = self._get_skill_category(skill)
                     if category:
                         matched_skills[category].add(self._get_standard_name(skill))
+
+        # 5. 单字符编程语言兜底（如“C语言”“R语言”）
+        # jieba 在中文场景中可能只切出 “C语言” 而不是 “C”，导致单字符技能漏识别。
+        single_char_patterns = {
+            'c': r'(?i)(?<![a-z0-9])c\s*语言',
+            'r': r'(?i)(?<![a-z0-9])r\s*语言',
+        }
+        for single_skill, pattern in single_char_patterns.items():
+            if single_skill not in self.skill_lookup_set:
+                continue
+            if re.search(pattern, text):
+                category = self.skill_to_category[single_skill]
+                standard_name = self.skill_to_standard[single_skill]
+                matched_skills[category].add(standard_name)
                         
         return {k: list(v) for k, v in matched_skills.items()}
     
